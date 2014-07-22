@@ -1,2 +1,2 @@
 ruby.exe -v
- jekyll serve
+ jekyll serve --watch
