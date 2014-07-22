@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "NGUI SPrite Button"
+date:   2014-07-20
+categories: Unity
+tags: Unity NGUI Sprite Button Editor
+---
+
 NGUI自定义控件：ImageButton
 
 背景：
@@ -12,6 +20,8 @@ NGUI自定义控件：ImageButton
 实现：
 1，ImageButton:
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
+
+{% highlight csharp %}
 [AddComponentMenu("UI/ImageButton")]
 public class ImageButton : UI2DSprite
 {
@@ -76,6 +86,7 @@ public class ImageButton : UI2DSprite
         sprite2D = sprite;
     }
 }
+{% endhighlight %}
 
 大功告成，现在来测试一发。在场景中添加一个GameObject，点击菜单Component-->UI-->ImageButton将脚本添加到物体，会发现物体自动转移到了NGUI根节点下。选中物体，给Inspector窗口的2D Sprite属性赋值。然后运行游戏，发现Sprite已经正常显示在窗口上。
 
@@ -91,6 +102,7 @@ public class ImageButton : UI2DSprite
 NGUI也封装了绘制属性到Inspector窗口的接口NGUIEditorTools.DrawProperty，我们打算调用这个接口，将4个Sprite的属性显示出来。那么在哪个方法中绘制呢？
 通过查看NGUI的代码发现，它在OnInspectorGUI方法中调用了ShouldDrawProperties、DrawCustomProperties和DrawFinalProperties 3个方法。根据ShouldDrawProperties的返回值为true/false，DrawCustomProperties中绘制的属性将是启用/禁用状态。DrawFinalProperties不受影响。我们将会在ShouldDrawProperties方法中进行绘制，并根据是否为NormalSprite属性赋值，决定是否禁用Widget相关属性。代码如下：
 
+{% highlight csharp %}
 protected override bool ShouldDrawProperties()
 {
     SerializedProperty sp = NGUIEditorTools.DrawProperty("NormalSprite", serializedObject, "mSprite");
@@ -99,6 +111,7 @@ protected override bool ShouldDrawProperties()
     NGUIEditorTools.DrawProperty("DisabledSprite", serializedObject, "DisabledSprite");
     return sp.objectReferenceValue != null;
 }
+{% endhighlight %}
 
 此时切换到Unity，选中我们的ImageButton物体，会发现右边的窗口已经出现了4个属性，同时Widget是禁用的。拖动一个Sprite到NormalSprite属性上，并根据需要更改其他状态的Sprite。然后运行游戏，如果你已经添加了Collider，会发现按钮已经可以正常响应鼠标事件了。
 
@@ -106,6 +119,8 @@ protected override bool ShouldDrawProperties()
 mButton.sprite2D = sp.objectReferenceValue as Sprite;
 
 此时控件已经可以正常工作了，不过我们还想更进一步，让它更加完美。我们要增加代码，使得拖动改变Button大小时，它的Collider可以跟随一起改变大小。方法如下：
+
+{% highlight csharp %}
 public override void OnInspectorGUI()
 {
     base.OnInspectorGUI();
@@ -116,8 +131,12 @@ public override void OnInspectorGUI()
         col.size = new Vector3(mButton.width, mButton.height, 0);
     }
 }
+{% endhighlight %}
+
 现在拖动Button大小试试，可以看到它的Collider也会随之改变（你需要将autoResizeBoxCollider勾上）。
 最后，我们希望能增加一个菜单项，可以快速的添加一个具有Collider组件的ImageButton到项目中。这也很简单：
+
+{% highlight csharp %}
 [MenuItem("UI/", false, 2)]
 static void Nothing() { }
 
@@ -142,6 +161,7 @@ static public ImageButton AddImageButton(GameObject go)
     col.size = new Vector3(w.width, w.height, 0);
     return w;
 }
+{% endhighlight %}
 
 通过MenuItem标记增加菜单项，并设置它的触发方法。在方法中，添加一个GameObject，并给它增加ImageButton脚本和BoxCollider组件，最后将它添加到UI树中。
 
