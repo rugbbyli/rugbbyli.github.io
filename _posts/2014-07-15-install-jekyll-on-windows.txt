@@ -5,6 +5,7 @@ date:   2014-07-15
 ---
 
 1，在http://rubyinstaller.org/下载安装ruby环境;
+
 2，安装完成后打开cmd，切换到ruby安装文件夹;
 3，输入指令gem install jekyll，回车;
 4，等几分钟后，弹出错误提示：
