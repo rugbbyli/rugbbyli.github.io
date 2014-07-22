@@ -8,11 +8,11 @@ layout: default
       <li style="background-color:#fff;margin-bottom:10px;padding:20px;">
           <a class="post-link" style="color:#000000;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <p style="margin-top:10px;font-size:24px;">{{ post.excerpt }}</p>
+          <p style="margin-top:10px;font-size:24px;max-height:150px;">{{ post.excerpt }}</p>
       </li>
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a> href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
