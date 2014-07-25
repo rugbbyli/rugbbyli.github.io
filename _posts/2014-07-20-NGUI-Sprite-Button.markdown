@@ -21,7 +21,7 @@ NGUI自定义控件：ImageButton
 1，ImageButton:
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
 
-{% highlight c# %}
+{% highlight cs %}
 [AddComponentMenu("UI/ImageButton")]
 public class ImageButton : UI2DSprite
 {
@@ -168,5 +168,6 @@ static public ImageButton AddImageButton(GameObject go)
 大功告成！现在切换到Unity，会发现顶部菜单项多了一个UI顶级菜单，选择UI-->Image Button，只需一步，即可添加一个ImageButton到UI树中。
 
 后记：
-过程中曾经遇到两个很纠结的问题。
-一是关于按钮的碰撞器，既然我们的按钮是Sprite2D，为什么不用BoxCollider2D组件呢？其实一开始我也是这么考虑，后来发现按钮一直无法触发点击事件，纠结了一个小时，各种方向怀疑，就是无法解决。后来突然想到UICamera，会不会是这里根本没监测到？于是一翻代码，坑爹呀，只见Raycast方法（检测碰撞的代码）中华丽丽的写着Physics.RaycastAll...它根本就不处理2D碰撞器！折腾这么久，竟然是这样一个小问题，反思了一下，一是对NGUI不熟悉，二是带着之前的想当然的经验去看待新东西，三是网上搜真不如看源码呀，😭
+过程中曾经遇到个很纠结的问题：关于按钮的碰撞器，既然我们的按钮是Sprite2D，为什么不用BoxCollider2D组件呢？其实一开始我也是这么考虑，后来发现按钮一直无法触发点击事件，纠结了一个小时，各种方向怀疑，就是无法解决。后来突然想到UICamera，会不会是这里根本没监测到？于是一翻代码，坑爹呀，只见Raycast方法（检测碰撞的代码）中华丽丽的写着Physics.RaycastAll...它根本就不处理2D碰撞器！折腾这么久，竟然是这样一个小问题，反思了一下，一是对NGUI不熟悉，二是带着之前的想当然的经验去看待新东西，三是网上搜真不如看源码呀~
+
+通过此次入门学习，对NGUI的工作方式和框架有了大致的了解，对Unity的基础知识和编辑器插件开发也有了接触，再接再厉！
