@@ -7,5 +7,5 @@ url: "http://liyang1221.github.io"
 twitter_username: 
 github_username:  liyang1221
 # Build settings
-markdown: kramdown
-permalink: pretty
+pygments: true
+mardown: redcarpet

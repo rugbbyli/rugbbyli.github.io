@@ -21,7 +21,7 @@ NGUI自定义控件：ImageButton
 1，ImageButton:
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
 
-{% highlight cs %}
+{% highlight csharp %}
 [AddComponentMenu("UI/ImageButton")]
 public class ImageButton : UI2DSprite
 {
@@ -102,7 +102,7 @@ public class ImageButton : UI2DSprite
 NGUI也封装了绘制属性到Inspector窗口的接口NGUIEditorTools.DrawProperty，我们打算调用这个接口，将4个Sprite的属性显示出来。那么在哪个方法中绘制呢？
 通过查看NGUI的代码发现，它在OnInspectorGUI方法中调用了ShouldDrawProperties、DrawCustomProperties和DrawFinalProperties 3个方法。根据ShouldDrawProperties的返回值为true/false，DrawCustomProperties中绘制的属性将是启用/禁用状态。DrawFinalProperties不受影响。我们将会在ShouldDrawProperties方法中进行绘制，并根据是否为NormalSprite属性赋值，决定是否禁用Widget相关属性。代码如下：
 
-{% highlight cs %}
+{% highlight csharp %}
 protected override bool ShouldDrawProperties()
 {
     SerializedProperty sp = NGUIEditorTools.DrawProperty("NormalSprite", serializedObject, "mSprite");
