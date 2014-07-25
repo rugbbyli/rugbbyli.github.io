@@ -74,7 +74,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
   font-size: 30px;
   letter-spacing: 5px;
   float: left;
-  line-height: 80px;
+  line-height: 56px;
   position: relative;
   z-index: 1;
 }
@@ -82,14 +82,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
 .site-nav {
   float: right;
   line-height: 56px;
+  color: #fff;
 }
 
 .site-nav .menu-icon { display: none; }
 
 .site-nav .page-link {
   margin-left: 20px;
-  color: #727272;
-  letter-spacing: -.5px;
+  color: #fff;
+  letter-spacing: 1px;
 }
 
 /* Site footer */
@@ -121,7 +122,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   margin-bottom: 15px;
 }
 
-.site-footer .column { float: left; margin-bottom: 5px; }
+.site-footer .column { color:#fff; float: left; margin-bottom: 5px; }
 
 .footer-col-1 {
   width: 270px; /*fallback*/
@@ -145,7 +146,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   width: -moz-calc(30%);
   width: -o-calc(30%);
   width: calc(30%);
-  margin-right: 10px
 }
 
 .site-footer ul { list-style: none; }
