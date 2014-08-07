@@ -9,7 +9,7 @@
 html, body { height: 100%; }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Courier New", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.6;
   font-weight: 100;
@@ -19,7 +19,7 @@ body {
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 
 a         { color: #2a7ae2; text-decoration: none; }
-a:hover   { color: #000; text-decoration: underline; }
+a:hover   { color: #000;  }
 a:visited { color: #205caa; }
 
 /* Utility */
@@ -28,7 +28,6 @@ a:visited { color: #205caa; }
 .wrap:after { content:""; display:table; }
 .wrap:after { clear: both; }
 .wrap {
-  max-width: 800px;
   padding: 0 30px;
   margin: 0 auto;
   zoom: 1;
@@ -39,10 +38,12 @@ a:visited { color: #205caa; }
 /* ----------------------------------------------------------*/
 
 .main-content {
+	font-family: "Helvetica";
 	min-height:100%;  
 	/*background-image: url(http://www.cssmatic.com/img/bg-right-column.jpg);*/
 	position:relative;
 	background-color:#f6f6f6;
+	background: #f3f3f3 url(http://img.baidu.com/img/iknow/exp/step/step_bg.png) repeat;
 }
 
 /* Site header */
@@ -122,6 +123,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   margin-bottom: 15px;
 }
 
+.footer_nav{
+  color: #fff;
+}
+
 .site-footer .column { color:#fff; float: left; margin-bottom: 5px; }
 
 .footer-col-1 {
@@ -138,7 +143,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   width: -moz-calc(35% - 10px);
   width: -o-calc(35% - 10px);
   width: calc(35% - 10px);
-  margin-right: 10px
 }
 .footer-col-3 {
   width: 250px; /*fallback*/
@@ -172,6 +176,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
 
 .page-content {
   padding: 80px 0 60px 0;
+  max-width: 800px;
+  margin:0 auto;
   /*background-color: #fff;*/
   /*padding-bottom:60px;*/  
 }
@@ -190,12 +196,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   font-size: 24px;
   letter-spacing: -1px;
   line-height: 1;
+  font-family: "Helvetica";
+  color:#000;
 }
 
 .posts .post-date {
   display: block;
   font-size: 15px;
   color: #818181;
+}
+
+.posts .post-block{
+	background-color:#fff;
+	opacity:80%;
+	margin-bottom:10px;
+	padding:10px;
+	height:60px;
 }
 
 
@@ -269,8 +285,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 16px;
   overflow:scroll;
+  font-family: "Courier New";
 }
 
 .post code { padding: 1px 5px; }

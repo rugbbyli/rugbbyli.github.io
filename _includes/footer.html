@@ -6,31 +6,29 @@
 
     <div class="footer-col-1 column">
       <ul>
-        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a class="footer_nav" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
       </ul>
     </div>
 
     <div class="footer-col-2 column">
       <ul>
         {% if site.github_username %}<li>
-          <a href="https://github.com/{{ site.github_username }}">
-
-            <span class="username">{{ site.github_username }}</span>
+          <a class="footer_nav" href="https://github.com/{{ site.github_username }}">
+            {{ site.github_username }}
           </a>
         </li>{% endif %}
         {% if site.twitter_username %}<li>
-          <a href="https://twitter.com/{{ site.twitter_username }}">
-            
-            <span class="username">{{ site.twitter_username }}</span>
+          <a class="footer_nav" href="https://twitter.com/{{ site.twitter_username }}">
+            {{ site.twitter_username }}
           </a>
         </li>{% endif %}
       </ul>
     </div>
 
     <div class="footer-col-3 column">
-      <p class="text">{{ site.description }}</p>
+      {{ site.description }}
+	  <a class="footer_nav" style="float:right;" href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
     </div>
-
   </div>
 
 </footer>

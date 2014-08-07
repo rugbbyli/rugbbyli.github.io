@@ -13,10 +13,6 @@ date:   2014-07-15
 5，切换ruby gem库到国内平台https://ruby.taobao.org/：<br>
 	$ gem sources --remove https://rubygems.org/<br>
 	$ gem sources -a https://ruby.taobao.org/<br>
-	$ gem sources -l<br>
-	\*\*\* CURRENT SOURCES \*\*\*<br>
-	<br>
-	https://ruby.taobao.org<br>
 6，继续输入gem install jekyll，回车；<br>
 7，等几分钟后，弹出错误提示：Please update your PATH to include build tools or download the DevKit;<br>
 8，到http://rubyinstaller.org/下载安装devkit；<br>
