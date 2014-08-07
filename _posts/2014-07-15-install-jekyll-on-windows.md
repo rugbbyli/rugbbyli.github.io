@@ -14,7 +14,7 @@ date:   2014-07-15
 	$ gem sources --remove https://rubygems.org/<br>
 	$ gem sources -a https://ruby.taobao.org/<br>
 	$ gem sources -l<br>
-	*** CURRENT SOURCES ***<br>
+	\*\*\* CURRENT SOURCES \*\*\*<br>
 	<br>
 	https://ruby.taobao.org<br>
 6，继续输入gem install jekyll，回车；<br>
