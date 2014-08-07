@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "NGUI SPrite Button"
+title:  "NGUI Sprite Button"
 date:   2014-07-20
 categories: Unity
-tags: Unity NGUI Sprite Button Editor
+tags: Unity NGUI
 ---
 
-NGUI自定义控件：ImageButton
+NGUI自定义控件：Sprite Button
 
 背景：
 	Unity4.3新增了2D框架，我们可以导入一张拼图，并切割为若干Sprite。
@@ -92,7 +92,7 @@ public class ImageButton : UI2DSprite
 
 但此时还有两个小问题，一是物体的属性窗口并没有出现脚本中声明的4个状态Sprite，导致我们赋值变得很麻烦；二是OnPress、OnHover等方法都是无效的，导致按钮的状态无法发生变化。
 
-先看第一个问题，很明显，我们需要为控件添加一个Collider，这样才能触发NGUI的输入事件。考虑到Sprite都是方形的，我们为物体添加一个Box Collider，并调整它的大小到合适的尺寸。
+先看第二个问题，很明显，我们需要为控件添加一个Collider，这样才能触发NGUI的输入事件。考虑到Sprite都是方形的，我们为物体添加一个Box Collider，并调整它的大小到合适的尺寸。
 然而随后就会发现问题，我们可能需要经常拖动调整Button的大小，但是Collider却不会随之改变。如果每次调整Button大小后都需要随之再调整一次Collider大小，并使之精确匹配Button的大小，真的是一件挺蛋疼的事情。别着急，这个将会在下面解决。
 再来看第一个问题，其实原因也很简单，我们的ImageButton继承了UI2DSprite，而NGUI重写了它的Inspector窗口，导致我们添加的字段不会出现。那么解决方法也很简单，我们为我们的ImageButton也添加一个自定义的Inspector窗口即可。这涉及到Unity的编辑器扩展。
 
