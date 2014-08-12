@@ -7,16 +7,19 @@ tags: Unity Editor
 ---
 
 ###背景：
+
 	Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的切割工具切割为若干Sprite。
 	但是由于Sprite只记录了原始图片中的某块区域信息，而并非保存为物理文件，造成一些第三方插件对Sprite的支持还不是很好，比如NGUI等。
     因此本文通过创建一个插件，将Sprite导出为文件，实现了某些特殊需求。
 
 ###分析：
-	我们基本的思路是：通过Unity插件系统生成一个编辑器窗口，在窗口中监控Project等目录下选中的Sprite并列出在窗口中。点击"Export"即可导出到磁盘上。
+
+	基本的思路是：通过Unity插件系统生成一个编辑器窗口，在窗口中监控Project等目录下选中的Sprite并列出在窗口中。点击"Export"即可导出到磁盘上。
     本文的知识点涉及插件系统、GUI绘图、Texture2D、文件操作等。
 
 ###实现：
-1，在右键菜单项中添加菜单：
+
+1，在右键菜单项中添加菜单：<br>
     新建一个类，命名为SpriteExporter，并继承自EditorWindow。添加如下方法：
 
 {% highlight csharp %}
@@ -29,7 +32,7 @@ static public void OpenSpriteExporter()
 
     这段代码会在菜单中添加一个名为"Export Sprite"的菜单项。选中菜单项会打开一个SpriteExporter窗口实例。当然此时窗口中没有任何内容。
 
-2，将选中的Sprite显示在窗口中：
+2，将选中的Sprite显示在窗口中：<br>
     首先添加一个方法，获取当前选中的全部Sprite。原理很简单，通过对Selection.objects的枚举，依次判断是否为Sprite并添加到数组中：
 
 {% highlight csharp %}
@@ -115,7 +118,6 @@ void OnSelectionChange()
 
 下面是具体的实现方法：
 
-
 {% highlight csharp %}
 void ExportSprites(IEnumerable<Sprite> sprites)
 {
@@ -149,8 +151,8 @@ void ExportSprites(IEnumerable<Sprite> sprites)
 然后将ExportSprite方法添加到OnGUI的Button判断条件下面，这样当Button被点击时，将会执行我们的方法。
 注意这里我将导出路径设置为[Desktop]/[TextureName]/[SpriteName.png]。
 
-看起来一切都没有问题。我们切换到Unity，选中几个Sprite并打开我们的窗口，点击按钮，很不幸，你很可能会遇到下面的错误提示：
-    Unity Exception：Texture 'XXX' is not readable,the texture memory can not be accessed from scripts....
+看起来一切都没有问题。我们切换到Unity，选中几个Sprite并打开我们的窗口，点击按钮，很不幸，你很可能会遇到下面的错误提示：<br>
+    Unity Exception：Texture 'XXX' is not readable,the texture memory can not be accessed from scripts....<br>
 看起来似乎是说Texture不可读？
 这还真是个麻烦事~。最后通过读NGUI的代码，找到了一种解决方案，将Texture设置为可读，代码如下：
 
@@ -181,10 +183,6 @@ bool MakeTextureReadable(Texture tex)
 这次再试验一次，发现可以正常导出了。over。
 
 ###改进：
-
-{% highlight csharp %}
-
-{% endhighlight %}
 
 
 
