@@ -1,23 +1,21 @@
 ---
 layout: post
-title:  "NGUI Sprite Button"
+title:  "NGUI自定义控件：Sprite Button"
 date:   2014-07-20
 categories: Unity
 tags: Unity NGUI
 ---
 
-NGUI自定义控件：Sprite Button
-
-背景：
+###背景：
 	Unity4.3新增了2D框架，我们可以导入一张拼图，并切割为若干Sprite。
 	但是NGUI对Sprite的支持不是很好，NGUI的类型UIImageButton的Sprite只能从Atlas中选择。
 	因此封装了一个新的控件ImageButton，可以直接选择Unity的Sprite作为按钮显示。
 	借助于Unity和NGUI良好的扩展性，只需几步便可完成任务。
 
-分析：
+###分析：
 	NGUI有对Sprite显示的支持类型，叫做UI2DSprite。同时我们要实现的功能类似于NGUI的UIImageButton，因此可以参照UIImageButton的实现，将它里面用到的Atlas图片源更换为Sprite即可。
 
-实现：
+###实现：
 1，ImageButton:
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
 
