@@ -8,7 +8,7 @@ tags: Unity NGUI
 
 ###背景：
 
-Unity4.3新增了2D框架，我们可以导入一张拼图，并切割为若干Sprite。
+Unity4.3新增了2D框架，我们可以导入一张拼图，并切割为若干Sprite。<br>
 但是NGUI对Sprite的支持不是很好，NGUI的类型UIImageButton的Sprite只能从Atlas中选择。<br>
 因此封装了一个新的控件ImageButton，可以直接选择Unity的Sprite作为按钮显示。<br>
 借助于Unity和NGUI良好的扩展性，只需几步便可完成任务。
@@ -19,7 +19,7 @@ NGUI有对Sprite显示的支持类型，叫做UI2DSprite。同时我们要实现
 
 ###实现：
 
-1，ImageButton:<br>
+#####1，ImageButton:<br>
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
 
 {% highlight csharp %}
@@ -93,14 +93,14 @@ public class ImageButton : UI2DSprite
 
 但此时还有两个小问题，一是物体的属性窗口并没有出现脚本中声明的4个状态Sprite，导致我们赋值变得很麻烦；二是OnPress、OnHover等方法都是无效的，导致按钮的状态无法发生变化。
 
-先看第二个问题，很明显，我们需要为控件添加一个Collider，这样才能触发NGUI的输入事件。考虑到Sprite都是方形的，我们为物体添加一个Box Collider，并调整它的大小到合适的尺寸。
-然而随后就会发现问题，我们可能需要经常拖动调整Button的大小，但是Collider却不会随之改变。如果每次调整Button大小后都需要随之再调整一次Collider大小，并使之精确匹配Button的大小，真的是一件挺蛋疼的事情。别着急，这个将会在下面解决。
+先看第二个问题，很明显，我们需要为控件添加一个Collider，这样才能触发NGUI的输入事件。考虑到Sprite都是方形的，我们为物体添加一个Box Collider，并调整它的大小到合适的尺寸。<br>
+然而随后就会发现问题，我们可能需要经常拖动调整Button的大小，但是Collider却不会随之改变。如果每次调整Button大小后都需要随之再调整一次Collider大小，并使之精确匹配Button的大小，真的是一件挺蛋疼的事情。别着急，这个将会在下面解决。<br>
 再来看第一个问题，其实原因也很简单，我们的ImageButton继承了UI2DSprite，而NGUI重写了它的Inspector窗口，导致我们添加的字段不会出现。那么解决方法也很简单，我们为我们的ImageButton也添加一个自定义的Inspector窗口即可。这涉及到Unity的编辑器扩展。
 
-2，ImageButton编辑器扩展：<br>
-新建一个脚本，命名为ImageButtonEditor，并丢在某个Editor文件夹下（这样才能被Unity识别为编辑器扩展）。
-我们让它继承UIWidgetInspector（当然别忘记标记它为CustomEditor）。UIWidgetInspector是NGUI的一个编辑器扩展类，NGUI所有的Widget类型的编辑器扩展都继承自它。
-NGUI也封装了绘制属性到Inspector窗口的接口NGUIEditorTools.DrawProperty，我们打算调用这个接口，将4个Sprite的属性显示出来。那么在哪个方法中绘制呢？
+#####2，ImageButton编辑器扩展：<br>
+新建一个脚本，命名为ImageButtonEditor，并丢在某个Editor文件夹下（这样才能被Unity识别为编辑器扩展）。<br>
+我们让它继承UIWidgetInspector（当然别忘记标记它为CustomEditor）。UIWidgetInspector是NGUI的一个编辑器扩展类，NGUI所有的Widget类型的编辑器扩展都继承自它。<br>
+NGUI也封装了绘制属性到Inspector窗口的接口NGUIEditorTools.DrawProperty，我们打算调用这个接口，将4个Sprite的属性显示出来。那么在哪个方法中绘制呢？<br>
 通过查看NGUI的代码发现，它在OnInspectorGUI方法中调用了ShouldDrawProperties、DrawCustomProperties和DrawFinalProperties 3个方法。根据ShouldDrawProperties的返回值为true/false，DrawCustomProperties中绘制的属性将是启用/禁用状态。DrawFinalProperties不受影响。我们将会在ShouldDrawProperties方法中进行绘制，并根据是否为NormalSprite属性赋值，决定是否禁用Widget相关属性。代码如下：
 
 {% highlight csharp %}
@@ -116,7 +116,7 @@ protected override bool ShouldDrawProperties()
 
 此时切换到Unity，选中我们的ImageButton物体，会发现右边的窗口已经出现了4个属性，同时Widget是禁用的。拖动一个Sprite到NormalSprite属性上，并根据需要更改其他状态的Sprite。然后运行游戏，如果你已经添加了Collider，会发现按钮已经可以正常响应鼠标事件了。
 
-接下来，我们再增加一行代码，使得NormalSprite属性更新后，Scene视图可以立即刷新显示。这很简单，直接在ShouldDrawProperties返回前加上：
+接下来，我们再增加一行代码，使得NormalSprite属性更新后，Scene视图可以立即刷新显示。这很简单，直接在ShouldDrawProperties返回前加上：<br>
 mButton.sprite2D = sp.objectReferenceValue as Sprite;
 
 此时控件已经可以正常工作了，不过我们还想更进一步，让它更加完美。我们要增加代码，使得拖动改变Button大小时，它的Collider可以跟随一起改变大小。方法如下：
