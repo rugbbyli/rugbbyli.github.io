@@ -210,3 +210,5 @@ IEnumerable<Sprite> GetTextureSprites(Texture2D tex)
 {% endhighlight %}
 
 原理其实也很简单，通过获取Texture2D的Importer导入器，TextureImporter.spritesheet属性记录了Texture所分割出的Sprite列表（包括每个Sprite的名字、大小、在图片中的位置等信息）。我们遍历这个列表，根据位置信息生成Sprite即可。
+
+代码下载：[SpriteExporter.cs](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/files/SpriteExporter.cs "SpriteExporter.cs")
