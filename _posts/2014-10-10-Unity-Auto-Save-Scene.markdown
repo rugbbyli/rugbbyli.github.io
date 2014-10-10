@@ -102,4 +102,4 @@ static void SaveScene()
 
 至此，我们的自动保存场景插件就完工了。每隔120s或者当Hierarchy视图发生改变，都会触发场景的自动保存。从此以后妈妈再也不用担心我的场景忘记保存丢失啦~~<br>
 
-代码下载：[AutoSave.cs](http://rugbbyli.github.io/master/files/AutoSave.cs "AutoSave.cs")
+代码下载：[AutoSave.cs](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/files/AutoSave.cs "AutoSave.cs")
