@@ -26,7 +26,7 @@ tags: Unity Editor
 
 ###实现：
 
-新建一个类，命名为AutoSave。添加如下方法：
+新建一个类，命名为AutoSave：
 
 {% highlight csharp %}
 [InitializeOnLoad]
@@ -36,6 +36,7 @@ public class AutoSave
     {
         
     }
+}
 {% endhighlight %}
 
 这样，在Unity启动时，就会调用AutoSave类的静态构造函数。记得要把代码放在Editor文件夹下。<br>
@@ -55,7 +56,7 @@ static void SaveScene()
 {
     if (!string.IsNullOrEmpty(EditorApplication.currentScene) && EditorApplication.SaveScene())
     {
-        Debug.Log("scene has auto saved (at " + System.DateTime.Now.ToString("HH:mm:ss") + ").");
+        Debug.Log(string.Format("scene has auto saved (at {0}).", System.DateTime.Now.ToString("HH:mm:ss")));
     }
 }
 
@@ -94,11 +95,11 @@ static void SaveScene()
 
     if (!string.IsNullOrEmpty(EditorApplication.currentScene) && EditorApplication.SaveScene())
     {
-        Debug.Log("scene has auto saved (at " + System.DateTime.Now.ToString("HH:mm:ss") + ").");
+        Debug.Log(string.Format("scene has auto saved (at {0}).", System.DateTime.Now.ToString("HH:mm:ss")));
     }
 }
 {% endhighlight %}
 
 至此，我们的自动保存场景插件就完工了。每隔120s或者当Hierarchy视图发生改变，都会触发场景的自动保存。从此以后妈妈再也不用担心我的场景忘记保存丢失啦~~<br>
 
-代码下载：[AutoSave.cs](http://rugbbyli.github.io/files/AutoSave.cs "AutoSave.cs")
+代码下载：[AutoSave.cs](http://rugbbyli.github.io/master/files/AutoSave.cs "AutoSave.cs")
