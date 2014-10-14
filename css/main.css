@@ -9,7 +9,7 @@
 html, body { height: 100%; }
 
 body {
-  font-family: "Courier New", Helvetica, Arial, sans-serif;
+  font-family: gotham, Helvetica, Arial, "Droid Sans", sans-serif;
   font-size: 15px;
   line-height: 1.6;
   font-weight: 100;
