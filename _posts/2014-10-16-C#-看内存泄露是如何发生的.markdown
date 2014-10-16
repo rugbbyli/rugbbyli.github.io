@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "看内存泄露是如何发生的"
+date:   2014-10-16
+categories: C#
+tags: C# 内存泄露
+---
+
+###背景：
+
+C#有完善的垃圾回收机制，所以一般情况下我们无需考虑资源释放问题。但是垃圾回收是有限制的，如果搞不清楚系统如何判断“垃圾”对象，就可能写出存在内存泄露的代码来。今天分析下用的比较多的事件机制可能造成的内存泄露。<br>
+
+###分析：
+
+
+
+###实现：
+
+	class A
+	{
+		public void B_Test(object sender, System.EventArgs e)
+		{
+			throw new System.NotImplementedException();
+		}
+		~A()
+		{
+			System.Diagnostics.Debug.WriteLine("dispose class A");
+		}
+
+		public event System.EventHandler Test;
+	}
+
+	class B
+	{
+		public event System.EventHandler Test;
+
+		public void A_Test(object sender, System.EventArgs e)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		~B()
+		{
+			System.Diagnostics.Debug.WriteLine("dispose class B");
+		}
+	}
+
+
+代码下载：
