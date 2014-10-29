@@ -10,7 +10,7 @@ layout: default
     {{ page.date | date: "%Y" }}年{{ page.date | date: "%m" }}月{{ page.date | date: "%d" }}日
     <i class="space"></i>
     <i class="fa fa-tags"></i>
-    <a class="post-category" href="/page/category.html#{{ page.categories }}">{{ page.categories }}</a>	
+    {{ page.categories }}
   </p>
 </header>
 <div class="post-main">
