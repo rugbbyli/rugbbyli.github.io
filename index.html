@@ -2,16 +2,17 @@
 layout: default
 ---
 
-<div class="home">
-  	{% for post in site.posts reverse %}
-	{% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
-	{% if year != y %}{% assign year = y %}<h1 class="year">{{ post.date | date: "%Y" }}</h1>{% endif %}
-	<div class="timing">
-	  <time class="time">{{ post.date | date: "%m" }}-{{ post.date | date: "%d" }}</time>
-	  <div class="link"><a href="{{ post.url }}">{{post.title}}</a></div>
-	  <div class="point-time "></div>
-	</div>
-	{% endfor %}
+<link rel="stylesheet" href="/res/css/page.css">
+<div>
+{% for post in site.posts reverse %}
+{% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
+{% if year != y %}{% assign year = y %}<h1 class="year">{{ post.date | date: "%Y" }}</h1>{% endif %}
+<div class="timing">
+  <time class="time">{{ post.date | date: "%m" }}-{{ post.date | date: "%d" }}</time>
+  <div class="link"><a href="{{ post.url }}">{{post.title}}</a></div>
+  <div class="point-time "></div>
+</div>
+{% endfor %}
 </div>
 <br/>
 <script>
