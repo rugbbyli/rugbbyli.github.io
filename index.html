@@ -10,7 +10,7 @@ layout: default
 <div class="timing">
   <time class="time">{{ post.date | date: "%m" }}-{{ post.date | date: "%d" }}</time>
   <div class="link"><a href="{{ post.url }}">{{post.title}}</a></div>
-  <div class="point-time "></div>
+  <div class="javascript:GetRandomPoint()"></div>
 </div>
 {% endfor %}
 </div>
@@ -25,4 +25,12 @@ $(function() {
     $(this).addClass("point"+rand);
   });
 });
+
+function GetRandomPoint()
+{   
+var Range = 4;   
+var Rand = Math.random();   
+var index = Min + Math.round(Rand * Range);
+return "point-time point" + index;
+}   
 </script>
