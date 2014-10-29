@@ -31,10 +31,11 @@ h1, .post-main h2, h3 {
 h1, h2, h3, h4, h5, h6 {
     letter-spacing: 2px;
     color: #525d67;
+    display: block
 }
 
 .post-main h1, h2, h3, h4 {
-    margin-bottom: -10px;
+    margin-bottom: 0px;
     margin-top: 25px;
     letter-spacing: 2px;
 }
