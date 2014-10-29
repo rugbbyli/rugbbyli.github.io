@@ -7,7 +7,7 @@
         <div class="main-content">
             {% include header.html %}
 
-            <header class="post-header">
+            <div class="post-header">
               <h1 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
               <p class="post-meta">
                 <i class="fa fa-calendar"></i>
@@ -16,13 +16,15 @@
                 <i class="fa fa-tags"></i>
                 <a class="post-category" href="/page/category.html#{{ page.categories }}">{{ page.categories }}</a> 
               </p>
-            </header>
+            </div>
 
             <div class="post-main">
                 {{ content }}
-                </div>
-                {% include share.html %}
-                <div class="pagination">
+            </div>
+
+            {% include share.html %}
+            
+            <div class="pagination">
                 {% if page.previous %}
                 <a class="pagination-item newer" href="{{ BASE_PATH }}{{ page.previous.url }}"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;{{ page.previous.title }}</a>
                 {% else %}
@@ -34,6 +36,7 @@
                 <span class="pagination-item older">下一篇&nbsp;<i class="fa fa-chain-broken"></i></span>
                 {% endif %}
             </div>
+
             {% include footer.html %}
         </div>
     </body>
