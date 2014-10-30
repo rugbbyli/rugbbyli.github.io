@@ -2,16 +2,19 @@
     color: rgb(0,180,0);
     margin-left: 35px;
     font-weight: lighter;
+	font-size: 50px;
 }
 
 .time {
     color: #1abc9c;
     letter-spacing: 1px;
+	font-size: 21px;
 }
 
 .link {
-    margin-left: 13.5em;
-    margin-top: -24px;
+    margin-left: 150px;
+    margin-top: -40px;
+    font-size: 32px;
 }
 
     .link a {
@@ -39,7 +42,7 @@
         content: "";
         width: 5px;
         left: 100px;
-        top: 10px;
+        top: 15px;
         bottom: -35px;
         background: #e6e6e6;
         position: absolute;
@@ -49,7 +52,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    top: 15px;
+    top: 11px;
     left: 100px;
     background: #1c87bf;
     margin-left: -5px;
