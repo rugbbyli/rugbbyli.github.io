@@ -400,8 +400,8 @@ a.pagination-item {
 }
 
 .share {
-    margin: 25px 0 25px 20px;
-	display:inline;
+    margin: 0;
+	display:inline-block;
 }
 
 footer {
