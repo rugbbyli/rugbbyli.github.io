@@ -3,7 +3,10 @@ layout: default
 ---
 
 <header class="post-header">
-  <h1 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+  <h1 class="post-title">
+	<a href="{{ page.url }}">{{ page.title }}</a>
+	{% include share.html %}
+  </h1>
   <p class="post-meta">
     <i class="fa fa-calendar"></i>
     {{ page.date | date: "%Y" }}年{{ page.date | date: "%m" }}月{{ page.date | date: "%d" }}日
@@ -28,8 +31,6 @@ layout: default
 <span class="pagination-item older">下一篇&nbsp;<i class="fa fa-chain-broken"></i></span>
 {% endif %}
 </div>
-
-{% include share.html %}
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
