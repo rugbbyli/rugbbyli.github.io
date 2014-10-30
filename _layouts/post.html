@@ -6,7 +6,7 @@ layout: default
   <h1 class="post-title">
 	<a href="{{ page.url }}">{{ page.title }}</a>
   </h1>
-  <div class="share">
+
   <p class="post-meta">
     <i class="fa fa-calendar"></i>
     {{ page.date | date: "%Y" }}年{{ page.date | date: "%m" }}月{{ page.date | date: "%d" }}日
@@ -14,12 +14,14 @@ layout: default
     <i class="fa fa-tags"></i>
     {{ page.categories }}
   </p>
-  </div>
-  {% include share.html %}
+  
 </header>
+
 <div class="post-main">
 {{ content }}
 </div>
+
+{% include share.html %}
 
 <div class="pagination">
 {% if page.previous %}
