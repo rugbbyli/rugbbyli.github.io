@@ -363,8 +363,8 @@ a {
 .pagination {
     color: #ccc;
     text-align: center;
-	height: 20px;
-	margin: 40px 0;
+	height: 40px;
+	margin: 20px 0;
 }
 
 .pagination-item {
