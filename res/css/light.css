@@ -363,6 +363,7 @@ a {
 .pagination {
     color: #ccc;
     text-align: center;
+	overflow:hidden;
 }
 
 .pagination-item {
