@@ -20,7 +20,7 @@ tags: Unity Shader
 
 ###实现：
 
-#####1，新建一个shader，命名为tile，打开它，将内容改为：
+####1，新建一个shader，命名为tile，打开它，将内容改为：
 
 {% highlight csharp %}
 Shader "Tile/tile" {
@@ -30,18 +30,18 @@ Shader "Tile/tile" {
 
 这样我们就声明了一个空的shader，分类为Tile，命名为tile。
 
-#####2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
+####2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
 
-#####3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
+####3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
 
-#####4，打开tile.shader文件，在里面添加属性：<br>
+####4，打开tile.shader文件，在里面添加属性：<br>
     Properties {<br>
         _Data ("Data", Vector) = (0,0,0,0)<br>
     }<br>
 
 我们添加了一个命名为_Data，类型为Vector的变量，默认值为0。这4个值分别用来表示每一行中黑块的位置索引。4个0意味着4个黑块都位于第一列，依此类推。
 
-#####5，接下来，在下面添加具体的shader代码，如下：
+####5，接下来，在下面添加具体的shader代码，如下：
 
     SubShader {
         Pass {
@@ -118,7 +118,7 @@ Shader "Tile/tile" {
 
 ok，关于shader的部分就已经完成了，接下来，我们看一下如何通过代码控制它改变。
 
-#####6，在物体上附加一个脚本，命名随意，然后打开它。
+####6，在物体上附加一个脚本，命名随意，然后打开它。
 
 首先，在脚本中添加两个变量：
 
