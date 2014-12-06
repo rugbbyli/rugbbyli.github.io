@@ -19,7 +19,7 @@ NGUI有对Sprite显示的支持类型，叫做UI2DSprite。同时我们要实现
 
 ###实现：
 
-#####1，ImageButton:<br>
+####1，ImageButton:<br>
 实现较为简单，完全参照UIImageButton，声明缓存按钮4种状态下的Sprite的字段，并在监测到不同UI事件发生时将自身的sprite2D属性改为某种状态对应的Sprite即可。
 
 {% highlight csharp %}
@@ -97,7 +97,7 @@ public class ImageButton : UI2DSprite
 然而随后就会发现问题，我们可能需要经常拖动调整Button的大小，但是Collider却不会随之改变。如果每次调整Button大小后都需要随之再调整一次Collider大小，并使之精确匹配Button的大小，真的是一件挺蛋疼的事情。别着急，这个将会在下面解决。<br>
 再来看第一个问题，其实原因也很简单，我们的ImageButton继承了UI2DSprite，而NGUI重写了它的Inspector窗口，导致我们添加的字段不会出现。那么解决方法也很简单，我们为我们的ImageButton也添加一个自定义的Inspector窗口即可。这涉及到Unity的编辑器扩展。
 
-#####2，ImageButton编辑器扩展：<br>
+####2，ImageButton编辑器扩展：<br>
 新建一个脚本，命名为ImageButtonEditor，并丢在某个Editor文件夹下（这样才能被Unity识别为编辑器扩展）。<br>
 我们让它继承UIWidgetInspector（当然别忘记标记它为CustomEditor）。UIWidgetInspector是NGUI的一个编辑器扩展类，NGUI所有的Widget类型的编辑器扩展都继承自它。<br>
 NGUI也封装了绘制属性到Inspector窗口的接口NGUIEditorTools.DrawProperty，我们打算调用这个接口，将4个Sprite的属性显示出来。那么在哪个方法中绘制呢？<br>

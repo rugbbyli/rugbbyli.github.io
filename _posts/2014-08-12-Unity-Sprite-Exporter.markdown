@@ -19,7 +19,7 @@ Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的�
 
 ###实现：
 
-#####1，在右键菜单项中添加菜单：<br>
+####1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为SpriteExporter，并继承自EditorWindow。添加如下方法：
 
 {% highlight csharp %}
@@ -32,7 +32,7 @@ static public void OpenSpriteExporter()
 
 这段代码会在菜单中添加一个名为"Export Sprite"的菜单项。选中菜单项会打开一个SpriteExporter窗口实例。当然此时窗口中没有任何内容。
 
-#####2，将选中的Sprite显示在窗口中：<br>
+####2，将选中的Sprite显示在窗口中：<br>
 首先添加一个方法，获取当前选中的全部Sprite。原理很简单，通过对Selection.objects的枚举，依次判断是否为Sprite并添加到数组中：
 
 {% highlight csharp %}
@@ -110,7 +110,7 @@ void OnSelectionChange()
 }
 {% endhighlight %}
 
-#####3，生成Sprite的图片文件并保存到本地
+####3，生成Sprite的图片文件并保存到本地
 接下来，我们需要实现最关键的一步，保存Sprite到文件。大致的步骤如下：<br>
 通过Sprite.textureRect和Sprite.texture属性获取Sprite的源和位置信息；<br>
 通过Texture.getPixels方法取得对应区域的颜色数据；<br>
