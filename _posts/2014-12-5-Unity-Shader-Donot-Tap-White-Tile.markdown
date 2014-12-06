@@ -20,7 +20,7 @@ tags: Unity Shader
 
 ###实现：
 
-1，新建一个shader，命名为tile，打开它，将内容改为：
+#####1，新建一个shader，命名为tile，打开它，将内容改为：
 
 {% highlight csharp %}
 Shader "Tile/tile" {
@@ -30,18 +30,18 @@ Shader "Tile/tile" {
 
 这样我们就声明了一个空的shader，分类为Tile，命名为tile。
 
-2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
+#####2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
 
-3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
+#####3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
 
-4，打开tile.shader文件，在里面添加属性：<br>
-    Properties {
-        _Data ("Data", Vector) = (0,0,0,0)
-    }
+#####4，打开tile.shader文件，在里面添加属性：<br>
+    Properties {<br>
+        _Data ("Data", Vector) = (0,0,0,0)<br>
+    }<br>
 
 我们添加了一个命名为_Data，类型为Vector的变量，默认值为0。这4个值分别用来表示每一行中黑块的位置索引。4个0意味着4个黑块都位于第一列，依此类推。
 
-5，接下来，在下面添加具体的shader代码，如下：
+#####5，接下来，在下面添加具体的shader代码，如下：
 
     SubShader {
         Pass {
@@ -98,12 +98,12 @@ Shader "Tile/tile" {
 
 就这样简单的几部，我们的主要工作就完成了，切回unity，应该看到类似这样的画面（这里我分别使用了Cube/Sphere/Quad来演示效果）：
 
-![image](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/imgs/shader1.PNG)
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader1.PNG)
 
 
 可以发现，物体表面被分成了4行4列，每行的第一列都显示为黑色，其余地方为白色。为加深理解，可以选中TileMaterial，改变它的Data的值，比如改为(0,1,2,3)，会变成这样：
 
-![image](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/imgs/shader2.PNG)
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader2.PNG)
 
 此时画面已经有了，但是我们还想更进一步，把分割线也画出来，这样看起来更直观点，要怎么做呢？很简单，只需要在frag函数前面加上这段代码：
 
@@ -113,12 +113,12 @@ Shader "Tile/tile" {
 
 这样当点的坐标足够接近0.25的整数倍时，我们直接返回黑色，这样即可画出4*4的黑色的分割线出来。保存代码，切到unity，画面应该变成这样：
 
-![image](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/imgs/shader3.PNG)
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader3.PNG)
 
 
 ok，关于shader的部分就已经完成了，接下来，我们看一下如何通过代码控制它改变。
 
-6，在物体上附加一个脚本，命名随意，然后打开它。
+#####6，在物体上附加一个脚本，命名随意，然后打开它。
 
 首先，在脚本中添加两个变量：
 
