@@ -156,4 +156,4 @@ ok，关于shader的部分就已经完成了，接下来，我们看一下如何
 
 至此，大部分内容已经完成了，接下来，只需要通过判断用户的点击位置，计算对应位置方块的颜色，判断是”GameOver“还是”UpdateTile“咯~再加上诸如时间控制/分数控制等，一个完整的，没有任何UI素材，只使用shader进行渲染的游戏就诞生啦~<br>
 
-示例代码下载：[TileDemo.unitypackage](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/files/TileDemo.unitypackage "TileDemo.unitypackage")
+示例代码下载：[TileDemo.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/TileDemo.unitypackage "TileDemo.unitypackage")
