@@ -11,8 +11,8 @@ document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/
 <script type="text/javascript">
 <!--
 	var config = {
-		width: 360, 
-		height: 640,
+		width: {{ page.unitywidth }}, 
+		height: {{ page.unityheight }},
 		params: { enableDebugging:"0" }
 		
 	};
@@ -56,6 +56,16 @@ document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/
 	});
 -->
 </script>
+
+<style>
+	<!--
+	div#unityPlayer {
+		cursor: default;
+		height: {{ page.unitywidth }}px;
+		width: {{ page.unityheight }}px;
+	}
+	-->
+</style>
 
 <div id="unityPlayer">
 	<div class="missing">
