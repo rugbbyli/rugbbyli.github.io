@@ -5,6 +5,8 @@ date:   2014-12-5
 categories: Unity
 tags: Unity Shader
 unityfile: "/files/DoNotTapWhiteTile.unity3d"
+unitywidth: 360
+unityheight: 640
 ---
 
 ###背景：
