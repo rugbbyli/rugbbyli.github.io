@@ -4,6 +4,7 @@ title:  "Unity学习笔记：使用Shader实现‘别踩白块儿’游戏"
 date:   2014-12-5
 categories: Unity
 tags: Unity Shader
+unityfile: files/DoNotTapWhiteTile.unity3d
 ---
 
 ###背景：
@@ -17,6 +18,9 @@ tags: Unity Shader
 1，‘别踩白块儿’的画面是4*4的格子，每行有1个黑块和3个白块，据此，我们可以用4个数字分别代表每行黑块的位置（0~3）。<br>
 2，unity允许在shader中指定属性（Properties），这个属性可以被shader和我们的代码访问，因此我们可以通过改变这个属性值来控制渲染结果的变化。<br>
 3，利用fragment shader，判断输入点的坐标位置，根据上面的属性值，计算出对应的颜色（黑或白），并渲染结果。<br>
+
+###效果：
+{% include unity.html %}
 
 ###实现：
 
