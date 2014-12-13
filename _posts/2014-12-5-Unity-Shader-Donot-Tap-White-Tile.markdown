@@ -4,7 +4,7 @@ title:  "Unity学习笔记：使用Shader实现‘别踩白块儿’游戏"
 date:   2014-12-5
 categories: Unity
 tags: Unity Shader
-unityfile:/DoNotTapWhiteTile.unity3d
+unityfile: "/DoNotTapWhiteTile.unity3d"
 ---
 
 ###背景：
