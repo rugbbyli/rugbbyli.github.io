@@ -24,20 +24,3 @@ unityheight: 400
 {% include unity.html %}
 
 ###游戏界面制作：
-
-####
-
-
-####
-
-
-####
-
-
-####
-
-
-####
-
-
-示例代码下载：[](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/ "")
