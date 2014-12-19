@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity学习笔记：三消游戏“粉碎糖果传奇”
+title:  "Unity学习笔记：三消游戏“粉碎糖果传奇”"
 date:   2014-12-19
 categories: Unity
 tags: Unity Demo
