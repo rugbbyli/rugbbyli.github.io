@@ -3,12 +3,11 @@ layout: post
 title:  "Unity学习笔记：三消游戏“粉碎糖果传奇”
 date:   2014-12-19
 categories: Unity
-tags: Unity
+tags: Unity Demo
 unityfile: "/files/Candy.unity3d"
 unitywidth: 500
 unityheight: 400
 ---
-
 
 ###背景：
 粉碎糖果传奇相信大家都不陌生，挺有意思的一款三消游戏，看着满屏幕的糖果，流口水了有木有~~<br>
