@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  "Unity学习笔记：三消游戏“粉碎糖果传奇”
-date:   2014-12-5
+date:   2014-12-19
 categories: Unity
 tags: Unity
 unityfile: "/files/Candy.unity3d"
 unitywidth: 500
 unityheight: 400
 ---
+
 
 ###背景：
 
