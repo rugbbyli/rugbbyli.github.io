@@ -84,8 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
 .site-nav .menu-icon { display: none; }
 
 .site-nav .page-link {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 20px;
   color: #fff;
   letter-spacing: 1px;
 }
