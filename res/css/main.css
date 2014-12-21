@@ -45,7 +45,7 @@ body {
   border-bottom: 1px solid #cccccc;
   opacity:0.9;
   background-color:#009dd7;
-  position:fixed;
+  /* position:fixed; */
   top:0;
   width:100%;
 
@@ -94,7 +94,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
   padding: 10px 0px 0 0;
   opacity:0.95;
   width:100%;
-  position:fixed;
+  /* position:fixed; */
   bottom:0;
   background-color:#009dd7;
 
@@ -123,7 +123,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
 .site-footer .column { color:#fff; float: left; margin-bottom: 5px; }
 
 .footer-col-1 {
-  width: 270px; /*fallback*/
+  /* width: 270px; /*fallback*/ */
   width: -webkit-calc(35% - 10px);
   width: -moz-calc(35% - 10px);
   width: -o-calc(35% - 10px);
@@ -131,14 +131,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   margin-right: 10px
 }
 .footer-col-2 {
-  width: 270px; /*fallback*/
+  /* width: 270px; /*fallback*/ */
   width: -webkit-calc(35% - 10px);
   width: -moz-calc(35% - 10px);
   width: -o-calc(35% - 10px);
   width: calc(35% - 10px);
 }
 .footer-col-3 {
-  width: 250px; /*fallback*/
+  /* width: 250px; /*fallback*/ */
   width: -webkit-calc(30%);
   width: -moz-calc(30%);
   width: -o-calc(30%);
