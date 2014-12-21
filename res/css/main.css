@@ -71,6 +71,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
   line-height: 56px;
   position: relative;
   z-index: 1;
+  margin-left: 20px;
 }
 
 .site-nav {
@@ -82,7 +83,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
 .site-nav .menu-icon { display: none; }
 
 .site-nav .page-link {
-  margin-left: 20px;
+  margin: 20px;
   color: #fff;
   letter-spacing: 1px;
 }
@@ -145,7 +146,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   width: calc(30%);
 }
 
-.site-footer ul { list-style: none; }
+.site-footer ul 
+{ 
+	list-style: none; 
+	float: left;
+}
 
 .site-footer li,
 .site-footer p {
