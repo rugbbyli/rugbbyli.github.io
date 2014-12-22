@@ -32,11 +32,6 @@ public class Candy : MonoBehaviour,IPointerClickHandler  {
         Column = column;
     }
 
-    public void SetSelect(bool select)
-    {
-        image.color = select ? new Color(.5f,.5f,.5f) : Color.white;
-    }
-
 	public bool ContentEquals(Candy other)
 	{
 		return image.sprite == other.image.sprite;
@@ -57,6 +52,11 @@ public class Candy : MonoBehaviour,IPointerClickHandler  {
         {
             Click(this, System.EventArgs.Empty);
         }
+    }
+
+    public bool IsNewCandy()
+    {
+        return Click == null;
     }
 }
 {% endhighlight %}
@@ -175,11 +175,9 @@ public class Candys : MonoBehaviour
         if (_select == null)
         {
             _select = candy;
-            _select.SetSelect(true);
         }
         else if (_select == candy)
         {
-            _select.SetSelect(false);
             _select = null;
         }
         else
@@ -189,14 +187,11 @@ public class Candys : MonoBehaviour
             //点击的不是相邻的两个点
 			if (rdiff + cdiff != 1)
             {
-                _select.SetSelect(false);
                 _select = candy;
-                _select.SetSelect(true);
             }
             else
             {
                 StartCoroutine(CheckCandy(_select, candy));
-                _select.SetSelect(false);
                 _select = null;
             }
         }
@@ -328,6 +323,9 @@ public class Candys : MonoBehaviour
 注意，这种写法有个前提，那就是假设调用方在每次返回可消除的点后，都会对这些点进行消除，并更新数据，然后才进行下一次迭代。否则，最后的检查代码将会无限迭代。在正式的项目开发中不推荐，严格来讲是应该禁止这种对接口调用方的用法进行假设的编程习惯。<br>
 所以现在，我们还无法测试上面的代码。我们必须一鼓作气，实现消除和更新数据的接口，然后统一来测试。<br>
 
+###数据更新
+这一块完成这样的功能：根据传入的待消除candy集合，更新candy数组，然后返回所有位置有变动的candy（方便调用方进行动画处理）。更新过程类似玩家看到的糖果掉落，我们直接拿消除糖果上方的数据来替换它即可。最后在最顶部补上缺少的数据。
+
 {% highlight csharp %}
     /// <summary>
     /// 移除一些点，并将它们上面的点“落下”在它们的位置，最上面补上新的点。返回所有位置改变的点的集合。
@@ -341,7 +339,7 @@ public class Candys : MonoBehaviour
         Candy last = null;
         int same = 0;
 
-
+        //下移某列candys并在顶部补满
         func movedown = () =>
         {
             for (byte i = last.Row; i > same; i--)
@@ -388,26 +386,275 @@ public class Candys : MonoBehaviour
     delegate void func();
 {% endhighlight %}
 
-
-
-
-
-
+接下来，我们回到CandyManager，补上对上面接口的调用过程，它位于CheckCandy方法中。还记得吗？上面我们只是简单的交换两个糖果，然后交换回来，并没有进行实际的判断流程。现在补上它：<br>
 
 {% highlight csharp %}
+    private IEnumerator CheckCandy(Candy candy1, Candy candy2)
+    {
+        var animtime = 0.2f;
+        TweenPosition.Begin(candy1.gameObject, animtime, (candy2.transform as RectTransform).anchoredPosition).method = UITweener.Method.Linear;
+        TweenPosition.Begin(candy2.gameObject, animtime, (candy1.transform as RectTransform).anchoredPosition).method = UITweener.Method.Linear;
+        Candys.Swap(candy1, candy2);
+        
+        yield return new WaitForSeconds(animtime);
 
+        var dispeld = false;
+        foreach (var ps in Candys.CheckDispel(candy1, candy2))
+        {
+            dispeld = true;
+            
+            var changes = Candys.RemoveCandys(ps);
+            
+            //first:destroy removed candys
+            foreach (var p in ps)
+            {
+                Destroy(p);
+            }
+            //second:anim changed candys
+            foreach (var c in changes)
+            {
+                var rtf = c.transform as RectTransform;
+                if (c.IsNewCandy())
+                {
+                    c.transform.SetParent(transform);
+                    c.Click += Candy_Click;
+                    rtf.localScale = Vector3.one;
+                    rtf.anchoredPosition3D = Vector3.zero;
+                    rtf.anchoredPosition = new Vector2(c.Column * gridWidth + candyMargin, (rows - c.Row) * gridHeight - candyMargin);
+                    rtf.sizeDelta = new Vector2(gridWidth - 2 * candyMargin, gridHeight - 2 * candyMargin);
+                }
+                rtf.anchoredPosition = new Vector2(c.Column * gridWidth + candyMargin, rtf.anchoredPosition.y);
+                TweenPosition.Begin(c.gameObject, 0.3f, new Vector2(c.Column * gridWidth + candyMargin, -c.Row * gridHeight - candyMargin)).method = UITweener.Method.EaseOut;
+            }
+            yield return new WaitForSeconds(.6f);
+        }
+        
+        if(!dispeld)
+        {
+            TweenPosition.Begin(candy1.gameObject, animtime, (candy2.transform as RectTransform).anchoredPosition).method = UITweener.Method.Linear;
+            TweenPosition.Begin(candy2.gameObject, animtime, (candy1.transform as RectTransform).anchoredPosition).method = UITweener.Method.Linear;
+            Candys.Swap(candy1, candy2);        
+        }
+        else
+        {
+            
+        }
+    }
 {% endhighlight %}
 
+我们调用CheckDispel接口，对返回的每组消除集合，消除并对位置改动的candy进行下落动画。注意如果candy是新添加的，还要增加click事件的监听和初始化的过程。最后，如果没有消除，我们重新换回两个糖果。<br>
+到这里我们已经完成了大部分功能，只剩下最后两项任务：<br>
+1，每当糖果堆稳定下来，我们需要检查下是否已经不存在能够消除的情况。我把这种情况称作“坏掉了”。如果坏掉了，则结束或者重新开始游戏；<br>
+2，初始化糖果堆时，需要确保不存在直接可以消除的情况。<br>
+让我们一步步来完成它们。首先是判断是否“坏掉了”：<br>
 
+###可消除性检查：
+我打算用一种简单的方法来检查：遍历全部点，一个个判断它们是否可以通过与周围点一次交换来消除。那么针对单个点，如何判断呢？<br>
+通过对所有可消除图形的总结归纳，我们不难发现一个规律：只要某个点上下左右4个方向上同样且连续的candy超过两个（不包括它自己），就一定能通过交换消除；否则就不能。如果不太理解，请花10分钟时间思考一下，是不是这样。<br>
 
+{% highlight csharp %}
+    /// <summary>
+    /// 检查是否已经不存在可以消除的点
+    /// </summary>
+    public bool IsBad()
+    {
+        for (int i = 0; i < Rows; i++)
+        {
+            for (int j = 0; j < Columns; j++)
+            {
+                if (CanDispel(i, j))
+                {
+                    return false;
+                }
+            }
+        }
 
+        return true;
+    }
 
+    /// <summary>
+    /// 确定某个点是否可以通过与周围交换位置消除
+    /// </summary>
+    bool CanDispel(int row, int col)
+    {
+        //储存每种糖果的数量
+        Dictionary<string, int> equals = new Dictionary<string, int>(4);
 
+        int index = row;
+        if (index-- > 0)
+        {
+            var candy = Data[index, col].SpriteName;
+            equals.Add(candy, 1);
+            
+            while (--index > -1)
+            {
+                if (candy == Data[index, col].SpriteName)
+                {
+                    equals[candy]++;
+                    if (equals[candy] > 2) return true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        
+        index = row;
+        if (index++ < Rows - 1)
+        {
+            var candy = Data[index, col].SpriteName;
+            if (equals.ContainsKey(candy))
+            {
+                equals[candy]++;
+                if (equals[candy] > 2) return true;
+            }
+            else
+            {
+                equals.Add(candy, 1);
+            }
+            while (++index < Rows)
+            {
+                if (candy == Data[index, col].SpriteName)
+                {
+                    equals[candy]++;
+                    if (equals[candy] > 2) return true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
 
+        index = col;
+        if (index-- > 0)
+        {
+            var candy = Data[row, index].SpriteName;
+            if (equals.ContainsKey(candy))
+            {
+                equals[candy]++;
+                if (equals[candy] > 2) return true;
+            }
+            else
+            {
+                equals.Add(candy, 1);
+            }
+            while (--index > -1)
+            {
+                if (candy == Data[row, index].SpriteName)
+                {
+                    equals[candy]++;
+                    if (equals[candy] > 2) return true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
 
+        index = col;
+        if (index++ < Columns - 1)
+        {
+            var candy = Data[row, index].SpriteName;
+            if (equals.ContainsKey(candy))
+            {
+                equals[candy]++;
+                if (equals[candy] > 2) return true;
+            }
+            else
+            {
+                equals.Add(candy, 1);
+            }
+            while (++index < Columns)
+            {
+                if (candy == Data[row, index].SpriteName)
+                {
+                    equals[candy]++;
+                    if (equals[candy] > 2) return true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
 
+        return false;
+    }
+{% endhighlight %}
 
+同样的，我们在CandyManager这边进行调用判断。在CandyManager中增加如下方法：<br>
 
+{% highlight csharp %}
+    IEnumerator CheckIsBad()
+    {
+        if (Candys.IsBad())
+        {
+            foreach (var candy in Candys.Data)
+            {
+                TweenPosition.Begin(candy.gameObject, .5f, (candy.transform as RectTransform).anchoredPosition - Vector2.up * gridHeight * (rows + 2)).method = UITweener.Method.EaseIn;
+                yield return null;
+            }
+            yield return null;
+            Application.LoadLevel(0);
+        }
+    }
+{% endhighlight %}
 
+在这种情况下，我们对全部糖果进行下落动画，然后重新开始游戏。在CheckCandy方法最后一行的else语句内调用它：<br>
+    StartCoroutine(CheckIsBad());<br>
+此外，在游戏刚刚开始时也应该判断一下，虽然这种可能性很小，但是依然存在。在InitCandys方法最后也加上上面的调用即可。<br>
+现在你可以运行游戏，玩一段时间后，应该会碰到这种情况，你可以观察下效果，也可以自己实现更有趣的动画。<br>
+终于到最后一步了，事实上，这步最简单。如何在初始化的过程中检查并避免连续超过3个同样的糖果，很直观的想法，在每次生成糖果前，先判断下它的左边或者上面连续两个糖果是否一样，如果不是，我们就可以放心大胆的生成随机的糖果。否则，我们应该避免生成跟它们同样的糖果。我们增加一个方法：<br>
 
+{% highlight csharp %}
+    Candy NewCandyExclude(IEnumerable<string> exclude)
+    {
+        var obj = ObjectPool.Instantiate("Candy") as GameObject;
+        if (obj == null) obj = Instantiate(CandyPrefab) as GameObject;
+        var candy = obj.GetComponent<Candy>();
+        var img = CandyImgs[Random.Range(0, CandyImgs.Length)];
+        while (exclude.Contains(img.name))
+        {
+            img = CandyImgs[Random.Range(0, CandyImgs.Length)];
+        }
+        candy.SetImage(img);
+        return candy;
+    }
+{% endhighlight %}
 
+跟前面的NewCandy类似，只不过我们传进去一个应该避免生成的糖果集合，生成的糖果与集合中的每个糖果都不同。<br>
+注意，如果exclude长度接近CandyImgs（目前情况下还不会出现这种情况），会出现什么问题？请思考下优化方案以避免这个问题。<br>
+然后我们修改Init方法，修改后的内容如下：
+
+{% highlight csharp %}
+    public Candy[,] Init(byte rows, byte columns)
+    {
+        Rows = rows;
+        Columns = columns;
+        Data = new Candy[rows, columns];
+        for (byte r = 0; r < rows; r++)
+        {
+            for (byte c = 0; c < columns; c++)
+            {
+                List<string> excluded = new List<string>(2);
+                if (r > 1 && Data[r - 1, c].ContentEquals(Data[r - 2, c]))
+                {
+                    excluded.Add(Data[r - 1, c].SpriteName);
+                }
+                if (c > 1 && Data[r, c - 1].ContentEquals(Data[r, c - 2]) && !excluded.Contains(Data[r, c - 1].SpriteName))
+                {
+                    excluded.Add(Data[r, c - 1].SpriteName);
+                }
+                var candy = NewCandyExclude(excluded);
+                Data[r, c] = candy;
+            }
+        }
+        return Data;
+    }
+{% endhighlight %}
+
+###小结
+这节有点长，不过是值的的。至此，整个”粉碎糖果“游戏的核心逻辑都已经完成了。运行游戏，美美地享受你的劳动成果吧~
