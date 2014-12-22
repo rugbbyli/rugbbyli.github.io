@@ -604,7 +604,9 @@ public class Candys : MonoBehaviour
 {% endhighlight %}
 
 在这种情况下，我们对全部糖果进行下落动画，然后重新开始游戏。在CheckCandy方法最后一行的else语句内调用它：<br>
+    
     StartCoroutine(CheckIsBad());<br>
+
 此外，在游戏刚刚开始时也应该判断一下，虽然这种可能性很小，但是依然存在。在InitCandys方法最后也加上上面的调用即可。<br>
 现在你可以运行游戏，玩一段时间后，应该会碰到这种情况，你可以观察下效果，也可以自己实现更有趣的动画。<br>
 终于到最后一步了，事实上，这步最简单。如何在初始化的过程中检查并避免连续超过3个同样的糖果，很直观的想法，在每次生成糖果前，先判断下它的左边或者上面连续两个糖果是否一样，如果不是，我们就可以放心大胆的生成随机的糖果。否则，我们应该避免生成跟它们同样的糖果。我们增加一个方法：<br>
@@ -612,8 +614,7 @@ public class Candys : MonoBehaviour
 {% highlight csharp %}
     Candy NewCandyExclude(IEnumerable<string> exclude)
     {
-        var obj = ObjectPool.Instantiate("Candy") as GameObject;
-        if (obj == null) obj = Instantiate(CandyPrefab) as GameObject;
+        var obj = Instantiate(CandyPrefab) as GameObject;
         var candy = obj.GetComponent<Candy>();
         var img = CandyImgs[Random.Range(0, CandyImgs.Length)];
         while (exclude.Contains(img.name))
