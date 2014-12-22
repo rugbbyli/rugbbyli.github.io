@@ -605,7 +605,7 @@ public class Candys : MonoBehaviour
 
 在这种情况下，我们对全部糖果进行下落动画，然后重新开始游戏。在CheckCandy方法最后一行的else语句内调用它：<br>
     
-    StartCoroutine(CheckIsBad());<br>
+    StartCoroutine(CheckIsBad());
 
 此外，在游戏刚刚开始时也应该判断一下，虽然这种可能性很小，但是依然存在。在InitCandys方法最后也加上上面的调用即可。<br>
 现在你可以运行游戏，玩一段时间后，应该会碰到这种情况，你可以观察下效果，也可以自己实现更有趣的动画。<br>
