@@ -45,9 +45,10 @@ body {
   border-bottom: 1px solid #cccccc;
   opacity:0.9;
   background-color:#009dd7;
-  /* position:fixed; */
+  position:fixed; 
   top:0;
   width:100%;
+  z-index: 999;
 
 /*background: rgb(235,241,246); 
 background: -moz-linear-gradient(top,  rgba(235,241,246,1) 0%, rgba(188,188,188,1) 53%, rgba(184,194,196,1) 100%); 
@@ -95,7 +96,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
   padding: 10px 0px 0 0;
   opacity:0.95;
   width:100%;
-  /* position:fixed; */
+  position:absolute; 
   bottom:0;
   background-color:#009dd7;
 

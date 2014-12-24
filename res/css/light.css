@@ -406,10 +406,10 @@ a.pagination-item {
 }
 
 footer {
-    font-size: 16px;
+    /*font-size: 16px;*/
     line-height: 1.5;
-    text-align: center;
-    margin-top: 7.5em;
+    /*text-align: center;*/
+    /*margin-top: 7.5em;*/
 }
 
 .comments {
@@ -475,11 +475,11 @@ a.fancybox {
 }
 
 hr {
-    height: 4px;
+    height: 2px;
     padding: 0;
-    margin-top: 25px;
-    margin-bottom: -10px;
-    background-color: #EBEBEB;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #888888;
     border: 0 none;
 }
 
