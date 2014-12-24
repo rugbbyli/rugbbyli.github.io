@@ -2431,7 +2431,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 19px;
+    width: 1px;
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -2439,9 +2439,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #13CAA6;
-    border-radius: 5px;
-    border: 2px solid #f6f7f9;
+    background-color: #009dd7;
+    /*border-radius: 5px;*/
+    /*border: 2px solid #f6f7f9;*/
 }
 
     ::-webkit-scrollbar-thumb:hover {
@@ -2462,6 +2462,7 @@
     right: 35px;
     width: 26px;
     height: 48px;
+    cursor: hand;
     display: block;
     background: url("/res/img/top.png") no-repeat 50% -62px;
     transition: transform 1.5s ease-in;

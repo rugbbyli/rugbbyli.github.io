@@ -1,10 +1,9 @@
 ---
 layout: page
-title: About
+title: About me
 permalink: /about/
 ---
 
-###About me
 九零后。<br>
 嵩山少林人。<br>
 毕业于湖北武汉。<br>
