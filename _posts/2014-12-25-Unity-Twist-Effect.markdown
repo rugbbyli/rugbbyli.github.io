@@ -22,7 +22,7 @@ Unity自带了多种高级图像效果（ImageEffects），比如各种模糊特
 ###实现：
 由于要操作像素，需要用到片段着色器（FragmentShader）。不太懂shader的同学也不要害怕，毕竟今天我们是要移植而不是自己写。我们直接将UnityPro中的扭曲特效shader内容复制过来即可。当然，它的实现其实也不复杂，建议还是看一下实现过程。下面是具体的shader内容（关键地方我加了注释）。<br>
 
-{% highlight hlsl %}
+{% highlight csharp %}
 Shader "Test/Twist Effect" {
 
 SubShader
