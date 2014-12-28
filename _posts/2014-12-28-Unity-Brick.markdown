@@ -24,10 +24,11 @@ PS，最近略忙，暂时没时间做详细教程了，就简单介绍下思路
 
 总体来讲，采用了分模块的结构，比如AudioManager/InputManager/StorageManager/TimeManager/BrickManager等，最后由GameManager总体协调和调度各个模块的工作。<br>
 
-游戏流程大致如下：
+游戏流程大致如下：<br>
+
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_gm.PNG)
 
 
 
-###示例代码下载（Unity4.6）
+###示例代码下载（Unity4.3）
 [Brick.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/Brick.unitypackage "Brick.unitypackage")
