@@ -65,6 +65,7 @@ img {
     height: auto;
     border-radius: 2px;
     display: block;
+    margin: auto;
 }
 
 iframe {
