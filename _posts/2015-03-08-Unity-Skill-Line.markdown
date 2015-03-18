@@ -13,25 +13,25 @@ tags: Unity StudyLine
 ###分析
 
 Unity3d前端开发大致可以分为这么几块：<br>
-编辑器相关（Editor）<br>
+**编辑器相关（Editor）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;涉及使用编辑器的一些细节，编辑器的一些设置项，以及编辑器扩展方面的内容；<br>
-图形图像（Graphics）<br>
+**图形图像（Graphics）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;涉及光照、相机、渲染、Shader等；<br>
-物理（Physics）<br>
+**物理（Physics）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;涉及碰撞检测、物理模拟等；<br>
-脚本（Scripting）<br>
+**脚本（Scripting）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;涉及脚本运行流程、脚本控制组件等；<br>
-粒子系统（ParticleSystem）<br>
+**粒子系统（ParticleSystem）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;涉及粒子发射、渲染和动画等；<br>
-声音（Audio）<br>
+**声音（Audio）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;声音系统的工作过程、声音的播放控制、参数调整等；<br>
-动画（Animation）<br>
+**动画（Animation）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;动画编辑器的使用、动画状态机编辑器的使用、动画的脚本控制等；<br>
-网络（Network）<br>
+**网络（Network）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Unity内置网络组件的模型和用法；<br>
-UI相关（UI）<br>
+**UI相关（UI）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;游戏界面的制作、等；<br>
-平台相关（PlatformSpecific）<br>
+**平台相关（PlatformSpecific）**<br>
 &nbsp;&nbsp;&nbsp;&nbsp;运行平台的判断、平台相关的接口、与原生交互的方式、打包部署等；<br>
 
 ###基本结构
