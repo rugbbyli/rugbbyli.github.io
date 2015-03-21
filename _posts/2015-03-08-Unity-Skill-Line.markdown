@@ -67,5 +67,55 @@ Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的
 先编译的代码可以引用后编译的代码中的对象，反过来则是不行的。<br>
 编辑器界面扩展主要分为两种方式，改变内置窗口（如Inspector/Scene）内容的显示，或者创建新的窗口。<br>
 创建一个新的窗口是很简单的，只需要3步：<br>
+1，定义一个类型，并继承UnityEditor.EditorWindow；<br>
+2，调用EditorWindow.GetWindow显示窗口；<br>
+3，在OnGUI方法中实现显示窗口的代码；<br>
+仍然用一个简单的例子说明。新建一个脚本文件，命名为MyWindow.cs，放在Editor文件夹下。内容如下：<br>
 
+  public class MyWindow : EditorWindow {
+  
+  	[MenuItem ("Extension/Open MyWindow")]  //在编辑器菜单添加条目并映射处理方法
+  	public static void  ShowWindow () {
+  		EditorWindow.GetWindow(typeof(MyWindow));  //打开MyWindow实例
+  	}
+  
+    //显示通过GUI方式绘制窗口内容
+  	void OnGUI(){
+  		GUILayout.BeginVertical();
+  		GUILayout.Label("this is an extension window.");
+  		GUILayout.EndVertical();
+  	}
+  }
 
+然后切回Unity编辑器，会发现顶部菜单多了Extension项，点击里面的MyWindow条目，自定义的窗口就出现了，如图：<br>
+[!image]
+可以用鼠标拖动位置和调整大小，它会自动记忆这些属性。<br>
+一些情况下，我们可能更希望能够改变Unity编辑器内置窗口的显示，比如对Inspector中我们脚本属性的友好显示，或者在Scene窗口中显示一些对象的辅助内容，这些都是实际项目中经常碰到的需求。通过PropertyDrawer和Editor可以轻松实现这些。<br>
+PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如，考虑我们的脚本中有个int类型的公共变量，默认情况下，它在Inspector中显示为一个文本框，可以输入一个数字来改变它的值；现在我们想要用一个滑块来改变它的值，来看看怎么做吧~<br>
+
+  [CustomPropertyDrawer(typeof(int))]
+  public class PropertyDrawe : PropertyDrawer  {
+
+  	public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) {
+  
+  		EditorGUI.BeginProperty (position, label, property);
+
+  		position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
+
+  		var indent = EditorGUI.indentLevel;
+  		EditorGUI.indentLevel = 0;
+
+  		var amountRect = new Rect (position.x, position.y, position.width, position.height);
+
+  		var input = EditorGUI.IntSlider(amountRect, property.intValue, int.MinValue, int.MaxValue);
+  		property.intValue = input;
+
+  		EditorGUI.indentLevel = indent;
+  
+  		EditorGUI.EndProperty ();
+  	}
+  }
+  
+  将上面的代码放入一个脚本文件，然后放在Editor文件夹下。切到Unity，选中某个物体，如果它切好挂载了某个脚本，且那个脚本有个Int类型的公共变量，那么Inspector窗口看起来应该类似这样：<br>
+  [!image]
+  
