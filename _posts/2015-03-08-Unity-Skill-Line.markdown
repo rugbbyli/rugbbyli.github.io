@@ -89,7 +89,7 @@ Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的
 {% endhighlight %}
 然后切回Unity编辑器，会发现顶部菜单多了Extension项，点击里面的MyWindow条目，自定义的窗口就出现了，如图：<br>
 
-![image](https://github.com/rugbbyli/rugbbyli.github.io/blob/master/imgs/unity_skill_line_1.png)
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_1.png)
 
 可以用鼠标拖动位置和调整大小，它会自动记忆这些属性。<br>
 一些情况下，我们可能更希望能够改变Unity编辑器内置窗口的显示，比如对Inspector中我们脚本属性的友好显示，或者在Scene窗口中显示一些对象的辅助内容，这些都是实际项目中经常碰到的需求。通过PropertyDrawer和Editor可以轻松实现这些。<br>
@@ -120,6 +120,6 @@ PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如
 {% endhighlight %}
   将上面的代码放入一个脚本文件，然后放在Editor文件夹下。切到Unity，选中某个物体，如果它切好挂载了某个脚本，且那个脚本有个Int类型的公共变量，那么Inspector窗口看起来应该类似这样：<br>
   
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_2.PNG)
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_2.png)
 
   
