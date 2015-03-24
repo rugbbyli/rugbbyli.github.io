@@ -47,7 +47,7 @@ Unity是基于组件驱动的体系结构。组件是提供具体功能的模块
 除了使用系统内置的组件，我们还可以通过脚本扩展物体的行为。脚本也是一种组件，通过脚本代码，我们可以获取物体上挂载的其它组件（包括其它的脚本组件），通过与其它组件的交互来自定义物体的行为（比如改变Transform组件的Position属性来移动物体）。<br>
 下面按照之前列举的几块内容分别分析:<br>
 
-##编辑器相关
+###编辑器相关
 Unity的编辑器本身就是运行在Unity引擎上的一个应用，因此，对Unity编辑器的界面扩展完全是基于Unity的GUI系统进行的，使用同样的脚本语言。熟悉了编辑器扩展的框架后，很容易就可以实现各种各样的扩展，打造出最适合自己的独一无二的编辑器。<br>
 Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的目录就可以。Unity有一套项目资源目录规范，简单介绍如下：<br>
 1，所有资源都放在一个叫做Assets的根目录下（我们下文中没有特别说明的话，根目录即指这个目录）；<br>
@@ -122,4 +122,79 @@ PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如
   
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_2.png)
 
-  
+Editor则提供了更多的灵活性。通过继承并重写它的方法，可以完全定制Inspector窗口或者在Scene窗口中展示自定义的内容。我通过一个简单的例子来说明它的用法：<br>
+考虑这样一个需求。我们的游戏中有许多角色，每个角色都有不同的视野范围（包括视距和视角）。我们定义一个脚本来实现这个，如下：<br>
+{% highlight csharp %}
+public class FarSeer : MonoBehaviour
+{
+	public float viewDistance = 5f;
+	public float viewAngle = 60f;
+
+  void Update()
+	{
+		transform.Rotate(0, 1, 0);
+	}
+}
+{% endhighlight %}
+然后给每个角色挂上这个脚本。接下来，通过扩展编辑器，我们将直观的看到每个角色的视野。<br>
+新建一个脚本，命名随意，放在Editor文件夹下。内容如下：<br>
+{% highlight csharp %}
+[CustomEditor(typeof(FarSeer))] //标记这个类是FarSeer类型的自定义编辑器扩展。当场景中某个挂载有FarSeer组件的物体被选中时，会执行这里的代码。
+public class CustomEditorDemo : Editor
+{
+	FarSeer current;
+	
+	void OnEnable()
+	{
+		current = target as FarSeer; //target储存了用户在场景中选中的物体
+	}
+
+  //在这里实现扩展Scene窗口的逻辑。
+	public void OnSceneGUI()
+	{
+		var trans = current.transform;
+
+    //计算视野范围的起点
+		var from = Quaternion.Euler(0, -current.viewAngle / 2, 0) * trans.forward;
+
+    //设置绘制的颜色
+		Handles.color = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+
+    //绘制视野的扇形
+		Handles.DrawSolidArc(trans.position, trans.up, from, current.viewAngle, current.viewDistance);
+	}
+}
+{% endhighlight %}
+切回Unity，运行游戏，选中某个角色，你应该会看到类似下面的画面：<br>
+![image]
+试着在Inspector窗口改变viewDstance和viewAngle的值，观察Scene中的扇形会不会同步更新。<br>
+接下来，我将改变FarSeer组件在Inspector窗口的属性展示，通过滑块限制用户输入值的范围。<br>
+首先在FarSeer中定义视距和视角的范围值：<br>
+
+	public static int viewDistanceMax = 10;
+	public static int viewDistanceMin = 1;
+	public static int viewAngleMax = 180;
+	public static int viewAngleMin = 5;
+
+然后在上面的CustomEditorDemo类中添加如下代码：<br>
+{% highlight csharp %}
+//在这里实现扩展Inspector窗口的逻辑。
+public override void OnInspectorGUI()
+{
+	EditorGUILayout.BeginVertical();
+	
+	EditorGUILayout.LabelField("View Angle:");
+	current.viewAngle = EditorGUILayout.IntSlider((int)current.viewAngle, FarSeer.viewAngleMin, FarSeer.viewAngleMax);
+	
+	EditorGUILayout.LabelField("View Distance:");
+	current.viewDistance = EditorGUILayout.Slider(current.viewDistance, FarSeer.viewDistanceMin, FarSeer.viewDistanceMax);
+
+	EditorGUILayout.EndVertical();
+	
+	EditorUtility.SetDirty(target);
+}
+{% endhighlight %}
+EditorGUILayout用来在Editor中绘制GUI内容，用法跟GUILayout一样，这里不详述。<br>
+然后切回Unity，可以看到FarSeer在Inspector中变成了这样：<br>
+![image]
+拖动滑块，可以看到Scene中的扇形在同步更新，且范围被限定在min和max之间。<br>
