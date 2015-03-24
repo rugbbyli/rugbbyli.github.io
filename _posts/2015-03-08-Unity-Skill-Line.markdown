@@ -198,3 +198,6 @@ EditorGUILayout用来在Editor中绘制GUI内容，用法跟GUILayout一样，�
 然后切回Unity，可以看到FarSeer在Inspector中变成了这样：<br>
 ![image]
 拖动滑块，可以看到Scene中的扇形在同步更新，且范围被限定在min和max之间。<br>
+
+###物理
+Unity内建的物理系统可以帮助游戏场景模拟现实中的物理，如碰撞和重力。只需要简单地给物体挂载上相关的组件，即可给物体添加物理特征。需要注意的是，Unity内部的2D和3D物理引擎是互相独立工作的，虽然他们提供相似的接口。为了明确区分它们，Unity的物理组件都分为两套，命名上遵循XXX和XXX2D的原则。<br>
