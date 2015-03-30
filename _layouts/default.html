@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
-
     <body>
-        <div class="main-content">
-			
+        <div class="container">
 			{% include header.html %}
-            
-			<div class="page-content">
-                <div id="Rocket"></div>
-                <div class="wrap">
-                    {{ content }}
-                </div>
-            </div>
-			
+			<article class="wrapper">
+				<div id="search-loader" class="img-wrap">
+					<div class="loading">
+						<img src="{{ site.assets_path }}/img/loading.png">
+					</div>
+				</div>
+				<div class="row clearfix">
+					{{ content }}
+				</div>
+			</article>
 			{% include footer.html %}
-        
 		</div>
     </body>
 </html>
