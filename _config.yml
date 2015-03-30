@@ -8,5 +8,5 @@ url: "http://rugbbyli.github.io"
 twitter_username: 
 github_username:  rugbbyli
 # Build settings
-pygments: true
+highlighter: pygments
 mardown: redcarpet
