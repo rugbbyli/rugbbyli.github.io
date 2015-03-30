@@ -1,35 +1,5 @@
 <footer class="site-footer">
 
-  <div class="wrap">
-
-    <!-- <h2 class="footer-heading">{{ site.title }}</h2> -->
-
-    <div class="footer-col-1 column">
-      <ul>
-        <li><a class="footer_nav" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col-2 column">
-      <ul>
-        {% if site.github_username %}<li>
-          <a class="footer_nav" href="https://github.com/{{ site.github_username }}">
-            my github projects
-          </a>
-        </li>{% endif %}
-        {% if site.twitter_username %}<li>
-          <a class="footer_nav" href="https://twitter.com/{{ site.twitter_username }}">
-            my twitter
-          </a>
-        </li>{% endif %}
-      </ul>
-    </div>
-
-    <div class="footer-col-3 column">
-	  <ul><li>
-      {{ site.copyright }}
-	  </li></ul>
-    </div>
-  </div>
+  {{ site.copyright }}
 
 </footer>
