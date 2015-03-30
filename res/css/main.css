@@ -56,7 +56,7 @@ body {
 .site-title:hover,
 .site-title:visited {
   display: block;
-  color: #fff;
+  color: #222
   font-size: 30px;
   letter-spacing: 5px;
   float: left;
@@ -112,7 +112,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
   color:#222;
 }
 
-.site-footer .column { color:rgb(96, 106, 115); float: left; }
+.site-footer .column { 
+color:rgb(96, 106, 115); 
+float: left; 
+margin:10px;
+}
 
 .footer-col-1 {
   width: -webkit-calc(40% - 10px);
