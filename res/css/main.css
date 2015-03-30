@@ -109,7 +109,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
 }
 
 .footer_nav{
-  color:rgb(96, 106, 115);
+  color:#222;
 }
 
 .site-footer .column { color:rgb(96, 106, 115); float: left; }
@@ -140,7 +140,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
 .site-footer p {
   font-size: 15px;
   letter-spacing: -.3px;
-  color: #fff;
+  color: #222;
 }
 
 .github-icon-svg,
