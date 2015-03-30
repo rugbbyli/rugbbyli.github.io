@@ -19,10 +19,6 @@
     -moz-box-sizing: border-box;
 }
 
-body {
-    background-color: #f6f7f9;
-    overflow: auto;
-}
 
 h1, .post-main h2, h3 {
     /*font-weight: lighter;*/
@@ -63,7 +59,7 @@ img {
 .post-main img {
     max-width: 100%;
     height: auto;
-    border-radius: 2px;
+    border-radius: 5px;
     display: block;
     margin: auto;
 }
