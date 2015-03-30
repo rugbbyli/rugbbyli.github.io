@@ -118,7 +118,7 @@ PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如
   	}
   }
 {% endhighlight %}
-  将上面的代码放入一个脚本文件，然后放在Editor文件夹下。切到Unity，选中某个物体，如果它切好挂载了某个脚本，且那个脚本有个Int类型的公共变量，那么Inspector窗口看起来应该类似这样：<br>
+  将上面的代码放入一个脚本文件，然后放在Editor文件夹下。切到Unity，选中某个物体，如果它挂载了某个脚本，且那个脚本有个Int类型的公共变量，那么Inspector窗口看起来应该类似这样：<br>
   
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_2.png)
 
@@ -165,8 +165,8 @@ public class CustomEditorDemo : Editor
 	}
 }
 {% endhighlight %}
-切回Unity，运行游戏，选中某个角色，你应该会看到类似下面的画面：<br>
-![image]
+切回Unity，选中某个角色，你应该会看到类似下面的画面：<br>
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_3.png)
 试着在Inspector窗口改变viewDstance和viewAngle的值，观察Scene中的扇形会不会同步更新。<br>
 接下来，我将改变FarSeer组件在Inspector窗口的属性展示，通过滑块限制用户输入值的范围。<br>
 首先在FarSeer中定义视距和视角的范围值：<br>
@@ -196,7 +196,7 @@ public override void OnInspectorGUI()
 {% endhighlight %}
 EditorGUILayout用来在Editor中绘制GUI内容，用法跟GUILayout一样，这里不详述。<br>
 然后切回Unity，可以看到FarSeer在Inspector中变成了这样：<br>
-![image]
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_4.png)
 拖动滑块，可以看到Scene中的扇形在同步更新，且范围被限定在min和max之间。<br>
 
 ###物理
