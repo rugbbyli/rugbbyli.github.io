@@ -76,7 +76,7 @@ body {
 
 .site-nav .page-link {
   margin: 20px;
-  color: #fff;
+  color: #222;
   letter-spacing: 1px;
 }
 
@@ -115,22 +115,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
 .site-footer .column { color:rgb(96, 106, 115); float: left; }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - 10px);
-  width: -moz-calc(35% - 10px);
-  width: -o-calc(35% - 10px);
-  width: calc(35% - 10px);
+  width: -webkit-calc(40% - 10px);
+  width: -moz-calc(40% - 10px);
+  width: -o-calc(40% - 10px);
+  width: calc(40% - 10px);
 }
 .footer-col-2 {
-  width: -webkit-calc(35% - 10px);
-  width: -moz-calc(35% - 10px);
-  width: -o-calc(35% - 10px);
-  width: calc(35% - 10px);
+  width: -webkit-calc(40% - 10px);
+  width: -moz-calc(40% - 10px);
+  width: -o-calc(40% - 10px);
+  width: calc(40% - 10px);
 }
 .footer-col-3 {
-  width: -webkit-calc(30%);
-  width: -moz-calc(30%);
-  width: -o-calc(30%);
-  width: calc(30%);
+
 }
 
 .site-footer ul 
