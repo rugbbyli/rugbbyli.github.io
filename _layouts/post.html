@@ -1,52 +1,21 @@
 ---
 layout: default
 ---
-
-<header class="post-header">
-  <h1 class="post-title">
-	<a href="{{ page.url }}">{{ page.title }}</a>
-  </h1>
-
-  <p class="post-meta">
-    <i class="fa fa-calendar"></i>
-    {{ page.date | date: "%Y" }}年{{ page.date | date: "%m" }}月{{ page.date | date: "%d" }}日
-    <i class="space"></i>
-    <i class="fa fa-tags"></i>
-    {{ page.categories }}
-  </p>
-  
-</header>
-
-<div class="post-main">
+<div class="col-md-12">
+<h2 class="title"> {{ page.title }} <time class="small">{{ page.date | date: "%Y.%m.%d" }}</time></h2>
 {{ content }}
+<ul class="pager">
+  {% if page.previous %}
+  <li class="previous"><a  href="{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Prev</a></li>
+  {% else %}
+  <li class="previous disabled"><a href="#">&larr; Prev</a></li>
+  {% endif %}
+  {% if page.next %}
+  <li class="next"><a href="{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+  {% else %}
+  <li class="next disabled"><a href="#">Next &rarr;</a></li>
+  {% endif %}
+</ul>
+
+{% include comments.html %}
 </div>
-
-
-
-<div class="pagination">
-{% if page.previous %}
-<a class="pagination-item newer" href="{{ BASE_PATH }}{{ page.previous.url }}"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;{{ page.previous.title }}</a>
-{% else %}
-<span class="pagination-item newer">上一篇&nbsp;<i class="fa fa-chain-broken"></i></span>
-{% endif %}
-{% if page.next %}
-<a class="pagination-item older" href="{{ BASE_PATH }}{{ page.next.url }}">{{ page.next.title }}&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
-{% else %}
-<span class="pagination-item older">下一篇&nbsp;<i class="fa fa-chain-broken"></i></span>
-{% endif %}
-</div>
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-	var disqus_shortname = 'rugbbyli'; // required: replace example with your forum shortname
-
-	/* * * DON'T EDIT BELOW THIS LINE * * */
-	(function() {
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    
