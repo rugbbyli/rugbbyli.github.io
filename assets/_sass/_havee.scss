@@ -23,7 +23,7 @@ body {
   font-size: $font-size;
   line-height: $line-height * 1.6;
   color: lighten($base08, 10%);
-  background: none repeat scroll 0% 0% #519AE3;
+  background: darken($base07, 5%);
   @include sans-serif;
   * {
     transition: all .2s;
