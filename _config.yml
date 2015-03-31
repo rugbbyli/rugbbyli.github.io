@@ -1,12 +1,46 @@
-﻿# Site settings
-title: 明天，你好！
-email: rugbbyli@foxmail.com
-description: "copyright github && jekyll."
-copyright: "copyright github && jekyll."
-baseurl: ""
-url: "http://rugbbyli.github.io"
-twitter_username: 
-github_username:  rugbbyli
-# Build settings
+# Site settings
+title: "明天，你好！"
+url: "//rugbbyli.github.io"
 highlighter: pygments
-mardown: redcarpet
+paginate: 5
+author:
+    name: RugbbyLi
+    github: RugbbyLi
+    email: rugbbyli@foxmail.com
+    gitcafe: 
+    twitter:
+    facebook:
+    googleplus:
+    weibo: 
+atom_path: /atom.xml
+rss_path: /rss.xml
+
+# Build settings
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "tables", "highlight", "strikethrough"]
+permalink: /:categories/:year-:month/:title.html
+
+file_path: /files
+img_path: /imgs
+assets_path: /assets
+sass:
+    sass_dir: assets/_sass
+    style: :compressed
+
+# comment
+comments:
+    duoshuo:
+        name:                               # short name
+        rcomments:
+            num: 10
+            avatar: 0
+            time: 0
+            title: 0
+            admin: 0
+            length: 26
+# 网站统计
+analytics:
+    baidu:
+        siteid:                             # 百度统计 js 代码后的字符串
+

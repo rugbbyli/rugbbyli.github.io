@@ -1,56 +1,39 @@
+---
+layout: null
+---
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ro-RO">
-<head profile="http://gmpg.org/xfn/11">
-<title>404</title>
-<meta charset="utf-8"/>
-<meta http-equiv="Content-Language" content="ro"/>
-<meta name="robots" content="all,index,follow"/>
-<meta name="keywords" content="mogoolab, templates, 404 error page"/>
-<meta name="description" content="Robotik HTML Error Pages v 1.0 . Developed by MogooLab - www.mogoolab.com"/>
-<meta name="publisher" content="mogoolab.com" />
-<meta name="author" content="mogoolab.com" />
-<meta http-equiv="X-UA-Compatible" content="IE=8">
-<link href='http://fonts.googleapis.com/css?family=Istok+Web|Chivo' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" media="all" href="style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="backgrounds.css" />
-<link rel="stylesheet" type="text/css" media="all" href="themes/blue/css/style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="themes/green/css/style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="themes/gray/css/style.css" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Page not found - {{ site.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png">
 
+    <script type="text/javascript">
+      function countDown(secs,surl){
+        //alert(surl);
+        var jumpto = document.getElementById('jumpto');
+        jumpto.innerHTML=secs;
+        if(--secs>0){
+          setTimeout("countDown("+secs+",'"+surl+"')",1000);
+        }
+        else{
+          location.href=surl;
+        }
+      }
+    </script>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-global.js"></script>
-
-<!--[if IE]>
-<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-</head>
-
-<body>
-
-
-<div class="wrapper">
-
-	<div class="mainWrapper">
-        <div class="leftHolder">
-        	<a href="http://mogoolab.com" title="Robotik Logo" class="logo">Robotik Logo</a>
-            <div class="errorNumber">404</div> 
-        </div>
-        <div class="rightHolder">
-            <div class="message"><p>the page you are looking has lost....</p></div>
-            <div class="robotik"><img src="images/robotik.png" alt="Oooops....we can’t find that page." title="Oooops....we can’t find that page." id="robot"></div>
-            <iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/3833' width='655' height='370' style='display:block;'></iframe>
-          </div>
-        <footer>
-        </footer>
-        <!-- end footer -->
-
-	</div>
-
-</div>
-<!-- end .wrapper -->
-
-
-</body>
+    <style type="text/css">
+      .center { float: none; margin-left: auto; margin-right: auto; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>404</h1>
+      <p>There isn't a Page here.</p>
+      <p>Jump to <a href="/">{{ site.title }}</a> after <span id="jumpto" style="font-weight: bold"> 5 </span> seconds,</p>
+      <script type="text/javascript">countDown(5,'/');</script>
+      <p>or click <a href="/" target="_parent"><span style="font-weight: bold">Here</span></a> to return.</p>
+    </div>
+  </body>
 </html>
