@@ -7,7 +7,7 @@ tags: Unity Demo
 ---
 
 ###游戏的核心数据结构和算法：
-
+<!-- more -->
 首先，我们新建一个脚本，命名为Candy，用来存储每个Candy的行列值等信息，然后将它挂载到上一节创建的Prefab上。内容如下：
 
 {% highlight csharp %}

@@ -1,0 +1,161 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Github: Create Pull Request"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 470.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/index.html",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_config.yml",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/about.md",
+		"/C/Users/yangg/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Rugbbyli.tmTheme",
+		"/D/Work/EngineDDZ/Resource/scripts/core/object.lua",
+		"/D/Work/EngineDDZ/Resource/scripts/core/http.lua",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_config2.yml",
+		"/C/Users/yangg/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Monokai.tmTheme",
+		"/C/Users/yangg/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/yangg/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/D/Work/EngineDDZ/Resource/scripts/room/ai/recordInfo.lua"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tab",
+			"header",
+			"title",
+			"string<",
+			"string",
+			"F92672",
+			"keyword",
+			"color",
+			"backg"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true
+}
