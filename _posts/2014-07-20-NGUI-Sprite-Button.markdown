@@ -11,7 +11,7 @@ tags: Unity NGUI
 Unity4.3新增了2D框架，我们可以导入一张拼图，并切割为若干Sprite。<br>
 但是NGUI对Sprite的支持不是很好，NGUI的类型UIImageButton的Sprite只能从Atlas中选择。<br>
 因此封装了一个新的控件ImageButton，可以直接选择Unity的Sprite作为按钮显示。<br>
-借助于Unity和NGUI良好的扩展性，只需几步便可完成任务。
+借助于Unity和NGUI良好的扩展性，只需几步便可完成任务。<br>
 <!-- more -->
 ###分析：
 
