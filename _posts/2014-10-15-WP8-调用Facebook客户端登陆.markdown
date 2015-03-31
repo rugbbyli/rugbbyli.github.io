@@ -9,7 +9,9 @@ tags: AppCommunication
 ###背景：
 
 项目中用到了Facebook登录，之前一直是用的Facebook Graph API的形式，通过http请求拿token。今天想试一下调用客户端的形式。本来这应该是个挺简单的东西，App发起请求，Facebook鉴定权限返回token，App拿到token后处理。但是真正做的时候发现里面还有有几个坑，记录一下备注。<br>
+
 <!-- more -->
+
 ###分析：
 
 Facebook的客户端使用Uri协议启动的方式与我们的App通信，它绑定了fbconnect的协议头，我们只需要调用类似 fbconnect://authorize?client_id={0}&scope={1}&redirect_uri=msft-{2}://authorize 的Uri启动默认程序就可以了。参数第一个是在Facebook申请的appid，第二个是要请求的功能，这些在http形式中都有出现，不再详述。需要注意的是第三个参数，它是我们项目在应用商店的GUID，在WMAppMainfest文件里面可以看到。当然，这个东西还需要在Facebook的管理后台绑定一下才能使用。<br>
