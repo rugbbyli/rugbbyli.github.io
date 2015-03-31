@@ -8,12 +8,14 @@ tags: Unity Editor
 
 ###背景：
 
+<!-- begin_summary -->
+
 Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的切割工具切割为若干Sprite。<br>
 但是由于Sprite只记录了原始图片中的某块区域信息，而并非保存为物理文件，造成一些第三方插件对Sprite的支持还不是很好，比如NGUI等。
 <br>
 因此本文通过创建一个插件，将Sprite导出为文件，实现了某些特殊需求。<br>
 
-<!-- more -->
+<!-- end_summary -->
 
 ###分析：
 

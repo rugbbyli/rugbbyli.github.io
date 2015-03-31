@@ -8,9 +8,11 @@ tags: AppCommunication
 
 ###背景：
 
+<!-- begin_summary -->
+
 项目中用到了Facebook登录，之前一直是用的Facebook Graph API的形式，通过http请求拿token。今天想试一下调用客户端的形式。本来这应该是个挺简单的东西，App发起请求，Facebook鉴定权限返回token，App拿到token后处理。但是真正做的时候发现里面还有有几个坑，记录一下备注。<br>
 
-<!-- more -->
+<!-- end_summary -->
 
 ###分析：
 
