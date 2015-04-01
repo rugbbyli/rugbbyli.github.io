@@ -1,6 +1,6 @@
 # Site settings
 title: "明天，你好！"
-url: "//rugbbyli.github.io"
+url: "//blog.u3dgames.cn"
 highlighter: pygments
 paginate: 5
 author:
@@ -24,6 +24,7 @@ permalink: /:categories/:year-:month/:title.html
 file_path: /files
 img_path: /imgs
 assets_path: /assets
+
 sass:
     sass_dir: assets/_sass
     style: :compressed
