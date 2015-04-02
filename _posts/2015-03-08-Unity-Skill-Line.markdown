@@ -271,3 +271,14 @@ audioSource.Play();
 {% endhighlight %}
 
 ###动画
+从4.0开始，Unity推出了新的动画系统（称作MecAnim），功能更加强大，用起来也更加简单和便利。由于新版动画系统兼容旧版，在它的基础上进行了扩充，因此本文首先介绍新版动画系统，最后指出旧版的工作流程。<br>
+首先介绍几个概念：<br>
+AnimationClip：包含了具体的动画信息，即物体随时间的属性（位置/旋转等）变化数据记录。这个可以是Unity生成的，也可以是外部动画工具创建并导入的。<br>
+AnimatorController：以“状态机”的形式组织和管理AnimationClips，控制当前播放的AnimationClip，以及如何在不同的Clip间转换。<br>
+Avatar：Unity提供的一项功能，可以将一个模型的动画重定向到另一个模型，只要它们有类似的外观（类人）。这样当项目中有许多动作一样但外形不同的类人模型时，可以节省大量的动画制作成本，且管理起来更加方便。<br>
+Animator：新版动画组件。上面提到的东东都通过Animator统一附加到物体上。具体来讲，Animator包含了AnimatorController的引用，以及（如果播放的是类人动画）模型要使用的Avatar。而AnimatorController包含了若干AnimationClips的引用。<br>
+Unity内置了一个动画编辑器，可以方便的进行动画制作。动画本质上就是物体某个属性随时间的变化，因此理论上来讲，使用这个内置的编辑器可以制作任何动画。不过从效率方面考虑，过于复杂的3d模型动画最好还是由动画设计师通过第三方工具生成，然后导入使用。。<br>
+选中场景中某个物体后，通过『Window』->『Animation』或按下Ctrl+6可以打开Animation窗口。它会列出物体当前附加的全部AnimationClip，并可以进行编辑（不是外部导入的）、预览等操作。下图是一个外部导入的模型的行走动画的数据，可以看到整个动画是由身体不同部位的上百个旋转/缩放/平移等动作组合而成的。<br>
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_animation_wnd.png)
+选择【create new clip】可以生成新的AnimationClip，保存为.anim格式的文件。然后点击【Add Property】，选择要进行动画的属性，比如【Transform.Scale】，添加进来。通过时间轴调节不同时期Scale的值，就可以实现物体的缩放动画。比如下图，添加了一个缩放动画，Scale值先从1.0到1.2平滑过渡，再原样缩小：<br>
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_animation_wnd_2.png)
