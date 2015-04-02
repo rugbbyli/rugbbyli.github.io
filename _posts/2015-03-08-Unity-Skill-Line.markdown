@@ -54,7 +54,14 @@ Unity是基于组件驱动的体系结构。组件是提供具体功能的模块
 
 ###编辑器相关
 
-Unity的编辑器本身就是运行在Unity引擎上的一个应用，因此，对Unity编辑器的界面扩展完全是基于Unity的GUI系统进行的，使用同样的脚本语言。熟悉了编辑器扩展的框架后，很容易就可以实现各种各样的扩展，打造出最适合自己的独一无二的编辑器。<br>
+Unity提供了功能完整的编辑器，以帮助开发者更快更好地开发游戏。跟别的开发工具类似，Unity也有项目（Project）的概念，一般情况下，一个游戏对应一个项目。每个项目中又通常包含若干场景（Scene），而每个场景中包含若干游戏物体（GameObject）。每次只能打开一个场景进行操作。常用的几个窗口分别是：<br>
+Scene（场景）：以“上帝视角”自由查看、管理和预览当前场景的布置。通过它，可以自由地拖动物体摆放位置，添加和删除物体，进行一些快捷操作等。<br>
+Game（游戏）：查看游戏最终显示效果的窗口。随时都可以通过点击“Play”按钮测试场景的实际表现效果，通过Game窗口也可以调整不同的分辨率以测试多分辨率的适配情况，甚至可以连接到手机，实时在手机上预览效果。当然，还有各种状态信息帮助优化游戏，包括帧率、渲染参数、动画数、音频状态等。<br>
+Hierarchy（层级）：查看和管理当前场景层级结构。可以添加删除物体，调整物体的层级结构，复制物体等操作。<br>
+Project（项目）：管理当前项目资源的窗口。类似于文件管理器，列出了当前项目的Assets文件夹下的内容。可以将文件拖动到这个窗口来导入为资源，也可以直接将要导入的文件放在项目的Assets目录下，Unity会自动扫描并导入它。除了添加操作，别的如删除/移动等操作都不要通过操作系统的文件管理进行，而要通过Unity的Project窗口进行，这是因为资源通常会跟某些场景或别的资源关联，如果从外部更改，会造成这种关联关系的失效。<br>
+Inspector（检视）：通过这里可以查看并修改选中的资源或游戏物体的属性，管理物体附加的组件，预览导入的资源等。<br>
+<br>
+Unity的编辑器自身就是运行在Unity引擎上的一个应用，因此，对Unity编辑器的界面扩展完全是基于Unity的GUI系统进行的，使用同样的脚本语言。熟悉了编辑器扩展的框架后，很容易就可以实现各种各样的扩展，打造出最适合自己的独一无二的编辑器。<br>
 Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的目录就可以。Unity有一套项目资源目录规范，简单介绍如下：<br>
 1，所有资源都放在一个叫做Assets的根目录下（我们下文中没有特别说明的话，根目录即指这个目录）；<br>
 2，位于根目录下的某个名为Editor的文件夹下面的脚本被认为是编辑器扩展脚本，不会打包到游戏中；<br>
@@ -240,8 +247,10 @@ Point Effector 2D：在某个点起作用，任何接触到物体的Rigidbody2D�
 Platform Effector 2D：模拟类似Platform（平台）的行为，主要作用是提供单侧碰撞检测的功能。比如经典的《魂斗罗》游戏中，角色从平台下方可以直接穿过平台跳到上方，而下落后会被平台挡住，就可以利用这个组件实现。<br>
 
 ###声音
-Unity的声音系统模拟了现实中的情形，分为两个部分：AudioSource和AudioListener。很直观的字面理解，AudioSource发出声音，AudioListener接收前者的声音并播放出来。一个场景中要有一个AudioListener，才能听到AudioSource发出的声音。Unity会根据两者的距离、声音传播速度等条件计算声音的衰减（可以自定义衰减曲线）和最终输出。<br>
-AudioSource可以播放的对象称作AudioClip，我们导入的音频文件即是AudioClip了。可以在Inspector窗口添加AudioSource默认播放的AudioClip，还可以通过脚本更改AudioSource播放的AudioClip。比如一个怪兽，可能有“攻击/受伤/死亡”等多种声音，只需要添加一个AudioSource，然后不同时期通过脚本指定播放具体的AudioClip即可。<br>
+Unity的声音系统模拟了现实中的情形，分为两个部分：AudioSource和AudioListener。很直观的字面理解，AudioSource发出声音，AudioListener接收前者的声音并播放出来。
+![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_audio_1.png)
+一个场景中要有一个AudioListener，才能听到AudioSource发出的声音。Unity会根据两者的距离、声音传播速度等条件计算声音的衰减（可以自定义衰减曲线）和最终输出。<br>
+AudioSource可以播放的对象称作AudioClip，它包含了音频文件数据，可以通过标准的资源管理方式导入音频文件（支持 .aif, .wav, .mp3, .ogg格式）生成。可以在Inspector窗口添加AudioSource默认播放的AudioClip，还可以通过脚本更改AudioSource播放的AudioClip。比如一个怪兽，可能有“攻击/受伤/死亡”等多种声音，只需要添加一个AudioSource，然后不同时期通过脚本指定播放具体的AudioClip即可。<br>
 为了确保声音系统正常工作，一个场景中最好只存在一个AudioListener（虽然Unity不会强制禁止添加多个）。AudioSource和AudioListener的摆放位置很重要，它们决定了场景音效的逼真程度。一般情况下，AudioSource附加在发声的物体上，比如场景中的音响/怪物等，而AudioListener附加在主角身上或者主摄像机上。当然，根据实际情况，可能需要多次调节才能确定最佳摆放位置。<br>
 此外还有一些实用的辅助组件，比如：<br>
 AudioReverbFilter：处理声音，附加各种混响特效，模拟不同的空间感（大多数音乐播放器都会有的功能）；<br>
@@ -252,3 +261,5 @@ AudioReverbZone：类似AudioReverbFilter，作用于某个空间范围；<br>
 AudioHighPassFilter：过滤掉低音，通过高音；<br>
 AudioLowPassFilter：过滤掉高音，只通过低音；<br>
 通过这些组件的配合使用和参数的精心调节，可以打造出令人赞叹的游戏音乐体验。<br>
+
+###粒子系统
