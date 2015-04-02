@@ -261,5 +261,13 @@ AudioReverbZone：类似AudioReverbFilter，作用于某个空间范围；<br>
 AudioHighPassFilter：过滤掉低音，通过高音；<br>
 AudioLowPassFilter：过滤掉高音，只通过低音；<br>
 通过这些组件的配合使用和参数的精心调节，可以打造出令人赞叹的游戏音乐体验。<br>
+<br>
+Microphone类可以调用运行设备上的音频输入设备采集音频数据。它不是以组件形式提供，要使用需要通过脚本调用。下面的代码示例了采集语音数据然后直接播放出来：<br>
 
-###粒子系统
+{% highlight csharp %}
+AudioSource audioSource = GetComponent<AudioSource>();
+audioSource.clip = Microphone.Start(null, true, 10, 44100);
+audioSource.Play();
+{% endhighlight %}
+
+###动画
