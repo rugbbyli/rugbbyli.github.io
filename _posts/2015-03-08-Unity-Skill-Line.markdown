@@ -304,7 +304,7 @@ Unity内置了一个动画编辑器，可以方便的进行动画制作。动画
 {% include img.html param="unity_skill_animation_controller_2.png" %}
 3：添加了箭头只是表示可以切换，下面添加切换条件（如果没有添加条件，默认是播放完动画直接切换）。状态切换是通过对参数的判断进行的，判断成立就会切换。可以添加4种类型的参数，分别是Float/Int/Bool和Trigger。不同类型的参数的判断有所不同，Float型可以判断『大于/小于』两种条件，Int型可以判断『大于/小于/等于/不等于』四种条件，Bool型的条件有『为真/为假』，Trigger比较特殊，无条件判断，是一次性的触发。分析可以发现，IdleSit和Walk都是持续性的行为，而Itch/Jump和Mew则是一次性的。所以我们添加5个参数：bool isSet，bool isWalk，trigger itch，trigger jump，trigger mew。点击Idle到IdleSit的箭头，在Inspector窗口的Conditions下添加一个条件。选择参数『isSit』，条件选择“true”。这样，当isSit变为true时，如果当前状态是Idle，就会切换为IdleSit。按同样的方式设置每个箭头的条件（有些切换是无条件的，比如当参数『jump』被触发时，如果当前状态是Walk，应当切换到Jump，但是Jump切换到Walk则是无条件的，当Jump动画播放完应当自动切换过去，这时候就无需设置Conditions）。<br>
 4：设置完成了，看下如何通过代码控制状态切换。新建一个测试场景，将白猫模型拖到场景中，为它添加Animator组件，Animator的Controller设置为第一步创建的。新建一个脚本，命名为catAnimDemo，并挂载到白猫身上。在catAnimDemo中添加如下代码：<br>
-``` cs
+```cs
 public class catAnimDemo : MonoBehaviour {
     Animator animator;
 
@@ -349,3 +349,4 @@ public class catAnimDemo : MonoBehaviour {
 ```
 借助Animator类的『SetFloat/SetInt/SetBool/SetTrigger』即可设置动画状态机的参数值，然后状态机会自动根据值的改变判断条件，并切换状态。运行游戏，点击每个按钮，看动画切换是否正常。也可以试一下异常情况，比如在IdleSit状态点击『行走』按钮，可以发现参数isWalk被设置为true了，但是状态没有切换到Walk，就是因为IdleSit状态和Walk状态之间没有设置转换箭头的原因。<br>
 此外，Animator还有别的一些管理动画的方法，如获取当前正在播放的动画，获取每个参数的值，强制切换到某个状态等，就不再一一介绍了。<br>
+最后介绍
