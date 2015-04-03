@@ -1,6 +1,6 @@
 # Site settings
 title: "明天，你好！"
-url: "//blog.u3dgames.cn"
+url: "blog.u3dgames.cn"
 highlighter: pygments
 paginate: 5
 author:
