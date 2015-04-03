@@ -1,9 +1,7 @@
 {% if include.param %}
-<ul class="gallery">
-	<li>
-		<a href="{{ site.url }}/imgs/{{ include.param }}" >
-			<img src="{{ site.url }}/imgs/{{ include.param }}" />
-		</a>
-	</li>
-</ul>
+
+<a href="{{ site.url }}/imgs/{{ include.param }}" >
+	<img src="{{ site.url }}/imgs/{{ include.param }}" />
+</a>
+
 {% endif %}
