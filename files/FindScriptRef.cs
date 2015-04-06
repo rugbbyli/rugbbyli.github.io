@@ -6,17 +6,31 @@ using System.IO;
 
 public class FindScriptRef : EditorWindow
 {
-    // Add menu item named "My Window" to the Window menu
-    [MenuItem("Window/Find Script Reference")]
+    [MenuItem("Assets/Find All Reference")]
     public static void ShowWindow()
     {
         //Show existing window instance. If one doesn't exist, make one.
         EditorWindow.GetWindow(typeof(FindScriptRef));
     }
-    
 
     void OnGUI()
     {
+        if (isFinding)
+        {
+            GUILayout.BeginVertical();
+            GUILayout.Label("finding...");
+
+            GUILayout.HorizontalScrollbar(progress, 1, 0, 100);
+            GUILayout.EndVertical();
+            return;
+        }
+
+        if (Selection.activeObject == null)
+        {
+            GUILayout.Label("select a script file from Project Window.");
+            return;
+        }
+
         var name = Selection.activeObject.name;
 		System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
         var dict = System.IO.Path.GetDirectoryName(assembly.Location);
@@ -27,17 +41,13 @@ public class FindScriptRef : EditorWindow
             GUILayout.Label("select a script file from Project Window.");
             return;
         }
-        if (isFinding)
-        {
-            GUILayout.Label("finding...");
-            return;
-        }
         
         GUILayout.BeginVertical();
         GUILayout.BeginHorizontal();
         GUILayout.Label(name);
 		bool click = GUILayout.Button("Find");
 		GUILayout.EndHorizontal();
+        GUILayout.Space(10);
 
         if (findResult != null && findResult.Count > 0)
         {
@@ -57,11 +67,13 @@ public class FindScriptRef : EditorWindow
     }
 
 	bool isFinding;
+    float progress;
     List<string> findResult;
 	void Find(System.Type type){
 		var tp = typeof(GameObject);
-		var guids = AssetDatabase.FindAssets("t:GameObject");
+        var guids = AssetDatabase.FindAssets("t:GameObject");
 		isFinding = true;
+        progress = 0;
         findResult = new List<string>();
 		foreach (var guid in guids)
 		{
@@ -79,9 +91,10 @@ public class FindScriptRef : EditorWindow
                     findResult.Add(path);
 				}
 			}
+            progress += 0.5f / guids.Length;
 		}
 
-        string sceneName = EditorApplication.currentScene;
+        string curScene = EditorApplication.currentScene;
         EditorApplication.SaveScene();
 
         string[] scenes = Directory.GetFiles(Application.dataPath, "*.unity", SearchOption.AllDirectories);
@@ -91,7 +104,6 @@ public class FindScriptRef : EditorWindow
 
             foreach (GameObject obj in FindObjectsOfType<GameObject>())
             {
-                
                 var cmp = obj.GetComponent(type);
                 if (cmp == null)
                 {
@@ -99,14 +111,25 @@ public class FindScriptRef : EditorWindow
                 }
                 if (cmp != null)
                 {
-                    findResult.Add(scene + ":" + obj.name);
+                    findResult.Add(scene.Substring(Application.dataPath.Length) + "Assets:" + obj.name);
                 }
-                
             }
+            progress += 0.5f / scenes.Length;
         }
 
-        EditorApplication.OpenScene(sceneName);
+        EditorApplication.OpenScene(curScene);
         isFinding = false;
 		Debug.Log ("finish");
 	}
+}
+
+class EditorExt
+{
+    public void Invoke(this EditorApplication app, EditorApplication.CallbackFunction func)
+    {
+        EditorApplication.delayCall += () =>
+        {
+            func();
+        };
+    }
 }
