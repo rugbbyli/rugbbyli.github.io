@@ -350,8 +350,15 @@ public class catAnimDemo : MonoBehaviour {
 ```
 
 借助Animator类的『SetFloat/SetInt/SetBool/SetTrigger』即可设置动画状态机的参数值，然后状态机会自动根据值的改变判断条件，并切换状态。运行游戏，点击每个按钮，看动画切换是否正常。也可以试一下异常情况，比如在IdleSit状态点击『行走』按钮，可以发现参数isWalk被设置为true了，但是状态没有切换到Walk，就是因为IdleSit状态和Walk状态之间没有设置转换箭头的原因。<br>
+除了管理动画状态间的切换，AnimatorController还可以管理多个Layers（层）。Layer主要用于物体不同部位不同动画的分离（比如人物上半身和下半身动画的分离）。不同Layer之间可以是完全隔离或者叠加，每个Layer可以设置自己的AvatarMask以屏蔽某些部位的动画。<br>
 从5.0版本起，可以在动画状态上添加『StateMachineBehaviour』脚本，通过重写特定的方法，在State触发特定状态（进入/退出/更新等）时得到回调，从而更加便捷地管理动画。<br>
 此外，Animator还有别的一些管理动画的方法，如获取当前正在播放的动画，获取每个参数的值，强制切换到某个状态等，就不再一一介绍了。<br>
 最后介绍下旧版的动画系统。新版和旧版最大的区别就是动画的管理，旧版由于没有AnimatorController，因此所有的动画切换逻辑都需要自己去管理。通过在物体上挂载Animation组件，然后将物体的AnimationClips都拖放到Animations集合中，然后在脚本中通过Animation.Play/Animation.CrossFade等方法播放和切换动画。
 
 ###脚本
+即使Unity已经提供了许多组件简化游戏开发中，脚本仍然是不可或缺的一部分。脚本是游戏的灵魂，它控制其它组件的良好运行，控制游戏流程的发展，对用户输入做出反馈，体现游戏的整体逻辑等。<br>
+Unity使用CSharp（符合标准csharp规范）和UnityScript（以javascript为原形，进行了一些调整以更适合unity使用）作为脚本语言，以『.Net Framework』作为运行环境。由于微软标准的.Net框架只适配windows平台（目前官方.Net也已开源，且未来将会适配别的操作系统平台），因此Unity使用『Mono（第三方的开源跨平台.Net实现）』来实现跨平台的需求。得益于.Net的CLR设计，所有.Net语言最终都编译成同样的IL语言，因此不同语言提供完全一样的功能，可以根据喜好随意选择一种或混合使用。此外，由于运行于.net平台之上，因此所有能够编译成IL的语言都可以为Unity所用（比如通过visual studio和托管c++编写的类库）。<br>
+Unity内部提供了一套完整的api供脚本调用。前面有提到过，脚本要想生效，需要作为组件挂载到某个GameObject上面。而要想作为组件挂载到GameObject，脚本必须满足如下几个条件：<br>
+1，脚本中必须有一个类继承自UnityEngine.MonoBehaviour，后者是Unity api中提供的类型；<br>
+2，脚本的名称（排除后缀名）必须与上面定义的那个类同名；<br>
+注意，UnityScript的语法跟CSharp不同。UnityScript无需在脚本中定义类型，直接实现方法即可，Unity会在编译时自动生成以文件名命名的且继承自MonoBehaviour的类型。本系列博客中除非特别指出，都使用CSharp作为脚本语言，不再累述。<br>
