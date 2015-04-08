@@ -356,9 +356,30 @@ public class catAnimDemo : MonoBehaviour {
 最后介绍下旧版的动画系统。新版和旧版最大的区别就是动画的管理，旧版由于没有AnimatorController，因此所有的动画切换逻辑都需要自己去管理。通过在物体上挂载Animation组件，然后将物体的AnimationClips都拖放到Animations集合中，然后在脚本中通过Animation.Play/Animation.CrossFade等方法播放和切换动画。
 
 ###脚本
-即使Unity已经提供了许多组件简化游戏开发中，脚本仍然是不可或缺的一部分。脚本是游戏的灵魂，它控制其它组件的良好运行，控制游戏流程的发展，对用户输入做出反馈，体现游戏的整体逻辑等。<br>
+即使Unity已经提供了许多组件简化游戏开发中，脚本仍然是不可或缺的一部分。脚本是游戏的灵魂，它控制其它组件的良好运行，控制游戏流程的发展，对用户输入做出反馈，体现游戏的整体逻辑等。<br><br>
 Unity使用CSharp（符合标准csharp规范）和UnityScript（以javascript为原形，进行了一些调整以更适合unity使用）作为脚本语言，以『.Net Framework』作为运行环境。由于微软标准的.Net框架只适配windows平台（目前官方.Net也已开源，且未来将会适配别的操作系统平台），因此Unity使用『Mono（第三方的开源跨平台.Net实现）』来实现跨平台的需求。得益于.Net的CLR设计，所有.Net语言最终都编译成同样的IL语言，因此不同语言提供完全一样的功能，可以根据喜好随意选择一种或混合使用。此外，由于运行于.net平台之上，因此所有能够编译成IL的语言都可以为Unity所用（比如通过visual studio和托管c++编写的类库）。<br>
 Unity内部提供了一套完整的api供脚本调用。前面有提到过，脚本要想生效，需要作为组件挂载到某个GameObject上面。而要想作为组件挂载到GameObject，脚本必须满足如下几个条件：<br>
 1，脚本中必须有一个类继承自UnityEngine.MonoBehaviour，后者是Unity api中提供的类型；<br>
 2，脚本的名称（排除后缀名）必须与上面定义的那个类同名；<br>
-注意，UnityScript的语法跟CSharp不同。UnityScript无需在脚本中定义类型，直接实现方法即可，Unity会在编译时自动生成以文件名命名的且继承自MonoBehaviour的类型。本系列博客中除非特别指出，都使用CSharp作为脚本语言，不再累述。<br>
+注意，UnityScript的语法跟CSharp不同。UnityScript无需在脚本中定义类型，直接实现方法即可，Unity会在编译时自动生成以文件名命名的且继承自MonoBehaviour的类型。本系列博客中除非特别指出，都使用CSharp作为脚本语言，不再累述。<br><br>
+当脚本被挂载到GameObject上时，会自动创建一个脚本中定义类型的实例，然后被序列化以存储。序列化是Unity广泛使用的机制，也是非常核心的机制。Unity的许多特性都构建于序列化之上，包括但不限于：<br>
+Object：所有继承自UnityEngine.Object的类型都可以被序列化；<br>
+Prefab：当我们将一个GameObject保存为Prefab时，实际上是将这个物体（及其附加的组件）序列化并保存在文件中。<br>
+Scene：所有的场景都是通过序列化机制，将场景中全部的GameObject保存在文件中。<br>
+Instantiation：我们可以通过调用Instantiate方法在运行时实例化新的Prefab或GameObject等，它背后的工作过程是：先序列化要被实例化的源对象，然后创建新的目标对象，然后将之前序列化的数据反序列化到目标对象上。<br>
+InspectorWindow：当我们将脚本附加在物体上后，在InspectorWindow可以查看到脚本的一些公共变量等。实际上此处显示的内容正是脚本被序列化后的数据。这也正是“要想将私有变量也显示出来，需要将它标记为[SerializeField]”的原因。同样的，当我们在InspectorWindow修改脚本的参数值，同样会序列化保存到文件中。<br>
+Unity的序列化机制为了保证良好的性能，技术上并没有采用CSharp的序列化方案，因此在行为上与CSharp的序列化有所不同，有些需要注意的细节。比如，哪些类型可以被序列化呢？<br>
+1，Unity内置类型都可以被序列化；<br>
+2，CSharp简单数据类型可以被序列化（int/float/bool/string等）；<br>
+3，继承自UnityEngine.GameObject的自定义类型；<br>
+4，有[Serializable]标记的且不为abstract的自定义类型；<br>
+5，储存元素是可序列化对象的集合（包括Array和List<T>）；<br>
+另外，对象中的成员变量要想被Unity自动序列化，需要满足几个条件：<br>
+1，不能是static/const/readonly的；<br>
+2，需要是public的，或者有[SerializeField]标记的；<br>
+3，需要是可序列化的类型；<br>
+此外，还有诸如不能处理多态、不能处理自定义类型的空引用、多个字段引用同一个对象，反序列化后会成为多个对象等问题。如果实际需求中遇到这些，需要注意避开这些问题。比如可以考虑自己实现序列化和反序列化对象的逻辑，Unity提供了这样的接口，具体可以参考『ISerializationCallbackReceiver』接口。<br><br>
+接下来我们看一下脚本的体系结构。前面介绍过，脚本是需要继承MonoBehaviour类型的，而实际上它也是继承自别的类型，整个继承体系如下：<br>
+{% include img.html param="unity_skill_script_monobehaviour.png" %}
+因此，我们在脚本中就可以自由调用上面那些基类提供的实用方法，来完成自己的工作。等等，那么脚本究竟要如何运行起来呢？我们在脚本中定义的方法，如何执行呢？<br>
+我们知道Unity采用单线程来运行游戏逻辑。在线程内部维护了一个循环，以间歇触发每个脚本的执行。Unity预定义了游戏过程中的一系列事件，并允许脚本针对每个事件设置回调方法，这样当对应的事件发生时，Unity会调用对应脚本设置的回调方法。设置回调方法很简单，只需要在脚本中声明Unity规定名称的方法即可。Unity会寻找脚本中是否存在特定名称的方法，并自动调用它。举例来说，如果在脚本中声明Update方法，则Unity会在每帧调用这个方法。关于详细的Unity会进行回调的方法列表，请参考[这里](http://docs.unity3d.com/ScriptReference/MonoBehaviour.html "这里")。<br>
