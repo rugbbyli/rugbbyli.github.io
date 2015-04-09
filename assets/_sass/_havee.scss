@@ -89,7 +89,7 @@ time.small {
     font-size: $font-size * 2;
     @include text-shadow;
     a {
-      color: lighten($base08, 10%);
+      color: lighten($base08, 20%);
       &:hover, &:focus {
         color: $base08;
       }
@@ -100,7 +100,7 @@ time.small {
     display: inline-block;
       margin: 4px 0;
       a {
-        color: lighten($base08, 10%);
+        color: lighten($base08, 20%);
         @include text-shadow;
         &:hover, &:focus {
           color: $base08;
@@ -124,7 +124,7 @@ time.small {
   box-shadow: 0 0px 2px rgba($base08,20%) inset;
   .title {
   color: lighten($base03, 5%);
-    border-bottom: 1px dashed lighten($base03, 50%);
+    border-bottom: 1px dashed lighten($base03, 20%);
   a {
     color: lighten($base03, 5%);
     &:hover, &:focus {
