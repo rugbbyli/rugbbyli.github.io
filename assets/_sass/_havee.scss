@@ -23,7 +23,7 @@ body {
   font-size: $font-size;
   line-height: $line-height * 1.6;
   color: lighten($base08, 10%);
-  background: darken($base07, 5%);
+  background: $base07;
   @include sans-serif;
   * {
     transition: all .2s;
@@ -70,7 +70,6 @@ h6 {
 
 h1, h2, h3, h4, h5, h6, strong {
   line-height: $line-height * 1.8;
-  @include text-shadow;
 }
 
 hr {
@@ -120,13 +119,12 @@ time.small {
 }
 
 .wrapper {
-  padding: 10px 10px 20px 10px;
-  margin: 5px 0 15px;
-  background-color: $base01;
-  box-shadow: 0 4px 10px $base08;
+  padding: 0px 20px 20px;
+  margin: 15px 0;
+  box-shadow: 0 0px 2px rgba($base08,20%) inset;
   .title {
   color: lighten($base03, 5%);
-    border-bottom: 2px dashed lighten($base03, 20%);
+    border-bottom: 1px dashed lighten($base03, 50%);
   a {
     color: lighten($base03, 5%);
     &:hover, &:focus {
