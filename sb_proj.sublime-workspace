@@ -11,7 +11,7 @@
 			"file": "_posts/2015-03-08-Unity-Skill-Line.markdown",
 			"settings":
 			{
-				"buffer_size": 20329,
+				"buffer_size": 22413,
 				"line_ending": "Windows"
 			}
 		},
@@ -43,7 +43,7 @@
 			"file": "assets/_sass/_havee.scss",
 			"settings":
 			{
-				"buffer_size": 7132,
+				"buffer_size": 7011,
 				"line_ending": "Windows"
 			}
 		},
@@ -68,6 +68,22 @@
 			"settings":
 			{
 				"buffer_size": 1426,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "about.md",
+			"settings":
+			{
+				"buffer_size": 276,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/_sass/bootstrap/_variables.scss",
+			"settings":
+			{
+				"buffer_size": 29985,
 				"line_ending": "Windows"
 			}
 		}
@@ -151,6 +167,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"button-variant",
+			"input-bg",
+			"control",
+			"text-shadow",
+			"strong",
+			"text-shadow",
+			"base01",
+			"\n",
+			"```",
+			"!",
 			"![im",
 			"site.assets_path",
 			"aud",
@@ -187,7 +213,6 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
@@ -195,15 +220,15 @@
 					"file": "_posts/2015-03-08-Unity-Skill-Line.markdown",
 					"settings":
 					{
-						"buffer_size": 20329,
+						"buffer_size": 22413,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20329,
-								20329
+								22413,
+								22413
 							]
 						],
 						"settings":
@@ -213,7 +238,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 12180.0,
+						"translation.y": 15589.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -284,8 +309,8 @@
 						"selection":
 						[
 							[
-								108,
-								114
+								51,
+								51
 							]
 						],
 						"settings":
@@ -303,15 +328,15 @@
 					"file": "assets/_sass/_havee.scss",
 					"settings":
 					{
-						"buffer_size": 7132,
+						"buffer_size": 7011,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6567,
-								6567
+								1813,
+								1813
 							]
 						],
 						"settings":
@@ -321,7 +346,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6305.0,
+						"translation.y": 2055.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -338,8 +363,8 @@
 						"selection":
 						[
 							[
-								54,
-								34
+								90,
+								90
 							]
 						],
 						"settings":
@@ -404,6 +429,58 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "about.md",
+					"settings":
+					{
+						"buffer_size": 276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								247,
+								247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "assets/_sass/bootstrap/_variables.scss",
+					"settings":
+					{
+						"buffer_size": 29985,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6728,
+								6728
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4081.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
