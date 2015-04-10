@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity3D学习笔记：使用Shader实现『别踩白块儿』游戏"
+title:  "Unity3D Demo：使用Shader实现『别踩白块儿』游戏"
 date:   2014-12-5
 categories: Unity
 tags: Unity Shader
