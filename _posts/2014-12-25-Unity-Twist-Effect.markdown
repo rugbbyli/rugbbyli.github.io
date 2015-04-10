@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity学习笔记：画面扭曲特效实现"
+title:  "Unity3D学习笔记：画面扭曲特效实现"
 date:   2014-12-25
 categories: Unity
 tags: Unity Shader
