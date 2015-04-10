@@ -11,29 +11,30 @@ layout: default
   {% endif %}
   {% endfor %}
 
-  <!-- Pagination links -->
-  <div class="pull-right">
-    {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-    <a class="btn btn-primary btn-sm" href="/">Home</a>
-    <a class="btn btn-primary btn-sm" href="/">&laquo; Prev</a>
-    {% else %}
-    <a class="btn btn-primary btn-sm" href="/">Home</a>
-    <a class="btn btn-primary btn-sm" href="/page{{paginator.previous_page}}/">&laquo; Prev</a>
-    {% endif %}
-    {% else %}
-    <span><a class="btn btn-primary btn-sm disabled" href="/">Home</a></span>
-    <span><a class="btn btn-primary btn-sm disabled">&laquo; Prev</a></span>
-    {% endif %}
-    <span><a class="btn btn-primary btn-sm disabled">Page: {{paginator.page}} of {{paginator.total_pages}}</a></span>
-    {% if paginator.next_page %}
-    <a class="btn btn-primary btn-sm" href="/page{{paginator.next_page}}/">Next &raquo;</a>
-    <a class="btn btn-primary btn-sm" href="/page{{paginator.total_pages}}/">Last</a>
-    {% else if paginator.page == paginator.total_pages %}
-    <span><a class="btn btn-primary btn-sm disabled">Next &raquo;</a></span>
-    <span><a class="btn btn-primary btn-sm disabled">Last</a></span>
-    {% endif %}
-  </div>
+  
+</div>
+<!-- Pagination links -->
+<div class="pull-right">
+  {% if paginator.previous_page %}
+  {% if paginator.previous_page == 1 %}
+  <a class="btn btn-primary btn-sm" href="/">Home</a>
+  <a class="btn btn-primary btn-sm" href="/">&laquo; Prev</a>
+  {% else %}
+  <a class="btn btn-primary btn-sm" href="/">Home</a>
+  <a class="btn btn-primary btn-sm" href="/page{{paginator.previous_page}}/">&laquo; Prev</a>
+  {% endif %}
+  {% else %}
+  <span><a class="btn btn-primary btn-sm disabled" href="/">Home</a></span>
+  <span><a class="btn btn-primary btn-sm disabled">&laquo; Prev</a></span>
+  {% endif %}
+  <span><a class="btn btn-primary btn-sm disabled">Page: {{paginator.page}} of {{paginator.total_pages}}</a></span>
+  {% if paginator.next_page %}
+  <a class="btn btn-primary btn-sm" href="/page{{paginator.next_page}}/">Next &raquo;</a>
+  <a class="btn btn-primary btn-sm" href="/page{{paginator.total_pages}}/">Last</a>
+  {% else if paginator.page == paginator.total_pages %}
+  <span><a class="btn btn-primary btn-sm disabled">Next &raquo;</a></span>
+  <span><a class="btn btn-primary btn-sm disabled">Last</a></span>
+  {% endif %}
 </div>
 <aside class="col-md-3 visible-lg visible-md">
   {% include categories.html %}
