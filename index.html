@@ -7,7 +7,7 @@ layout: default
   {% if post.content contains '<!-- begin_summary -->' and post.content contains '<!-- end_summary -->'%}
   {{ post.content | split:'<!-- end_summary -->' | first | split:'<!-- begin_summary -->' | last }}
   {% else %}
-  {{ post.content | truncatewords:2 | strip_html }}
+  {{ post.content | truncatewords:2 }}
   {% endif %}
   {% endfor %}
 
