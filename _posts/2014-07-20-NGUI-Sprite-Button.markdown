@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "NGUI自定义控件：Sprite Button"
+title:  "Unity3D学习笔记：NGUI自定义控件『Sprite Button』"
 date:   2014-07-20
 categories: Unity
 tags: Unity NGUI

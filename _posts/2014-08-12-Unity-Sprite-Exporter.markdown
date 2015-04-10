@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "使用Unity导出Texture中的Sprite"
+title:  "Unity插件开发：导出Texture中的Sprite"
 date:   2014-08-12
 categories: Unity
 tags: Unity Editor

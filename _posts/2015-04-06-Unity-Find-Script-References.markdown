@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "在项目中查找脚本的引用"
+title:  "Unity插件教程：在项目中查找脚本的引用"
 date:   2015-04-06
 categories: Unity
 tags: Unity Editor
