@@ -309,5 +309,5 @@ public class PointEventHandler : MonoBehaviour {
 
 可以发现，类库用起来也是相当的直观，跟项目中代码是无缝集成的。
 
-###示例代码下载（Unity4.6）
+###示例代码下载（Unity5.0）
 [24point.unitypackage]({{ site.url }}/files/24point.unitypackage "24point.unitypackage")
