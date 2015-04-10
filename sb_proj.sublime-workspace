@@ -8,30 +8,6 @@
 	"buffers":
 	[
 		{
-			"file": "_posts/2015-03-08-Unity-Skill-Line.markdown",
-			"settings":
-			{
-				"buffer_size": 22413,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "robots.txt",
-			"settings":
-			{
-				"buffer_size": 76,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "_config.yml",
-			"settings":
-			{
-				"buffer_size": 905,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "assets/_sass/_custom.scss",
 			"settings":
 			{
@@ -64,26 +40,26 @@
 			}
 		},
 		{
-			"file": "_layouts/default.html",
-			"settings":
-			{
-				"buffer_size": 1426,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "about.md",
-			"settings":
-			{
-				"buffer_size": 276,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "assets/_sass/bootstrap/_variables.scss",
 			"settings":
 			{
 				"buffer_size": 29985,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1832,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2015-04-10-Unity-Skill-Line-7.markdown",
+			"settings":
+			{
+				"buffer_size": 355,
 				"line_ending": "Windows"
 			}
 		}
@@ -120,27 +96,37 @@
 	},
 	"file_history":
 	[
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-05-Unity-Skill-Line-7.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_config.yml",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/about.md",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_layouts/default.html",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-28-Unity-Brick.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-05-Unity-Shader-Donot-Tap-White-Tile.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy - 3.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy - 2.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-09-Unity-24-Point.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/robots.txt",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line-3.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line-4.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line-5.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line-6.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-06-Unity-Find-Script-References.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-10-10-Unity-Auto-Save-Scene.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-08-12-Unity-Sprite-Exporter.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-07-20-NGUI-Sprite-Button.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-25-Unity-Twist-Effect.markdown",
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line-2.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-6-Unity-Find-Script-References.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/assets/_sass/_havee.scss",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/assets/_sass/_custom.scss",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-07-20-NGUI-Sprite-Button.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/index.html",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_config.yml",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-08-12-Unity-Sprite-Exporter.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-10-10-Unity-Auto-Save-Scene.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-10-15-WP8-调用Facebook客户端登陆.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy - 2.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy - 3.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-19-Unity-Candy.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-25-Unity-Twist-Effect.markdown",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-28-Unity-Brick.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2014-12-5-Unity-Shader-Donot-Tap-White-Tile.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_includes/comments.html",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/files/Brick.unitypackage",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-03-08-Unity-Skill-Line.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/404.html",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/about.md",
-		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/robots.txt",
 		"/D/ihavee.github.io-master/_includes/head.html",
 		"/C/Users/yangg/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Rugbbyli.tmTheme",
 		"/D/Work/EngineDDZ/Resource/scripts/core/object.lua",
@@ -167,6 +153,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">",
 			"button-variant",
 			"input-bg",
 			"control",
@@ -213,92 +200,11 @@
 	"groups":
 	[
 		{
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "_posts/2015-03-08-Unity-Skill-Line.markdown",
-					"settings":
-					{
-						"buffer_size": 22413,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								22413,
-								22413
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 15589.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "robots.txt",
-					"settings":
-					{
-						"buffer_size": 76,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								52,
-								52
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "_config.yml",
-					"settings":
-					{
-						"buffer_size": 905,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								498,
-								509
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/YAML/YAML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 441.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "assets/_sass/_custom.scss",
 					"settings":
 					{
@@ -324,7 +230,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 1,
 					"file": "assets/_sass/_havee.scss",
 					"settings":
 					{
@@ -335,8 +241,8 @@
 						"selection":
 						[
 							[
-								1813,
-								1813
+								1782,
+								1782
 							]
 						],
 						"settings":
@@ -346,13 +252,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2055.0,
+						"translation.y": 1992.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 2,
 					"file": "_includes/img.html",
 					"settings":
 					{
@@ -378,7 +284,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 3,
 					"file": "_includes/head.html",
 					"settings":
 					{
@@ -400,67 +306,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 630.0,
+						"translation.y": 84.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "_layouts/default.html",
-					"settings":
-					{
-						"buffer_size": 1426,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								674,
-								674
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "about.md",
-					"settings":
-					{
-						"buffer_size": 276,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								247,
-								247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 4,
 					"file": "assets/_sass/bootstrap/_variables.scss",
 					"settings":
 					{
@@ -481,6 +333,62 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 4081.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1629,
+								1629
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "_posts/2015-04-10-Unity-Skill-Line-7.markdown",
+					"settings":
+					{
+						"buffer_size": 355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								355,
+								355
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 189.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -544,6 +452,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 207.0,
+	"side_bar_width": 365.0,
 	"status_bar_visible": true
 }
