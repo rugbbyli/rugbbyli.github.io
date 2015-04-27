@@ -56,10 +56,10 @@
 			}
 		},
 		{
-			"file": "_posts/2015-04-10-Unity-Skill-Line-7.markdown",
+			"file": "_posts/2015-04-14-Unity-Skill-Line-8.markdown",
 			"settings":
 			{
-				"buffer_size": 2598,
+				"buffer_size": 3748,
 				"line_ending": "Windows"
 			}
 		}
@@ -96,6 +96,7 @@
 	},
 	"file_history":
 	[
+		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-10-Unity-Skill-Line-7.markdown",
 		"/A/SystemFolder/桌面/AndroidManifest.xml",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_posts/2015-04-05-Unity-Skill-Line-7.markdown",
 		"/A/SystemFolder/我的文档/GitHub/rugbbyli.github.io/_config.yml",
@@ -369,28 +370,26 @@
 				},
 				{
 					"buffer": 6,
-					"file": "_posts/2015-04-10-Unity-Skill-Line-7.markdown",
+					"file": "_posts/2015-04-14-Unity-Skill-Line-8.markdown",
 					"settings":
 					{
-						"buffer_size": 2598,
+						"buffer_size": 3748,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2598,
-								2598
+								3748,
+								3748
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1442.0,
+						"translation.y": 2079.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
