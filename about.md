@@ -3,21 +3,23 @@ layout: page
 title: "About"
 ---
 
-九零后。<br>
-嵩山少林人。<br>
-毕业于湖北武汉。<br>
-手游前端开发工程师。<br>
-轻微的强迫症和精神分裂。<br>
-爱好广泛，精力旺盛。<br>
-Unity 3D初学者。<br>
-无党派人士。<br>
-技术宅。<br>
+
+<span class="tag">爱好广泛</span>
+<span class="tag">坐标深圳</span>
+<span class="tag">手游前端开发工程师</span>
+<span class="tag">强迫症</span>
+<span class="tag">精力旺盛</span>
+<span class="tag">Unity 3D</span>
+<span class="tag">精神分裂</span>
+<span class="tag">技术宅</span>
+<span class="tag">无党派人士</span>
+
 
 ###Links
 
 ----------
 
-[Qeye.W](http://leitai.wang)
-[LunArrest](http://lunarrest.github.io/)
+<a href="http://leitai.wang" class="tag">Qeye.W</a>
+<a href="http://lunarrest.github.io" class="tag">LunArrest</a>
 
 {% include comments.html %}
