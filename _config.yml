@@ -1,8 +1,8 @@
 # Site settings
-title: "明天，你好！"
+title: "Crazy Neptune"
 url: "http://blog.u3dgames.cn"
 highlighter: pygments
-paginate: 5
+paginate: 10
 author:
     name: RugbbyLi
     github: RugbbyLi
