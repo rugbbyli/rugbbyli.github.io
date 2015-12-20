@@ -1,9 +1,5 @@
 <link rel="stylesheet" href="{{ site.assets_path }}/Unity/style.css" />
 
-<script src="{{ site.assets_path }}/Unity/UnityLoader.js"></script>
-
-<script src="{{ site.assets_path }}/Unity/UnityProgress.js"></script>
-
 <style>
 	<!--
 	div#unityPlayer {
@@ -20,11 +16,12 @@
 	  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="{{ page.unityheight }}px" width="{{ page.unitywidth }}px"></canvas>
 	  <br>
 	  <div class="logo"></div>
-	  <div class="fullscreen">
-		<img src="{{ site.assets_path }}/Unity/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" />
-	  </div>
 	</div>
 </div>
+
+<script src="{{ site.assets_path }}/Unity/UnityProgress.js"></script>
+<script src="{{ site.assets_path }}/Unity/UnityLoader.js"></script>
+
 <script type='text/javascript'>
   var Module = {
     TOTAL_MEMORY: 268435456,
