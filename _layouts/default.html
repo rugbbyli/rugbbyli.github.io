@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+  
+  <script src="{{ site.assets_path }}/js/jquery.min.js"></script>
+  <script src="{{ site.assets_path }}/js/bootstrap.min.js"></script>
+  <script src="{{ site.assets_path }}/js/webcore.js"></script>
+  <script src="{{ site.assets_path }}/js/zoom.min.js"></script>
 
   {% include head.html %}
 
@@ -20,11 +25,6 @@
 
       {% include footer.html %}
     </div>
-
-    <script src="{{ site.assets_path }}/js/jquery.min.js"></script>
-    <script src="{{ site.assets_path }}/js/bootstrap.min.js"></script>
-    <script src="{{ site.assets_path }}/js/webcore.js"></script>
-    <script src="{{ site.assets_path }}/js/zoom.min.js"></script>
 
     {% include baidu-analytics.html %}
     {% if site.comments.duoshuo.name %}
