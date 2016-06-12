@@ -61,7 +61,7 @@ catch (System.Exception ex)
 
 那么如果不是协程函数呢？我又分别测试了普通的函数和泛型的枚举函数：
 
-```
+```csharp
 IEnumerator<int> Test1()
 {
     yield return 1;
