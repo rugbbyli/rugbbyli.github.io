@@ -27,7 +27,7 @@ IEnumerator Test()
 
 然后Unity就报了个编译错误，信息如下：
 
->Unhandled Exception: System.ArgumentException: Trying to emit a local from a different ILGenerator.
+    Unhandled Exception: System.ArgumentException: Trying to emit a local from a different ILGenerator.
 
 这是什么鬼？
 
@@ -45,7 +45,9 @@ catch
     
 }
 ```
+
 如果声明了异常变量，则一定要在catch块中有引用过它至少一次，也能解决报错，比如：
+
 ```csharp
 try
 {
@@ -58,6 +60,7 @@ catch (System.Exception ex)
 ```
 
 那么如果不是协程函数呢？我又分别测试了普通的函数和泛型的枚举函数：
+
 ```
 IEnumerator<int> Test1()
 {
@@ -84,6 +87,7 @@ void Test2()
     }
 }
 ```
+
 发现只有普通函数不会报错。
 
 那么是mono编译器的问题吗？于是我把同样的代码放在mono控制台程序中进行测试，可以正常通过编译，执行也没有异常。
