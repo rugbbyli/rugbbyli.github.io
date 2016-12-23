@@ -21,9 +21,11 @@ Description
 Base class for effects that modify the generated Mesh.
 
 这个类是提供给我们用于修改uGUI生成的网格数据，以自定义ui效果的。使用方式也很简单，首先我们自定义一个类来继承它，然后重写它的虚方法：
+
 ```
 public override void ModifyMesh(VertexHelper vh);
 ```
+
 其中VertexHelper是用于辅助网格修改的类，通过它提供的接口，可以很方便地操作ui网格数据。
 
 这个方法会在每次网格更新时调用，我们可以在这里修改网格数据，即可达到想要的效果。根据上面的思路，一个简单的竖直双色渐变代码：
@@ -81,6 +83,7 @@ public class TextVerticalGradientColor : BaseMeshEffect
     #endregion
 }
 ```
+
 整段代码中，我们所做的只是遍历每个顶点，修改它的颜色。将这个脚本添加到Text上，即可看到效果。
 
 当然，直到目前为止，我们只是实现了双色渐变，而如果要实现三色（甚至更多）渐变呢？由于uGUI默认为每个字符生成顶部和底部的6个顶点，单纯靠修改顶点颜色似乎是达不到这个目标的。
@@ -89,7 +92,14 @@ public class TextVerticalGradientColor : BaseMeshEffect
 
 ![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient.png)
 
-不如我们动手来试一下吧。根据上面的图片分析，我们需要把每个字符的顶点由默认的 【tl（左上）、tr（右上）、br（右下）、br、bl（左下）、tl】 改为 【tl、tr、cr（右中）、cr、cl（左中）、tl、cl、cr、br、br、bl、cl】，并把三角形由默认的 【tl->tr->br, br->bl->tl】改为 【tl->tr->cr, cr->cl->tl, cl->cr->br, br->bl->cl】，核心代码如下：
+不如我们动手来试一下吧。根据上面的图片分析，我们需要把每个字符的顶点由默认的
+【tl（左上）、tr（右上）、br（右下）、br、bl（左下）、tl】 改为 
+【tl、tr、cr（右中）、cr、cl（左中）、tl、cl、cr、br、br、bl、cl】，
+并把三角形由默认的 
+【tl->tr->br, br->bl->tl】改为 
+【tl->tr->cr, cr->cl->tl, cl->cr->br, br->bl->cl】，
+核心代码如下：
+
 ```
 for (int i = 0; i < verts.Count; i += step) {
 	//6 point
@@ -122,6 +132,7 @@ for (int i = 0; i < vh.currentVertCount; i += 12) {
 	vh.AddTriangle (i + 9, i + 10, i + 11);
 }
 ```
+
 修改完成后切回Unity，可以发现一切都如预期的顺利，三色渐变效果已经正常实现，来看下此时的网格：
 
 ![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient_show.png)
@@ -131,6 +142,7 @@ for (int i = 0; i < vh.currentVertCount; i += 12) {
 按照这种思路，诸如水平渐变、径向渐变之类的效果也是不难实现的。通过这篇文章，我们也能发现uGUI的扩展性也是挺好的。
 
 附完整代码（在Unity 5.3 测试通过）：
+
 ```
 using UnityEngine;
 using System.Collections.Generic;
