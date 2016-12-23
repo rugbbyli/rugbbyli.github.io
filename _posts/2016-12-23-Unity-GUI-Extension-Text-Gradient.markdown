@@ -92,12 +92,12 @@ public class TextVerticalGradientColor : BaseMeshEffect
 
 ![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient.png)
 
-不如我们动手来试一下吧。根据上面的图片分析，我们需要把每个字符的顶点由默认的
-【tl（左上）、tr（右上）、br（右下）、br、bl（左下）、tl】 改为 
-【tl、tr、cr（右中）、cr、cl（左中）、tl、cl、cr、br、br、bl、cl】，
-并把三角形由默认的 
-【tl->tr->br, br->bl->tl】改为 
-【tl->tr->cr, cr->cl->tl, cl->cr->br, br->bl->cl】，
+不如我们动手来试一下吧。根据上面的图片分析，我们需要把每个字符的顶点由默认的 <br>
+【tl（左上）、tr（右上）、br（右下）、br、bl（左下）、tl】 改为 <br>
+【tl、tr、cr（右中）、cr、cl（左中）、tl、cl、cr、br、br、bl、cl】， <br>
+并把三角形由默认的 <br>
+【tl->tr->br, br->bl->tl】改为 <br>
+【tl->tr->cr, cr->cl->tl, cl->cr->br, br->bl->cl】， <br>
 核心代码如下：
 
 ```
