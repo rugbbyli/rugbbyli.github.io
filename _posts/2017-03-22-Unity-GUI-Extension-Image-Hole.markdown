@@ -142,7 +142,8 @@ public class Hole : Mask
 至此，通过Hole替代Mask，HoleImage替代Image，我们开头提到的需求已经能够完整解决了。其实还有一个小问题，我们的Hole完整的继承了Mask的逻辑，只是反转了UI事件检测，这也就意味着……对，它的其它子级UI元素依然会表现出Mask的作用。这在一些情形下可能并不是你想要的结果。那么，你能想到用什么方式来解决此问题吗？
 
 
-###完整代码下载
+###完整代码下载（Unity5.5测试通过）
 
 [Hole.cs]({{ site.url }}/files/Hole/Hole.cs "Hole.cs")
+
 [HoleImage.cs]({{ site.url }}/files/Hole/HoleImage.cs "HoleImage.cs")
