@@ -97,6 +97,7 @@ public class HoleImage : Image {
         }
         return toUse;
     }
+}
 ```
 注意，我们唯一改动的地方在19行，将CompareFunction.Equal改为了CompareFunction.NotEqual，即只有没有被Mask标记的区域才进行渲染。回到Unity，在Canvas下新建一个较小的Image，添加Mask组件，取消勾选“Show Mask Graphic”，并添加一个较大的子级Image，可以发现子级Image已经正确地被Mask组件给挖出了一个洞。
 
