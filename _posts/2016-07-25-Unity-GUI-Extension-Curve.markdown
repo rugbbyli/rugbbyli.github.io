@@ -3,7 +3,7 @@ layout: post
 title:  "Unity GUI（uGUI）扩展实例：自定义曲线控件"
 date:   2016-07-25
 categories: Unity
-tags: Unity 2D
+tags: Unity 2D ugui
 ---
 
 

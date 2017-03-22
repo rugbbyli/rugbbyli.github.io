@@ -3,7 +3,7 @@ layout: post
 title:  "Unity GUI（uGUI）扩展实例：文本竖直三色渐变"
 date:   2016-12-23
 categories: Unity
-tags: Unity 2D
+tags: Unity 2D ugui
 ---
 
 大家知道uGUI中的Text组件默认是单色显示的，而通过一些简单的扩展，我们是可以让它支持渐变色的，比如如下效果：
