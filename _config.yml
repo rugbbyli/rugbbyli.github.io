@@ -1,7 +1,7 @@
 # Site settings
 title: "Crazy Neptune"
 url: "http://blog.oldrivers.cc"
-highlighter: pygments
+highlighter: rouge
 paginate: 10
 author:
     name: RugbbyLi
