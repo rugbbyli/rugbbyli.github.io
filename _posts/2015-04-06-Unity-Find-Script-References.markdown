@@ -158,4 +158,4 @@ void Find(System.Type type){
 
 此时切换到Unity，在Project窗口选中一个scrpit，右键选择『Find All Reference』，在打开的窗口选择『Find』按钮，即可看到下面列出了所有引用了这个脚本的位置（如果项目过于庞大，可能需要等待一会儿）。
 
-代码下载：[FindScriptRef.cs]({{ site.url }}/files/FindScriptRef.cs "FindScriptRef.cs")
+代码下载：[FindScriptRef.cs](/files/FindScriptRef.cs "FindScriptRef.cs")

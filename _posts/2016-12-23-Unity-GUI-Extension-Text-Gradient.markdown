@@ -8,7 +8,7 @@ tags: Unity 2D ugui
 
 大家知道uGUI中的Text组件默认是单色显示的，而通过一些简单的扩展，我们是可以让它支持渐变色的，比如如下效果：
 
-![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient_demo.png)
+![image](/imgs/ugui_ext_text/unity_text_gradient_demo.png)
 
 在正式开始之前，再来回顾下相关内容。在图形渲染阶段，像素点的颜色默认是根据顶点颜色插值得来的；另外在前面的文章中我们介绍过，uGUI会默认为每个元素生成两个三角形用于渲染（也就是说uGUI的元素形状都是矩形的）；对于Text，每个字符都由（6个顶点组成的）两个三角形来渲染的。
 
@@ -90,7 +90,7 @@ public class TextVerticalGradientColor : BaseMeshEffect
 
 如果你仔细阅读并理解了上面的思路，应该不难想到，我们是不是可以通过在字符中间插入顶点的方式来实现三色渐变呢？
 
-![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient.png)
+![image](/imgs/ugui_ext_text/unity_text_gradient.png)
 
 不如我们动手来试一下吧。根据上面的图片分析，我们需要把每个字符的顶点由默认的 <br>
 【tl（左上）、tr（右上）、br（右下）、br、bl（左下）、tl】 改为 <br>
@@ -135,7 +135,7 @@ for (int i = 0; i < vh.currentVertCount; i += 12) {
 
 修改完成后切回Unity，可以发现一切都如预期的顺利，三色渐变效果已经正常实现，来看下此时的网格：
 
-![image]({{ site.url }}/imgs/ugui_ext_text/unity_text_gradient_show.png)
+![image](/imgs/ugui_ext_text/unity_text_gradient_show.png)
 
 可以发现，这种效果比默认的Text多生成了一倍的顶点和三角形（也就是每个字符变为12个顶点和4个三角形）。
 

@@ -11,7 +11,7 @@ Unity GUI（uGUI）是Unity官方内置的游戏UI系统，以良好的性能和
 
 我们要实现的实例是一个曲线控件，可以通过UI显示自定义的曲线，效果如下图所示：
 
-![image]({{ site.url }}/imgs/ugui_ext_curve/1.png)
+![image](/imgs/ugui_ext_curve/1.png)
 
 首先大概介绍下uGUI的体系结构。在uGUI中，所有的UI组件都要放置在Canvas组件下，由Canvas来管理它的渲染和自适应屏幕等。uGUI提供了Graphic基类，运行时，Canvas会使用CanvasRenderer来渲染它的子级中全部的Graphic组件。所以，如果要自定义外观的控件，从Graphic继承是一个不错的选择。
 
@@ -110,12 +110,12 @@ public class Curve : MaskableGraphic
 
 然后是GenerateQuad的实现，也就是通过两点和宽度计算方形的4个坐标点的算法。由于曲线的角度是变化的，分割出的直线也会是角度不同，所以问题就成了如下图所示的数学问题了：
 
-![image]({{ site.url }}/imgs/ugui_ext_curve/2.png)
+![image](/imgs/ugui_ext_curve/2.png)
 
 由于楼主数学比较渣，就用了一种比较笨的方法：计算出4个点相对直线两个端点的偏移量（x、y），然后通过端点加减偏移量来计算4个包围点的坐标。如果你有更好的算法，也欢迎分享出来。
 
 至此整个控件的核心工作就完成了。在场景中的Canvas下添加一个UI物体，并挂上我们的Curve脚本，然后通过Inspector修改下曲线，就能在场景中同步看到变化了，同时其它的一些诸如自适应缩放、ui事件响应等ui特性也自动拥有了，一颗赛艇！
 
-![image]({{ site.url }}/imgs/ugui_ext_curve/3.png)
+![image](/imgs/ugui_ext_curve/3.png)
 
 --注：代码在Unity5.3环境下测试通过

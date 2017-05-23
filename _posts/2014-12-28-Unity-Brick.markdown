@@ -20,7 +20,7 @@ PS，最近略忙，暂时没时间做详细教程了，就简单介绍下思路
 <!-- end_summary -->
 
 再PS，补上玩法介绍，盗个网上的介绍图吧<br>
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_tip.PNG)
+![image](/imgs/brick_tip.PNG)
 
 ###效果：
 {% include unity.html %}
@@ -28,15 +28,15 @@ PS，最近略忙，暂时没时间做详细教程了，就简单介绍下思路
 ###实现：
 下面是大致的程序结构图：<br>
 
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_cm.PNG)
+![image](/imgs/brick_cm.PNG)
 
 总体来讲，采用了分模块的结构，比如AudioManager/InputManager/StorageManager/TimeManager/BrickManager等，最后由GameManager总体协调和调度各个模块的工作。<br>
 
 游戏流程大致如下：<br>
 
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_gm.PNG)
+![image](/imgs/brick_gm.PNG)
 
 
 
 ###示例代码下载（Unity4.3）
-[Brick.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/Brick.unitypackage "Brick.unitypackage")
+[Brick.unitypackage](/files/Brick.unitypackage "Brick.unitypackage")

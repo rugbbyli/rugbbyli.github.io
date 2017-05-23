@@ -179,5 +179,5 @@ static public ImageButton AddImageButton(GameObject go)
 通过此次入门学习，对NGUI的工作方式和框架有了大致的了解，对Unity的基础知识和编辑器插件开发也有了接触，再接再厉！
 
 代码下载：
-[ImageButton.cs](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/ImageButton.cs "ImageButton.cs")
-[ImageButtonEditor.cs](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/ImageButtonEditor.cs "ImageButtonEditor.cs")
+[ImageButton.cs](/files/ImageButton.cs "ImageButton.cs")
+[ImageButtonEditor.cs](/files/ImageButtonEditor.cs "ImageButtonEditor.cs")

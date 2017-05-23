@@ -9,13 +9,13 @@ tags: Unity ugui
 
 我想大家在用uGUI做界面时，可能经常会碰到一种需求，就是在图片上“挖洞”。
 
-![image]({{ site.url }}/imgs/ugui_ext_hole/1.png)
+![image](/imgs/ugui_ext_hole/1.png)
 
-![image]({{ site.url }}/imgs/ugui_ext_hole/2.png)
+![image](/imgs/ugui_ext_hole/2.png)
 
 说起来我们可以有几种实现方案，比如最简单的方式，直接导入带有“洞”的图片。这种方式简单，但不适合需要动态变化的场合。考虑有这种需求：当我们上线一个新功能时，可能希望在玩家第一次打开游戏时，将界面其它地方变暗，突出新增的功能，即所谓的“新手引导”功能。
 
-![image]({{ site.url }}/imgs/ugui_ext_hole/3.png)
+![image](/imgs/ugui_ext_hole/3.png)
 
 如果用黑色含透明区域图片来展示这种效果，也不是不可以，但是会有几个问题。首先需要处理UI遮挡问题，因为Image的透明区域依然会阻挡下层的点击事件；其次如果新手引导分若干步，每步要展示的区域大小和形状都不同，那可能需要针对每步都做图，这个过程会变得非常复杂。
 
@@ -42,7 +42,7 @@ Mask的设计思路是这样的：它与Image组件配合工作，根据Image的
 
 可以简单理解为：Mask会将Image的渲染区域像素进行特别标记，稍后子级UI进行像素渲染时，判断如果存在此标记（说明渲染像素位于Mask区域内）就进行渲染，否则不渲染。可以发现，此功能的实现除了Mask组件，还需要子级UI元素的配合。实际上，Unity的内置UI组件都继承自MaskableGraphic，此类型正是Mask的配合实现者，它的相关代码实现如下：
 
-```
+```csharp
     public virtual Material GetModifiedMaterial(Material baseMaterial)
     {
         var toUse = baseMaterial;
@@ -71,7 +71,7 @@ Mask的设计思路是这样的：它与Image组件配合工作，根据Image的
 
 知道了Mask的原理，那么我们就会想到一种可能的方案，如果重写MaskableGraphic的GetModifiedMaterial方法，将它的判断逻辑逆转，是否就可以了呢？来试一下吧！新建脚本HoleImage，内容如下：
 
-```
+```csharp
 public class HoleImage : Image {
     public override Material GetModifiedMaterial(Material baseMaterial)
     {
@@ -105,7 +105,7 @@ public class HoleImage : Image {
 
 这个问题不难解决，我们来分析下uGUI的UI事件传递机制。uGUI通过ICanvasRaycastFilter接口来处理UI捕获，相关方法如下：
 
-```
+```csharp
 bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera);
 ```
 
@@ -113,7 +113,7 @@ UI对象需要实现此接口来自定义焦点捕获判断逻辑。当某个区
 
 所以我们直接从源头做起，干掉它爹——也就是Mask的判断逻辑即可。Mask原本是这样处理的：
 
-```
+```csharp
 public virtual bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
 {
     if (!isActiveAndEnabled)
@@ -125,7 +125,7 @@ public virtual bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
 
 嗯，跟我们预期的一样简单粗暴：不在我自身“势力范围”内的统统返回false。那么同样的，我们只需要反转此逻辑即可。新建脚本Hole，内容如下：
 
-```
+```csharp
 public class Hole : Mask
 {
     public override bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
@@ -145,6 +145,6 @@ public class Hole : Mask
 
 ###完整代码下载（Unity5.5测试通过）
 
-[Hole.cs]({{ site.url }}/files/Hole/Hole.cs "Hole.cs")
+[Hole.cs](/files/Hole/Hole.cs "Hole.cs")
 
-[HoleImage.cs]({{ site.url }}/files/Hole/HoleImage.cs "HoleImage.cs")
+[HoleImage.cs](/files/Hole/HoleImage.cs "HoleImage.cs")

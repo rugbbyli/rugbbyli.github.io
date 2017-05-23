@@ -108,12 +108,12 @@ Shader "Tile/tile" {
 
 就这样简单的几部，我们的主要工作就完成了，切回unity，应该看到类似这样的画面（这里我分别使用了Cube/Sphere/Quad来演示效果）：
 
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader1.PNG)
+![image](/imgs/shader1.PNG)
 
 
 可以发现，物体表面被分成了4行4列，每行的第一列都显示为黑色，其余地方为白色。为加深理解，可以选中TileMaterial，改变它的Data的值，比如改为(0,1,2,3)，会变成这样：
 
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader2.PNG)
+![image](/imgs/shader2.PNG)
 
 此时画面已经有了，但是我们还想更进一步，把分割线也画出来，这样看起来更直观点，要怎么做呢？很简单，只需要在frag函数前面加上这段代码：
 
@@ -123,7 +123,7 @@ Shader "Tile/tile" {
 
 这样当点的坐标足够接近0.25的整数倍时，我们直接返回黑色，这样即可画出4*4的黑色的分割线出来。保存代码，切到unity，画面应该变成这样：
 
-![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/shader3.PNG)
+![image](/imgs/shader3.PNG)
 
 
 ok，关于shader的部分就已经完成了，接下来，我们看一下如何通过代码控制它改变。
@@ -166,4 +166,4 @@ ok，关于shader的部分就已经完成了，接下来，我们看一下如何
 
 至此，大部分内容已经完成了，接下来，只需要通过判断用户的点击位置，计算对应位置方块的颜色，判断是”GameOver“还是”UpdateTile“咯~再加上诸如时间控制/分数控制等，一个完整的，没有任何UI素材，只使用shader进行渲染的游戏就诞生啦~<br>
 
-示例代码下载（Unity4.6）：[TileDemo.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/TileDemo.unitypackage "TileDemo.unitypackage")
+示例代码下载（Unity4.6）：[TileDemo.unitypackage](/files/TileDemo.unitypackage "TileDemo.unitypackage")

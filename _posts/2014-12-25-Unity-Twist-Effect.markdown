@@ -203,4 +203,4 @@ private void Candy_Click(object sender, System.EventArgs e)
 
 
 ###示例代码下载（Unity4.6）
-[TwistEffect.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/TwistEffect.unitypackage "TwistEffect.unitypackage")
+[TwistEffect.unitypackage](/files/TwistEffect.unitypackage "TwistEffect.unitypackage")

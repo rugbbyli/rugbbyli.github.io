@@ -15,7 +15,7 @@ tags: Unity ScriptableObject
 
 首先看下它的定义，非常简单，我们只需要新建脚本（比如GameConfig），并继承ScriptableObject，然后在类中定义我们的数据项即可，比如：
 
-```
+```csharp
 public class GameConfig: ScriptableObject
 {
     public string GameName;
@@ -33,7 +33,7 @@ public class GameConfig: ScriptableObject
 
 与之类似，虽然 ScriptableObject无法附加在物体上，Unity却提供了一种机制来生成“这个类型的实例化物体”。这个描述不是很严谨，不过应该不影响理解。我们只需要通过调用如下代码即可完成此过程（还是以上面的例子为准）：
 
-```
+```csharp
 //生成一个GameConfig对象
 var cfg = ScriptableObject.CreateInstance<GameConfig>();
 //以它为基础创建一个Asset
@@ -44,11 +44,11 @@ AssetDatabase.SaveAssets();
 
 这样即可在项目目录下面看到一个资源，选中它，即可在Inspector窗口看到与MonoBehaviour类似的数据配置界面。
 
-![image]({{ site.url }}/imgs/unity_scriptable_object_1.png)
+![image](/imgs/unity_scriptable_object_1.png)
 
 其实还有更简单的方法，直接在定义类型前面加上
 
-```
+```csharp
 [CreateAssetMenu(fileName = "GameConfig.asset")]
 ```
 
@@ -56,13 +56,13 @@ AssetDatabase.SaveAssets();
 
 接下来还有最后一步，就是在游戏运行过程中使用这些数据，这个直接通过
 
-```
+```csharp
 Resources.Load<GameConfig>("asset path");
 ```
 
 来访问即可（MonoBehaviour加载后还需要实例化）。当然最好还是包装个单例出来：
 
-```
+```csharp
 private static GameConfig s_instance;
 public static GameConfig getInstance()
 {
@@ -78,7 +78,7 @@ ok，这次的内容就介绍到这里。
 
 附：完整代码（Unity5.3测试通过）：
 
-```
+```csharp
 using System;
 using UnityEngine;
 

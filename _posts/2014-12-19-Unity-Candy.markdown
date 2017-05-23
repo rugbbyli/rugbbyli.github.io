@@ -104,4 +104,4 @@ public Vector2 value
 运行游戏，一堆糖果从天而降，enjoy it！
 
 ###示例代码下载（Unity4.6）
-[Candy.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/Candy.unitypackage "Candy.unitypackage")
+[Candy.unitypackage](/files/Candy.unitypackage "Candy.unitypackage")
