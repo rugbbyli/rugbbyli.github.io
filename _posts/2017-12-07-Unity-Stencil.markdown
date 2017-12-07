@@ -7,8 +7,6 @@ tags: Unity ugui stencil
 ---
 
 
-![image]({{ site.url }}/imgs/ui_stencil/1.png)
-
 之前我曾经简单介绍过Mask的实现原理（见这里：[UnityGUI扩展实例：图片挖洞效果]({{ site.url }}/unity/2017-03/Unity-GUI-Extension-Image-Hole.html))，不过当时侧重点在其它地方，并没有完整探究Mask底层的处理过程。这几天项目中遇到一个小小需求，需要有一个“超级挖洞能手”，能够挖掉不属于自己子级的UI结点，由于之前的Hole是完全模拟Mask组件实现的，只能处理自己的子级，无法满足需求，于是趁此机会梳理了一下Mask的原理，整理在此与大家探讨。
 
 上篇博客已经简单提到过：
@@ -45,9 +43,9 @@ var maskMat = StencilMaterial.Add(baseMaterial, 1, StencilOp.Keep, CompareFuncti
 ![image]({{ site.url }}/imgs/ui_stencil/3.png)
 
 然后轮到红色图片“绘画”，它在涂上红色前，会先取出这个点的stencil buffer值判断，在黑框范围内，这个值是1，于是继续画红色；在黑框范围外，这个值是0，于是不再画红色，最终达到了图中的效果。
+
 所以从本质上来讲，stencil buffer是为了实现多个“绘画者”之间互相通信而存在的。由于gpu是流水线作业，它们之间无法直接通信，所以通过这种共享数据区的方式来传递消息，从而达到一些“不可告人”的目的。
 
-<br><br>
 
 理解了stencil的原理，我们再来看下它的语法。在unity shader中定义的语法格式如下（中括号内是可以修改的值，其余都是关键字）：
 
@@ -65,10 +63,10 @@ Stencil
 
 其中：
 
-Ref表示要比较的值；
-Comp表示比较方法（等于/不等于/大于/小于等）；
-Pass/Fail表示当比较通过/不通过时对stencil buffer做什么操作（保留/替换/置0/增加/减少等）；
-ReadMask/WriteMask表示取stencil buffer的值时用的mask（即可以忽略某些位）；
+- Ref表示要比较的值；
+- Comp表示比较方法（等于/不等于/大于/小于等）；
+- Pass/Fail表示当比较通过/不通过时对stencil buffer做什么操作（保留/替换/置0/增加/减少等）；
+- ReadMask/WriteMask表示取stencil buffer的值时用的mask（即可以忽略某些位）；
 
 翻译一下就是：**将stencil buffer的值与ReadMask与运算，然后与Ref值进行Comp比较，结果为true时进行Pass操作，否则进行Fail操作，操作值写入stencil buffer前先与WriteMask与运算**。
 
@@ -140,9 +138,8 @@ public static Material Add(Material baseMat, int stencilID, StencilOp operation,
 }
 ```
 
-可以看到这个方法只是帮助我们生成了一个材质并填充了Stencil相关的参数。至于Mask只能作用于它的子级的限制，则完全是代码层面的限制。那么，如果我们理解没错，事实上我们可以用更简单的方法——使用自定义材质，来完成上文提到的“挖洞”效果或者系统自带的“遮罩”效果。来验证下是不是这样。
+可以看到这个方法只是帮助我们生成了一个材质并填充了Stencil相关的参数。至于Mask只能作用于它的子级的限制，则完全是代码层面的限制。那么，如果我们理解没错，事实上我们可以用**更简单的方法——使用自定义材质，来完成上文提到的“挖洞”效果或者系统自带的“遮罩”效果**。来验证下是不是这样。
 
-<br><br>
 
 首先创建示例场景：
 
