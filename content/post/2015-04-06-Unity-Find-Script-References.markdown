@@ -23,20 +23,20 @@ tags: [Unity Editor]
 #### 1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为 FindScriptRef ，并继承自 EditorWindow 。添加如下方法：
 
-\{\{% highlight csharp %\}\}
+```cs
 [MenuItem("Assets/Find All Reference")]
 public static void ShowWindow()
 {
     //Show existing window instance. If one doesn't exist, make one.
     EditorWindow.GetWindow(typeof(FindScriptRef));
 }
-\{\{% endhighlight %\}\}
+```
 
 这段代码会在菜单中添加一个名为"Find All Reference"的菜单项。选中菜单项会打开一个FindScriptRef窗口实例。当然此时窗口中没有任何内容。
 
 #### 2，窗口基本显示逻辑：<br>
 
-\{\{% highlight csharp %\}\}
+```cs
 void OnGUI()
 {
     if (Selection.activeObject == null)
@@ -83,11 +83,11 @@ void OnGUI()
     }
     GUILayout.EndVertical();
 }
-\{\{% endhighlight %\}\}
+```
 
 然后，实现Find方法，搜索指定Type的全部引用：
 
-\{\{% highlight csharp %\}\}
+```cs
 void Find(System.Type type){
 
     //step 1:find ref in assets
@@ -154,7 +154,7 @@ void Find(System.Type type){
     EditorApplication.OpenScene(curScene);
     Debug.Log ("finish");
 }
-\{\{% endhighlight %\}\}
+```
 
 此时切换到Unity，在Project窗口选中一个scrpit，右键选择『Find All Reference』，在打开的窗口选择『Find』按钮，即可看到下面列出了所有引用了这个脚本的位置（如果项目过于庞大，可能需要等待一会儿）。
 

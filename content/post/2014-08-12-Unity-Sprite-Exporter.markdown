@@ -26,20 +26,20 @@ Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的�
 #### 1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为SpriteExporter，并继承自EditorWindow。添加如下方法：
 
-\{\{% highlight csharp %\}\}
+```cs
 [MenuItem("Assets/Export Sprite", false, 0)]
 static public void OpenSpriteExporter()
 {
     EditorWindow.GetWindow<SpriteExporter>(false, "Export Sprite", true);
 }
-\{\{% endhighlight %\}\}
+```
 
 这段代码会在菜单中添加一个名为"Export Sprite"的菜单项。选中菜单项会打开一个SpriteExporter窗口实例。当然此时窗口中没有任何内容。
 
 #### 2，将选中的Sprite显示在窗口中：<br>
 首先添加一个方法，获取当前选中的全部Sprite。原理很简单，通过对Selection.objects的枚举，依次判断是否为Sprite并添加到数组中：
 
-\{\{% highlight csharp %\}\}
+```cs
 [MenuItem("Assets/Export Sprite", false, 0)]
 List<Sprite> GetSelectedSprites()
 {
@@ -53,11 +53,11 @@ List<Sprite> GetSelectedSprites()
     }
     return textures;
 }
-\{\{% endhighlight %\}\}
+```
 
 然后，实现OnGUI方法，画出这些Sprite：
 
-\{\{% highlight csharp %\}\}
+```cs
 [MenuItem("Assets/Export Sprite", false, 0)]
 void OnGUI()
 {
@@ -101,18 +101,18 @@ public Rect uvRect(Sprite sp)
     }
     return new Rect(0f, 0f, 1f, 1f);
 }
-\{\{% endhighlight %\}\}
+```
 
 我们将每个Sprite显示为50×50大小的预览图，并通过计算窗口的宽度执行换行操作，以免太多的图片显示不全。**这里有一个细节，由于暂时没有找到获取窗口宽度的方法，我是通过GUILayoutUtility.GetLastRect方法，来得到窗口宽度的。因为在这个调用之前有GUILayout.Button方法，而这个生成的Button会自动铺满窗口宽度，因此才可以通过这种方法取得窗口宽度。**<br>
 此时切换到Unity，选中一些Sprite，右键打开Export Sprite窗口，会发现它们已经列在了窗口中。左右拖动改变窗口大小，会发现图片会自动换行，酷毙了`(*∩_∩*)′<br>
 但是此时如果改变选择，窗口并不会实时更新，我们还需要添加OnSelectionChange方法，通知窗口刷新：
 
-\{\{% highlight csharp %\}\}
+```cs
 void OnSelectionChange()
 {
     Repaint();
 }
-\{\{% endhighlight %\}\}
+```
 
 #### 3，生成Sprite的图片文件并保存到本地
 接下来，我们需要实现最关键的一步，保存Sprite到文件。大致的步骤如下：<br>
@@ -123,7 +123,7 @@ void OnSelectionChange()
 
 下面是具体的实现方法：
 
-\{\{% highlight csharp %\}\}
+```cs
 void ExportSprites(IEnumerable<Sprite> sprites)
 {
     foreach (var sp in sprites)
@@ -151,7 +151,7 @@ void ExportSprites(IEnumerable<Sprite> sprites)
         System.IO.File.WriteAllBytes(file, data);
     }
 }
-\{\{% endhighlight %\}\}
+```
 
 然后将ExportSprite方法添加到OnGUI的Button判断条件下面，这样当Button被点击时，将会执行我们的方法。<br>
 注意这里我将导出路径设置为[Desktop]/[TextureName]/[SpriteName.png]。
@@ -161,7 +161,7 @@ void ExportSprites(IEnumerable<Sprite> sprites)
 看起来似乎是说Texture不可读？<br>
 这还真是个麻烦事~。最后通过读NGUI的代码，找到了一种解决方案，将Texture设置为可读，代码如下：
 
-\{\{% highlight csharp %\}\}
+```cs
 bool MakeTextureReadable(Texture tex)
 {
     string path = AssetDatabase.GetAssetPath(tex.GetInstanceID());
@@ -181,7 +181,7 @@ bool MakeTextureReadable(Texture tex)
     }
     return true;
 }
-\{\{% endhighlight %\}\}
+```
 它的基本原理是改变TextureImporter的设置中readable属性为true，并重新导入资源~。~<br>
 接下来，我们修改一下ExportSprites方法，在调用GetPixels之前，先执行一下MakeTextureReadable方法，并根据返回值决定是否继续进行下去。
 
@@ -192,7 +192,7 @@ bool MakeTextureReadable(Texture tex)
 
 要实现这个功能，关键是，能否获取某个Texture2D所分割的全部Sprite数据？经过研究发现是可行的，代码如下：
 
-\{\{% highlight csharp %\}\}
+```cs
 IEnumerable<Sprite> GetTextureSprites(Texture2D tex)
 {
     var sprites = new List<Sprite>();
@@ -211,7 +211,7 @@ IEnumerable<Sprite> GetTextureSprites(Texture2D tex)
 
     return sprites;
 }
-\{\{% endhighlight %\}\}
+```
 
 原理其实也很简单，通过获取Texture2D的Importer导入器，TextureImporter.spritesheet属性记录了Texture所分割出的Sprite列表（包括每个Sprite的名字、大小、在图片中的位置等信息）。我们遍历这个列表，根据位置信息生成Sprite即可。
 

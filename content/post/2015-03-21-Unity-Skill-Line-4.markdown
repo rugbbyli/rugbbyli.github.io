@@ -24,8 +24,8 @@ AudioLowPassFilter：过滤掉高音，只通过低音；<br>
 <br>
 Microphone类可以调用运行设备上的音频输入设备采集音频数据。它不是以组件形式提供，要使用需要通过脚本调用。下面的代码示例了采集语音数据然后直接播放出来：<br>
 
-\{\{% highlight csharp %\}\}
+```cs
 AudioSource audioSource = GetComponent<AudioSource>();
 audioSource.clip = Microphone.Start(null, true, 10, 44100);
 audioSource.Play();
-\{\{% endhighlight %\}\}
+```

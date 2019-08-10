@@ -32,11 +32,11 @@ unityheight: 640
 
 #### 1，新建一个shader，命名为tile，打开它，将内容改为
 
-\{\{% highlight csharp %\}\}
+```cs
 Shader "Tile/tile" {
 
 }
-\{\{% endhighlight %\}\}
+```
 
 这样我们就声明了一个空的shader，分类为Tile，命名为tile。
 

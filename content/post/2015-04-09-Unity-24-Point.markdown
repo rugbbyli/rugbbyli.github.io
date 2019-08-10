@@ -39,7 +39,7 @@ unityheight: 400
 #### 1，打开Visual Studio，新建一个C#类库项目，版本选择.Net 3.5：<br>
 在项目中新建一个类，命名为 ExpCalc.cs，内容如下：
 
-\{\{% highlight csharp %\}\}
+```cs
 
 using System;
 using System.Collections.Generic;
@@ -215,7 +215,7 @@ namespace ExpCalc
     }
 }
 
-\{\{% endhighlight %\}\}
+```
 
 两个公共接口CalcStringExp和TryCalcStringExp，区别只是一个会抛出异常另一个不会。Exp2NFE负责将输入字符串表达式拆分为中缀表达式集合，NFE2PFE负责将中缀表达式集合转换为后缀表达式集合，CalcPFE负责计算后缀表达式集合的结果。算法就是按照上面介绍的思想直接翻译成了代码，冏。。辅助类Operator定义了一些合法的操作符。<br>
 然后生成项目，得到一个dll文件。将它放到Unity项目的Assets目录下（随便哪个子目录都可以）。
@@ -224,7 +224,7 @@ namespace ExpCalc
 此时切换到Unity编辑器，它会识别到有兼容的类库被添加进来，于是进行编译合并进项目。编译完成后，就可以直接使用了。<br>
 后面就是一些简单的UI工作，我使用uGUI布置出24点游戏的界面（上面一个显示区域，下面一排按钮随机给出4个数字（范围1-13），再下面是操作符，最下面一排是控制按钮）。当点击数字按钮或者操作符按钮时，直接将它写入到显示区域，点击『OK』按钮计算时，将显示区域的字符串传进类库进行计算。各个按钮的回调方法如下：
 
-\{\{% highlight csharp %\}\}
+```cs
 
 public class PointEventHandler : MonoBehaviour {
 
@@ -305,7 +305,7 @@ public class PointEventHandler : MonoBehaviour {
     }
 }
 
-\{\{% endhighlight %\}\}
+```
 
 可以发现，类库用起来也是相当的直观，跟项目中代码是无缝集成的。
 
