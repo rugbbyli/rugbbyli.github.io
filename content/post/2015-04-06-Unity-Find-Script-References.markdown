@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity Editor]
 ---
 
-### 背景：
+### 背景
 
 <!-- begin_summary -->
 
@@ -14,11 +14,11 @@ tags: [Unity Editor]
 
 <!-- end_summary -->
 
-### 分析：
+### 分析
 
 基本的思路是：首先筛选出项目中全部Prefab，加载每个Prefab并判断是否有挂载目标脚本，然后载入每个场景，判断场景中每个物体是否有挂载目标脚本，最后列出结果。
 
-### 实现：
+### 实现
 
 #### 1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为 FindScriptRef ，并继承自 EditorWindow 。添加如下方法：

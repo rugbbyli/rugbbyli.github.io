@@ -9,7 +9,7 @@ unitywidth: 500
 unityheight: 400
 ---
 
-### 背景：
+### 背景
 
 <!-- begin_summary -->
 
@@ -19,16 +19,16 @@ unityheight: 400
 
 <!-- end_summary -->
 
-### 分析：
+### 分析
 涉及功能点：<br>
 使用Unity GUI（uGUI）制作游戏界面；<br>
 三消游戏的核心数据结构和算法；<br>
 使用对象池帮助降低内存波动；<br>
 
-### 效果：
+### 效果
 \{\{% include unity.html %\}\}
 
-### 游戏界面制作：
+### 游戏界面制作
 界面制作可以使用多种方式，本文使用Unity4.6新增的uGUI框架制作。<br>
 首先创建一个Canvas，命名为Root，将RenderMode改为"Screen Space-Camera"，因为我们的UI将会和非UI元素共存。将UiScaleMode改为"Scale With Screen Size"，这样UI元素会随屏幕分辨率变化自动缩放。<br>
 然后在Root下新建一个Image，命名为Bg，作为游戏背景图片。对齐方式选择水平和垂直均为stretch，铺满屏幕。<br>

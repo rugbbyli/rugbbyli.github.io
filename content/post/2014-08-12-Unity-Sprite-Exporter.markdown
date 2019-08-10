@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity Editor]
 ---
 
-### 背景：
+### 背景
 
 <!-- begin_summary -->
 
@@ -17,11 +17,11 @@ Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的�
 
 <!-- end_summary -->
 
-### 分析：
+### 分析
 
 基本的思路是：通过Unity插件系统生成一个编辑器窗口，在窗口中监控Project等目录下选中的Sprite并列出在窗口中。点击"Export"即可导出到磁盘上。本文的知识点涉及插件系统、GUI绘图、Texture2D、文件操作等。
 
-### 实现：
+### 实现
 
 #### 1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为SpriteExporter，并继承自EditorWindow。添加如下方法：
@@ -187,7 +187,7 @@ bool MakeTextureReadable(Texture tex)
 
 这次再试验一次，发现可以正常导出了。over。
 
-### 改进：
+### 改进
 设想1，某些Texture2D被切割成许多Sprite，可否在选中这些Texture时，自动列出它分割出的全部Sprite？
 
 要实现这个功能，关键是，能否获取某个Texture2D所分割的全部Sprite数据？经过研究发现是可行的，代码如下：

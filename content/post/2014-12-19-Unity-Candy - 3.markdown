@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity Demo]
 ---
 
-### 使用”对象池“优化内存波动：
+### 使用”对象池“优化内存波动
 
 <!-- begin_summary -->
 

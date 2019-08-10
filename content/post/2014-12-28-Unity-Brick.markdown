@@ -9,7 +9,7 @@ unitywidth: 320
 unityheight: 568
 ---
 
-### 背景：
+### 背景
 
 <!-- begin_summary -->
 
@@ -22,10 +22,10 @@ PS，最近略忙，暂时没时间做详细教程了，就简单介绍下思路
 再PS，补上玩法介绍，盗个网上的介绍图吧<br>
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_tip.PNG)
 
-### 效果：
+### 效果
 \{\{% include unity.html %\}\}
 
-### 实现：
+### 实现
 下面是大致的程序结构图：<br>
 
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_cm.PNG)

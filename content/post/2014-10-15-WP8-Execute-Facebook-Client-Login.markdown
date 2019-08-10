@@ -6,7 +6,7 @@ categories: WindowsPhone
 tags: [AppCommunication]
 ---
 
-### 背景：
+### 背景
 
 <!-- begin_summary -->
 
@@ -14,7 +14,7 @@ tags: [AppCommunication]
 
 <!-- end_summary -->
 
-### 分析：
+### 分析
 
 Facebook的客户端使用Uri协议启动的方式与我们的App通信，它绑定了fbconnect的协议头，我们只需要调用类似 fbconnect://authorize?client_id={0}&scope={1}&redirect_uri=msft-{2}://authorize 的Uri启动默认程序就可以了。参数第一个是在Facebook申请的appid，第二个是要请求的功能，这些在http形式中都有出现，不再详述。需要注意的是第三个参数，它是我们项目在应用商店的GUID，在WMAppMainfest文件里面可以看到。当然，这个东西还需要在Facebook的管理后台绑定一下才能使用。<br>
 如果调用成功，Facebook会回调redirect_uri参数指定的uri，将结果返回我们的App。回调的字符串格式为：msft-{0}://authorize/?access_token={1}&expires_in={2}，或者msft-{0}://authorize/?error={1}&error_code={2}&error_description={3}&error_reason={4}。<br>
@@ -30,7 +30,7 @@ fbconnect://authorize?<br>
 所以，在MapUri方法中只需要判断要处理回调的页面，然后返回页面对应的Uri即可。在目标页面再解析fb的回调uri，拿到token等内容。<br>
 最后，还发现每次导航，MapUri方法都会执行两次。这个暂时没弄明白有什么用意。。。
 
-### 实现：
+### 实现
 
 
 
