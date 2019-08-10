@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity StudyLine]
 ---
 
-###声音
+### 声音
 Unity的声音系统模拟了现实中的情形，分为两个部分：AudioSource和AudioListener。很直观的字面理解，AudioSource发出声音，AudioListener接收前者的声音并播放出来。
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_audio_1.png)
 一个场景中要有一个AudioListener，才能听到AudioSource发出的声音。Unity会根据两者的距离、声音传播速度等条件计算声音的衰减（可以自定义衰减曲线）和最终输出。<br>

@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity StudyLine]
 ---
 
-###脚本
+### 脚本
 即使Unity已经提供了许多组件简化游戏开发中，脚本仍然是不可或缺的一部分。脚本是游戏的灵魂，它控制其它组件的良好运行，控制游戏流程的发展，对用户输入做出反馈，体现游戏的整体逻辑等。<br><br>
 Unity使用CSharp（符合标准csharp规范）和UnityScript（以javascript为原形，进行了一些调整以更适合unity使用）作为脚本语言，以『.Net Framework』作为运行环境。由于微软标准的.Net框架只适配windows平台（目前官方.Net也已开源，且未来将会适配别的操作系统平台），因此Unity使用『Mono（第三方的开源跨平台.Net实现）』来实现跨平台的需求。得益于.Net的CLR设计，所有.Net语言最终都编译成同样的IL语言，因此不同语言提供完全一样的功能，可以根据喜好随意选择一种或混合使用。此外，由于运行于.net平台之上，因此所有能够编译成IL的语言都可以为Unity所用（比如通过visual studio和托管c++编写的类库）。<br>
 Unity内部提供了一套完整的api供脚本调用。前面有提到过，脚本要想生效，需要作为组件挂载到某个GameObject上面。而要想作为组件挂载到GameObject，脚本必须满足如下几个条件：<br>

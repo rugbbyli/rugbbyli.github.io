@@ -9,7 +9,7 @@ unitywidth: 600
 unityheight: 480
 ---
 
-###背景：
+### 背景：
 
 <!-- begin_summary -->
 
@@ -18,13 +18,13 @@ Unity自带了多种高级图像效果（ImageEffects），比如各种模糊特
 
 <!-- end_summary -->
 
-###分析：
+### 分析：
 扭曲特效的实现原理：从中心点（一般为图像中点）向周围发散，每个点的颜色都从图像中按一定角度旋转采样，离中心点越近，旋转角度越大，达到扭曲半径（一般为图像边缘）时旋转角度缩减为0，即可实现这种特效。<br>
 
-###效果：
+### 效果：
 \{\{% include unity.html %\}\}
 
-###实现：
+### 实现：
 由于要操作像素，需要用到片段着色器（FragmentShader）。不太懂shader的同学也不要害怕，毕竟今天我们是要移植而不是自己写。我们直接将UnityPro中的扭曲特效shader内容复制过来即可。当然，它的实现其实也不复杂，建议还是看一下实现过程。下面是具体的shader内容（关键地方我加了注释）。<br>
 
 \{\{% highlight csharp %\}\}
@@ -202,5 +202,5 @@ private void Candy_Click(object sender, System.EventArgs e)
 
 
 
-###示例代码下载（Unity4.6）
+### 示例代码下载（Unity4.6）
 [TwistEffect.unitypackage](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/files/TwistEffect.unitypackage "TwistEffect.unitypackage")

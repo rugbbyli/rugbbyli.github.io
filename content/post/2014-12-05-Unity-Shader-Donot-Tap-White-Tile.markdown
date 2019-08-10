@@ -9,7 +9,7 @@ unitywidth: 360
 unityheight: 640
 ---
 
-###背景：
+### 背景：
 
 <!-- begin_summary -->
 
@@ -18,19 +18,19 @@ unityheight: 640
 
 <!-- end_summary -->
 
-###分析：
+### 分析：
 
 基本思路如下：<br>
 1，‘别踩白块儿’的画面是4*4的格子，每行有1个黑块和3个白块，据此，我们可以用4个数字分别代表每行黑块的位置（0~3）。<br>
 2，unity允许在shader中指定属性（Properties），这个属性可以被shader和我们的代码访问，因此我们可以通过改变这个属性值来控制渲染结果的变化。<br>
 3，利用fragment shader，判断输入点的坐标位置，根据上面的属性值，计算出对应的颜色（黑或白），并渲染结果。<br>
 
-###效果：
+### 效果：
 \{\{% include unity.html %\}\}
 
-###实现：
+### 实现：
 
-####1，新建一个shader，命名为tile，打开它，将内容改为：
+#### 1，新建一个shader，命名为tile，打开它，将内容改为：
 
 \{\{% highlight csharp %\}\}
 Shader "Tile/tile" {
@@ -40,18 +40,18 @@ Shader "Tile/tile" {
 
 这样我们就声明了一个空的shader，分类为Tile，命名为tile。
 
-####2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
+#### 2，新建一个Material，命名为TileMaterial，选中它，在Inspector面板中改变它的shader为Tile/tile。
 
-####3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
+#### 3，在场景中添加一个Panel，将它的Image组件的Material的内容改为我们上面新建的TileMaterial。注意Panel是unity4.6 UI系统内置的，如果你的版本低于4。6，也可以使用比如Cube之类的物体，原理是一样的。至此，场景就已经布置完成了，开始进入正题。
 
-####4，打开tile.shader文件，在里面添加属性：<br>
+#### 4，打开tile.shader文件，在里面添加属性：<br>
     Properties {<br>
         _Data ("Data", Vector) = (0,0,0,0)<br>
     }<br>
 
 我们添加了一个命名为_Data，类型为Vector的变量，默认值为0。这4个值分别用来表示每一行中黑块的位置索引。4个0意味着4个黑块都位于第一列，依此类推。
 
-####5，接下来，在下面添加具体的shader代码，如下：
+#### 5，接下来，在下面添加具体的shader代码，如下：
 
     SubShader {
         Pass {
@@ -128,7 +128,7 @@ Shader "Tile/tile" {
 
 ok，关于shader的部分就已经完成了，接下来，我们看一下如何通过代码控制它改变。
 
-####6，在物体上附加一个脚本，命名随意，然后打开它。
+#### 6，在物体上附加一个脚本，命名随意，然后打开它。
 
 首先，在脚本中添加两个变量：
 

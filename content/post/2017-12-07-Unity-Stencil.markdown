@@ -162,6 +162,6 @@ public static Material Add(Material baseMat, int stencilID, StencilOp operation,
 
 您也可以尝试修改这几个材质的数值，观察场景的变化，可有助于更深刻理解这一模型的工作过程。
 
-### 示例场景下载（使用Unity 2017.1.0f3 创建）
+###  示例场景下载（使用Unity 2017.1.0f3 创建）
 
 [UIStencil.unitypackage](/files/UIStencil.unitypackage "UIStencil.unitypackage")

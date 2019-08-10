@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity Editor]
 ---
 
-###背景：
+### 背景：
 
 <!-- begin_summary -->
 
@@ -16,7 +16,7 @@ tags: [Unity Editor]
 
 <!-- end_summary -->
 
-###分析：
+### 分析：
 
 在自己造轮子之前，先在网上搜了下，发现已经有提供这种解决方案的。他的思路是创建自定义编辑器窗口，通过窗口定期触发的方法（如OnGUI等）来保存场景。这种方式有两个不太理想的地方：<br>
 一是必须要保持打开那个自定义的编辑器窗口，才能定期触发回调自动保存场景；<br>
@@ -28,7 +28,7 @@ tags: [Unity Editor]
 2，借助EditorApplication.hierarchyWindowChanged回调，监听场景变化通知，以触发自动保存场景；<br>
 3，调用EditorApplication.SaveScene方法保存场景。<br>
 
-###实现：
+### 实现：
 
 新建一个类，命名为AutoSave：
 

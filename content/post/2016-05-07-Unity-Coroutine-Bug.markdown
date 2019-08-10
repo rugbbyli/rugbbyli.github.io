@@ -31,7 +31,7 @@ IEnumerator Test()
 
 这是什么鬼？
 
-###在协程函数内部使用try-catch的问题
+### 在协程函数内部使用try-catch的问题
 
 于是试探了下，发现问题出在catch语句中。**当在catch中声明了捕获异常变量，然而并没有使用它时，就会导致这个编译错误。**去掉catch后面的Exception变量即可解决报错：
 

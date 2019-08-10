@@ -6,7 +6,7 @@ categories: Unity
 tags: [Unity Editor]
 ---
 
-###背景：
+### 背景：
 
 <!-- begin_summary -->
 
@@ -17,13 +17,13 @@ Unity4.3新增了2D框架，我们可以导入一张拼图，并通过内置的�
 
 <!-- end_summary -->
 
-###分析：
+### 分析：
 
 基本的思路是：通过Unity插件系统生成一个编辑器窗口，在窗口中监控Project等目录下选中的Sprite并列出在窗口中。点击"Export"即可导出到磁盘上。本文的知识点涉及插件系统、GUI绘图、Texture2D、文件操作等。
 
-###实现：
+### 实现：
 
-####1，在右键菜单项中添加菜单：<br>
+#### 1，在右键菜单项中添加菜单：<br>
 新建一个类，命名为SpriteExporter，并继承自EditorWindow。添加如下方法：
 
 \{\{% highlight csharp %\}\}
@@ -36,7 +36,7 @@ static public void OpenSpriteExporter()
 
 这段代码会在菜单中添加一个名为"Export Sprite"的菜单项。选中菜单项会打开一个SpriteExporter窗口实例。当然此时窗口中没有任何内容。
 
-####2，将选中的Sprite显示在窗口中：<br>
+#### 2，将选中的Sprite显示在窗口中：<br>
 首先添加一个方法，获取当前选中的全部Sprite。原理很简单，通过对Selection.objects的枚举，依次判断是否为Sprite并添加到数组中：
 
 \{\{% highlight csharp %\}\}
@@ -114,7 +114,7 @@ void OnSelectionChange()
 }
 \{\{% endhighlight %\}\}
 
-####3，生成Sprite的图片文件并保存到本地
+#### 3，生成Sprite的图片文件并保存到本地
 接下来，我们需要实现最关键的一步，保存Sprite到文件。大致的步骤如下：<br>
 通过Sprite.textureRect和Sprite.texture属性获取Sprite的源和位置信息；<br>
 通过Texture.getPixels方法取得对应区域的颜色数据；<br>
@@ -187,7 +187,7 @@ bool MakeTextureReadable(Texture tex)
 
 这次再试验一次，发现可以正常导出了。over。
 
-###改进：
+### 改进：
 设想1，某些Texture2D被切割成许多Sprite，可否在选中这些Texture时，自动列出它分割出的全部Sprite？
 
 要实现这个功能，关键是，能否获取某个Texture2D所分割的全部Sprite数据？经过研究发现是可行的，代码如下：
