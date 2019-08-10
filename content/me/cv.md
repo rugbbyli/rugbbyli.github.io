@@ -1,14 +1,13 @@
 ---
 title: "个人简历"
-
 ---
 
 ## 基本信息
-- 李扬
-- 1989.11
-- rugbbyli@foxmail.com
-- 15507593070
-- https://rugbbyli.github.io
+- 姓名：李扬
+- 生日：1989.11
+- 邮箱：rugbbyli@foxmail.com
+- 电话：15507593070
+- 主页：https://rugbbyli.github.io
 
 ### 教育背景
 2009 – 2013    本科 – 网络工程专业 – 湖北工业大学
@@ -86,14 +85,14 @@ title: "个人简历"
 ### iProxy
 一个简单的代理软件实现，基于socks5协议进行扩展，使用python开发。
 
-### Dota猜猜猜
-一个Dota数据库小游戏，使用Unity开发。数据使用python scrapy爬虫框架爬取。
+<!-- ### Dota猜猜猜
+一个Dota数据库小游戏，使用Unity开发。数据使用python scrapy爬虫框架爬取。 -->
 
 ### Reflector
 Windows Phone平台益智类小游戏，使用XNA引擎开发。
 
-### BluePath
-Windows Phone平台益智类小游戏。
+<!-- ### BluePath
+Windows Phone平台益智类小游戏。 -->
 
-### FlipCard
-Windows Phone平台益智类小游戏。
+<!-- ### FlipCard
+Windows Phone平台益智类小游戏。 -->
