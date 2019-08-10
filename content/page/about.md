@@ -1,19 +1,18 @@
 ---
-title: About me
-subtitle: Why you'd want to hang out with me
-comments: false
+title: "About"
 ---
 
-My name is The Dude. I have the following qualities:
+<span class="tag">爱好广泛</span>
+<span class="tag">坐标深圳</span>
+<span class="tag">手游前端开发工程师</span>
+<span class="tag">强迫症</span>
+<span class="tag">精力旺盛</span>
+<span class="tag">Unity 3D</span>
+<span class="tag">精神分裂</span>
+<span class="tag">技术宅</span>
+<span class="tag">无党派人士</span>
 
-- I rock a great beard
-- I'm extremely loyal to my friends
-- I like bowling
+### Links
 
-That rug really tied the room together.
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you
-just watch [my movie](https://en.wikipedia.org/wiki/The_Big_Lebowski) and it
-will answer **all** your questions.
+<a href="http://leitai.wang" class="tag">Qeye.W</a>
+<a href="http://lunarrest.github.io" class="tag">LunArrest</a>
