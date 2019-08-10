@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity3D Demo：“粉碎糖果”（3）"
+date:   2014-12-22
+categories: Unity
+tags: [Unity Demo]
+---
 
 ###使用”对象池“优化内存波动：
 
@@ -16,7 +23,7 @@
 
 我打算使用一个Dictionary结构来保存池中的对象，用string类型的key来区分不同类别的对象，字典中的每个键对应的值都是一个队列结构。当调用者申请新对象时，我们先在池中寻找同类对象，存在则移出队列并返回，否则根据需要创建新的对象或者返回null。当调用者申请释放对象时，我们直接将对象插入对应的队列中。代码如下：<br>
 
-{{< highlight csharp >}}
+\{\{% highlight csharp %\}\}
 public class ObjectPool : MonoBehaviour
 {
     public GameObject[] _prefabs;
@@ -112,7 +119,7 @@ public class ObjectPool : MonoBehaviour
         Destroy(behaviour.gameObject, ObjectID);
     }
 }
-{{< / highlight >}}
+\{\{% endhighlight %\}\}
 
 这是一个很初级的对象池实现，虽然很简单，不过已经足以体现对象池的核心思想。在这里我让它继承了MonoBehaviour，是为了能够将它挂载到场景的物体上，从而可以拖动添加若干Prefab作为对象的拷贝源。这不是必须的，但某些时候会很有用。另外，虽然我们使用了类似单例模式的写法，事实上，我们无法阻止创建多个ObjectPool实例。如果你想实现这一点，可能需要考虑别的方案，比如不从MonoBehaviour继承，然后对它实现单例模式。或者，在你的项目规范文档中明确指出不允许创建多个实例等。<br>
 
@@ -120,13 +127,13 @@ public class ObjectPool : MonoBehaviour
 
 接下来，我们修改一些代码，以利用到刚刚创建出来的新东西。首先是Candys里面的NewCandy方法，改成这样：
 
-{{< highlight csharp >}}
+\{\{% highlight csharp %\}\}
     var obj = ObjectPool.Instantiate("Candy") as GameObject;
     if (obj == null) obj = Instantiate(CandyPrefab) as GameObject;
     var candy = obj.GetComponent<Candy>();
     candy.SetImage(CandyImgs[Random.Range(0, CandyImgs.Length)]);
     return candy;
-{{< / highlight >}}
+\{\{% endhighlight %\}\}
 
 对NewCandyExclude也使用同样的方法修改。<br>
 然后是销毁Candy的地方，它位于CandyManager类的CheckCandy方法中。找到<br>

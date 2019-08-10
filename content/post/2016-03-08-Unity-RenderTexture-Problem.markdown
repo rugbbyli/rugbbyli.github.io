@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity3D RenderTexture的坑"
+date:   2016-03-08
+categories: Unity
+tags: [Unity Problem]
+---
 
 今天是伟大的妇女节，一到中午，办公室的女同事们就美滋滋地拿着公司发的购物卡享受带薪休假Shopping去了，结果就剩我一个人孤苦伶仃地填坑啦~
 

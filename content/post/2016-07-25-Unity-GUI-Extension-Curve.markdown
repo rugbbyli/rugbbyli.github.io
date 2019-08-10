@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity GUI（uGUI）扩展实例：自定义曲线控件"
+date:   2016-07-25
+categories: Unity
+tags: [Unity 2D ugui]
+---
 
 
 Unity GUI（uGUI）是Unity官方内置的游戏UI系统，以良好的性能和易用性，以及与Unity的深度集成，受到了不少开发者的喜爱。然而许多同学想必也发现了，相比以NGUI为代表的一些第三方UI系统，uGUI的功能确实少了点。不过不要紧，uGUI提供了良好的可扩展性，可以自己实现一些自定义UI控件。今天通过一个实例来为大家讲解下uGUI扩展的相关内容。

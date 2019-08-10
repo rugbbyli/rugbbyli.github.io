@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity资源分离探索"
+date:   2016-10-30
+categories: Unity
+tags: [Unity AssetBundle]
+---
 
 
 资源分离，即将一部分资源从初始安装包中分离出去，在需要用到时动态下载的功能。它最直观的好处就是减少了安装包大小，（可能）会对用户的安装欲望产生正面影响。

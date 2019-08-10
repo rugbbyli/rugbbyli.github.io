@@ -1,3 +1,13 @@
+---
+layout: post
+title:  "Unity3D Demo：使用Shader实现『别踩白块儿』游戏"
+date:   2014-12-5
+categories: Unity
+tags: [Unity Shader]
+unityfile: "/files/DoNotTapWhiteTile.unity3d"
+unitywidth: 360
+unityheight: 640
+---
 
 ###背景：
 
@@ -16,17 +26,17 @@
 3，利用fragment shader，判断输入点的坐标位置，根据上面的属性值，计算出对应的颜色（黑或白），并渲染结果。<br>
 
 ###效果：
-{% include unity.html %}
+\{\{% include unity.html %\}\}
 
 ###实现：
 
 ####1，新建一个shader，命名为tile，打开它，将内容改为：
 
-{{< highlight csharp >}}
+\{\{% highlight csharp %\}\}
 Shader "Tile/tile" {
 
 }
-{{< / highlight >}}
+\{\{% endhighlight %\}\}
 
 这样我们就声明了一个空的shader，分类为Tile，命名为tile。
 

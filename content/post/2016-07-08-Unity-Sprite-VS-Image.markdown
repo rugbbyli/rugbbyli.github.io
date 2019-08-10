@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity2D：Sprite和UI Image的区别"
+date:   2016-07-08
+categories: Unity
+tags: [Unity 2D]
+---
 
 Unity3D最初是一个3D游戏引擎，而从4.3开始，系统加入了Sprite组件，Unity也终于有了2D游戏开发的官方解决方案。4.6更是增加了新的UI系统uGUI，使得使用Unity开发2D游戏效率非常高。
 

@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Unity3D foreach 的坑"
+date:   2015-12-24
+categories: Unity
+tags: [Unity bugs]
+---
 
 ###背景：
 今天下午，就在我快（忧）乐（伤）地敲着代码时，突然发生了一件悲痛的事。<br>

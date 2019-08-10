@@ -1,3 +1,13 @@
+---
+layout: post
+title:  "Unity3D Demo：“彩色砖块”"
+date:   2014-12-28
+categories: Unity
+tags: [Unity Demo]
+unityfile: "/files/Brick.unity3d"
+unitywidth: 320
+unityheight: 568
+---
 
 ###背景：
 
@@ -13,7 +23,7 @@ PS，最近略忙，暂时没时间做详细教程了，就简单介绍下思路
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/brick_tip.PNG)
 
 ###效果：
-{% include unity.html %}
+\{\{% include unity.html %\}\}
 
 ###实现：
 下面是大致的程序结构图：<br>

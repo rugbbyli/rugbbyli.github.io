@@ -1,3 +1,13 @@
+---
+layout: post
+title:  "Unity3D Demo：“粉碎糖果”（1）"
+date:   2014-12-19
+categories: Unity
+tags: [Unity Demo]
+unityfile: "/files/Candy.unity3d"
+unitywidth: 500
+unityheight: 400
+---
 
 ###背景：
 
@@ -16,7 +26,7 @@
 使用对象池帮助降低内存波动；<br>
 
 ###效果：
-{% include unity.html %}
+\{\{% include unity.html %\}\}
 
 ###游戏界面制作：
 界面制作可以使用多种方式，本文使用Unity4.6新增的uGUI框架制作。<br>
@@ -27,7 +37,7 @@
 在GameArea下新建一个Image，命名为Candy，调整它的对齐方式为Left/Top，Pivot为（0,1），然后将它保存为Prefab。<br>
 接下来，我们测一下糖果的生成。在GameArea上添加脚本，命名为CandyManager，打开它，添加以下代码：
 
-{{< highlight csharp >}}
+\{\{% highlight csharp %\}\}
 	public GameObject CandyPrefab;//糖果的Prefab
 	public Sprite[] CandyImgs;//糖果的图片列表
 	RectTransform transform2D;
@@ -58,7 +68,7 @@
         transform2D = transform as RectTransform;
         Test(4, 6);
 	}
-{{< / highlight >}}
+\{\{% endhighlight %\}\}
 
 完成后，切到Unity，将前面创建的prefab和糖果的图片拖动赋值。点击运行，4行6列随机的糖果就出现在了GameArea上，自动适应GameArea的大小。要点：操作UI元素，要通过RectTransform来进行。通过它的rect属性获取游戏区域的大小，通过anchoredPosition设置在父节点中的位置，通过sizedDelta设置大小。<br>
 留心的话，你可能会发现上面的代码在设置糖果的位置时，涉及到两行代码，对anchoredPosition赋值前，还有一句<br>rtf.anchoredPosition3D = Vector3.zero<br>这是什么意思呢？我们可以试一下屏蔽掉这行代码，然后运行，很大可能性，你会发现屏幕上一个糖果都没有了，点击生成的糖果，可以看到它的Pos Z是很大或者很小的一个数字，超出了我们摄像机的显示范围。看来，当UI元素和世界元素共用同一个摄像机时，我们需要将UI元素的z坐标也进行设置。这就是上面那句代码的用途。<br>
@@ -70,7 +80,7 @@
 等等，作为好的程（dai）序（ma）员（gou），不偷懒怎么行呢？既然NGUI有了，我们把它移植过来不就行了吗？<br>
 说干就干。我们发现NGUI里面有个TweenPosition脚本，哈哈，要的就是它，果断拿过来。然后发现它是继承UITweener的，好，把UITweener也拿过来。然后，UITweener里面还用到了EventDelegate，这个我们似乎用不到，是去掉呢还是拿过来呢？想想减代码可能会徒增烦恼，算了，我们把EventDelegate也拿过来。最后的最后，我牵起你的手……阿呸，输入法太丧心病狂了，最后的最后，我们打开TweenPosition，改动以符合我们的需要。<br>
 首先看一下它的实现，它是通过在update时给value赋值来移动物体的，value内部则是通过cachedTransform来改变物体位置。so，我们改动起来就很easy了。把cachedTransform类型改为RectTransform，value的实现改为：<br>
-{{< highlight csharp >}}
+\{\{% highlight csharp %\}\}
 public Vector2 value
 {
 	get
@@ -82,7 +92,7 @@ public Vector2 value
 		cachedTransform.anchoredPosition = value;
 	}
 }
-{{< / highlight >}}
+\{\{% endhighlight %\}\}
 最后，我们测试下效果吧~把Test的返回类型改为IEnumerator，将<br>
 	rtf.anchoredPosition = new Vector2(c * gridWidth, -r * gridHeight);
 改为<br>
