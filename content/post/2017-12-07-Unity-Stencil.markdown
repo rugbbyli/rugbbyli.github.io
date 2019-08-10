@@ -32,15 +32,15 @@ var maskMat = StencilMaterial.Add(baseMaterial, 1, StencilOp.Keep, CompareFuncti
 
 简单来说，gpu为每个像素点分配一个称之为stencil buffer的1字节大小的内存区域，这个区域可以用于保存或丢弃像素的目的。我们举个简单的例子来说明这个缓冲区的本质。
 
-![image]({{ site.url }}/imgs/ui_stencil/1.png)
+![image](/static/imgs/ui_stencil/1.png)
 
 如上图所示，我们的场景中有1个红色图片和1个绿色图片，黑框范围内是它们重叠部分。一帧渲染开始，首先绿色图片将它覆盖范围的每个像素颜色“画”在屏幕上，然后红色图片也将自己的颜色画在屏幕上，就是图中的效果了。这种情况下，重叠区域内红色完全覆盖了绿色。接下来，我们为绿色图片添加Mask组件。于是变成了这样：
 
-![image]({{ site.url }}/imgs/ui_stencil/2.png)
+![image](/static/imgs/ui_stencil/2.png)
 
 此时一帧渲染开始，首先绿色图片将它覆盖范围都涂上绿色，同时将每个像素的stencil buffer值设置为1，此时屏幕的stencil buffer分布如下：
 
-![image]({{ site.url }}/imgs/ui_stencil/3.png)
+![image](/static/imgs/ui_stencil/3.png)
 
 然后轮到红色图片“绘画”，它在涂上红色前，会先取出这个点的stencil buffer值判断，在黑框范围内，这个值是1，于是继续画红色；在黑框范围外，这个值是0，于是不再画红色，最终达到了图中的效果。
 
@@ -143,18 +143,18 @@ public static Material Add(Material baseMat, int stencilID, StencilOp operation,
 
 首先创建示例场景：
 
-![image]({{ site.url }}/imgs/ui_stencil/4.png)
+![image](/static/imgs/ui_stencil/4.png)
 
 如图所示，我们的场景中依次放置了blue/stencil/white/green/red/yellow等6张图片，它们都是标准的Image组件设置了颜色，没有任何特别的设置（请注意它们的顺序）。
 
 接下来我们创建3个材质，分别命名为UIStencil/UIMask/UIHole，为它们指定材质为UI/Default，并设置Stencil相关参数：
 
-![image]({{ site.url }}/imgs/ui_stencil/5.png)
+![image](/static/imgs/ui_stencil/5.png)
 
 如果你读懂了前面的介绍，那么应该能够理解这几个材质的作用了。
 接下来，我们将场景中的图片改用我们自定义的材质来渲染（我在每个结点后面增加了它使用的材质名称）：
 
-![image]({{ site.url }}/imgs/ui_stencil/6.png)
+![image](/static/imgs/ui_stencil/6.png)
 
 可以发现，white/red图片与stencil重叠区域被挖空，而green/yellow则只保留了与stencil的重叠区域。blue没有受到影响。同时它们也不受结点关系的影响（只要保证渲染顺序即可）。这正与我们的猜测一致。
 

@@ -44,7 +44,7 @@ AssetDatabase.SaveAssets();
 
 这样即可在项目目录下面看到一个资源，选中它，即可在Inspector窗口看到与MonoBehaviour类似的数据配置界面。
 
-![image]({{ site.url }}/imgs/unity_scriptable_object_1.png)
+![image](/static/imgs/unity_scriptable_object_1.png)
 
 其实还有更简单的方法，直接在定义类型前面加上
 
