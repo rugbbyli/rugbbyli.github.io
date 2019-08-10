@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D ScriptableObject 简要介绍"
-date:   2017-01-04
-categories: Unity
-tags: Unity ScriptableObject
----
 
 
 关于Unity3d的数据持久化，或者叫序列化，除了自己实现自定义格式的配置文件和存取逻辑外，更便捷的方式是使用Unity内置的序列化机制。大家都知道，我们在脚本（MonoBehaviour）中定义的公共变量或被标记为【SerializeField】的私有变量会被Unity持久化保存，且可以通过编辑器可视化修改，这便是利用序列化机制保存数据的一种典型使用场景。

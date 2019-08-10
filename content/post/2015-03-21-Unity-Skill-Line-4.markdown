@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：4，声音"
-date:   2015-03-21
-categories: Unity
-tags: Unity StudyLine
----
 
 ###声音
 Unity的声音系统模拟了现实中的情形，分为两个部分：AudioSource和AudioListener。很直观的字面理解，AudioSource发出声音，AudioListener接收前者的声音并播放出来。
@@ -24,8 +17,8 @@ AudioLowPassFilter：过滤掉高音，只通过低音；<br>
 <br>
 Microphone类可以调用运行设备上的音频输入设备采集音频数据。它不是以组件形式提供，要使用需要通过脚本调用。下面的代码示例了采集语音数据然后直接播放出来：<br>
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 AudioSource audioSource = GetComponent<AudioSource>();
 audioSource.clip = Microphone.Start(null, true, 10, 44100);
 audioSource.Play();
-{% endhighlight %}
+{{< / highlight >}}

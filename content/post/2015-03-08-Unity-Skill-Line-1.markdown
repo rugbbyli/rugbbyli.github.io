@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：1，概述"
-date:   2015-03-08
-categories: Unity
-tags: Unity StudyLine
----
 
 ###背景
 

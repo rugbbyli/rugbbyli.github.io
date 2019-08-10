@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D插件开发：为编辑器添加场景自动保存功能"
-date:   2014-10-10
-categories: Unity
-tags: Unity Editor
----
 
 ###背景：
 
@@ -32,7 +25,7 @@ tags: Unity Editor
 
 新建一个类，命名为AutoSave：
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 [InitializeOnLoad]
 public class AutoSave
 {
@@ -41,11 +34,11 @@ public class AutoSave
         
     }
 }
-{% endhighlight %}
+{{< / highlight >}}
 
 这样，在Unity启动时，就会调用AutoSave类的静态构造函数。记得要把代码放在Editor文件夹下。<br>
 然后实现AutoSave方法，如下：
-{% highlight csharp %}
+{{< highlight csharp >}}
 static AutoSave()
 {
     EditorApplication.hierarchyWindowChanged += OnHierarchyWindowChanged;
@@ -64,7 +57,7 @@ static void SaveScene()
     }
 }
 
-{% endhighlight %}
+{{< / highlight >}}
 
 注意我在SaveScene里面首先判断了currentScene是否为空，如果为空，证明当前场景是新建场景，尚未保存为场景文件。此时如果调用SaveScene，会弹出一个保存文件的对话框。为了不干扰用户的使用，这种情况下将不会自动保存场景。你也可以改变这一逻辑。<br>
 此时基本已经完成了功能，但是还有一个问题，那就是EditorApplication.hierarchyWindowChanged只会在Hierarchy视图的树结构发生改变时触发，比如添加、删除对象，改变对象的顺序和层级结构等。但是在Scene视图中拖动物体等情况是不会触发这个回调的（通过Inspector改数据没有这个问题）。暂时没找到能监听Scene视图改变的方法，如果大家有好的方法，欢迎讨论。<br>
@@ -74,15 +67,15 @@ static void SaveScene()
 static System.DateTime _lastSavedTime;<br>
 static int saveDuration = 120;<br>
 在AutoSave构造函数中添加编辑器Update事件的监听：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 static AutoSave()
 {
     EditorApplication.hierarchyWindowChanged += OnHierarchyWindowChanged;
     EditorApplication.update += Update;
 }
-{% endhighlight %}
+{{< / highlight >}}
 实现Update方法：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 static void Update()
 {
     if (System.DateTime.Now.Subtract(_lastSavedTime).TotalSeconds > saveDuration)
@@ -90,9 +83,9 @@ static void Update()
         SaveScene();
     }
 }
-{% endhighlight %}
+{{< / highlight >}}
 在SaveScene方法中更新_lastSavedTime字段：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 static void SaveScene()
 {
     _lastSavedTime = System.DateTime.Now;
@@ -102,7 +95,7 @@ static void SaveScene()
         Debug.Log(string.Format("scene has auto saved (at {0}).", System.DateTime.Now.ToString("HH:mm:ss")));
     }
 }
-{% endhighlight %}
+{{< / highlight >}}
 
 至此，我们的自动保存场景插件就完工了。每隔120s或者当Hierarchy视图发生改变，都会触发场景的自动保存。从此以后妈妈再也不用担心我的场景忘记保存丢失啦~~<br>
 

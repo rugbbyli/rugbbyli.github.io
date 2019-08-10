@@ -1,13 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：画面扭曲特效实现"
-date:   2014-12-25
-categories: Unity
-tags: Unity Shader
-unityfile: "/files/TwistEffect.unity3d"
-unitywidth: 600
-unityheight: 480
----
 
 ###背景：
 
@@ -27,7 +17,7 @@ Unity自带了多种高级图像效果（ImageEffects），比如各种模糊特
 ###实现：
 由于要操作像素，需要用到片段着色器（FragmentShader）。不太懂shader的同学也不要害怕，毕竟今天我们是要移植而不是自己写。我们直接将UnityPro中的扭曲特效shader内容复制过来即可。当然，它的实现其实也不复杂，建议还是看一下实现过程。下面是具体的shader内容（关键地方我加了注释）。<br>
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 Shader "Test/Twist Effect" {
 
 SubShader
@@ -89,7 +79,7 @@ SubShader
 Fallback off
 
 }
-{% endhighlight %}
+{{< / highlight >}}
 
 然后新建一个Material，命名为TwistEffectMaterial，shader选择上面生成的shader。<br>
 
@@ -102,19 +92,19 @@ Fallback off
 说到这里，大部分同学应该都能想到一种简单的实现方法了，对，就是对屏幕区域截图，然后对截图应用扭曲效果。下面使用一个具体的例子来说明。<br>
 比如上一篇博文里面的“粉碎糖果”游戏，我们想实现一个效果，当屏幕上没有糖果可以消除时，对整个糖果层运行扭曲特效作为结束游戏的效果。我们的UI层次结构为：
   
-{% highlight csharp %}
+{{< highlight csharp >}}
 Backround（铺满屏幕）
 |
 |----GameArea（距屏幕边缘有一段距离）
       |
       |----Candys（若干糖果）
-{% endhighlight %}
+{{< / highlight >}}
 
 我们是要对GameArea区域施加效果。我的做法是，首先在GameArea同级添加一个结点TwistEffectLayer，大小调节为与GameArea保持一致，添加Image组件，将它的Material改为TwistEffectMaterial，用来作为特效层。首先它是未激活的，当它被激活时，会对自身位置和大小的屏幕空间进行截图，然后把截图赋给自身的Image组件，播放扭曲特效动画。<br>
 其实这里面主要工作就在精确计算TwistEffectLayer的屏幕位置和尺寸了。由于我使用的是最新的uGUI系统，计算起来还是稍微有点麻烦的，需要考虑Canvas的设置，布局方式，锚点等诸多因素的影响。如果是全屏特效，或者使用NGUI等方式，应该会容易的多。下面是具体的脚本：
 
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 [RequireComponent(typeof(Image))]
 public class TwistEffect : MonoBehaviour {
   public Vector2  radius = new Vector2(0.5F,0.5F);
@@ -174,12 +164,12 @@ public class TwistEffect : MonoBehaviour {
   }
 }
 
-{% endhighlight %}
+{{< / highlight >}}
 
 然后将脚本挂载到前面的TwistEffectLayer上面即可。<br>
 最后，在CandyManager脚本中触发特效的启动。为了方面测试，我们每当点击糖果时，就触发特效。添加如下方法：
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 public IEnumerator TestEffect()
 {
     var twistEffect = transform.parent.Find("TwistEffectLayer").GetComponent<TwistEffect>();
@@ -188,17 +178,17 @@ public IEnumerator TestEffect()
     yield return new WaitForSeconds(2);
     Application.LoadLevel(0);
 }
-{% endhighlight %}
+{{< / highlight >}}
 
 然后在糖果的点击事件顶部添加代码：
 
-{% highlight csharp %}
+{{< highlight csharp >}}
 private void Candy_Click(object sender, System.EventArgs e)
 {
     StartCoroutine(TestEffect());
     以前的代码....
 }
-{% endhighlight %}
+{{< / highlight >}}
 
 
 

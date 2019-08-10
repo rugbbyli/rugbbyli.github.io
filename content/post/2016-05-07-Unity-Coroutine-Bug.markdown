@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D Coroutine 的坑"
-date:   2016-05-07
-categories: Unity
-tags: Unity Problem
----
 
 
 一大早莫名其妙出了个问题，代码很简单，是一个协程函数内部加了异常处理的，原型如下：

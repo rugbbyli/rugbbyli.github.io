@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：6，脚本"
-date:   2015-04-05
-categories: Unity
-tags: Unity StudyLine
----
 
 ###脚本
 即使Unity已经提供了许多组件简化游戏开发中，脚本仍然是不可或缺的一部分。脚本是游戏的灵魂，它控制其它组件的良好运行，控制游戏流程的发展，对用户输入做出反馈，体现游戏的整体逻辑等。<br><br>

@@ -1,10 +1,3 @@
----
-layout: post
-title:  "UnityGUI扩展实例：图片挖洞效果"
-date:   2017-03-22
-categories: Unity
-tags: Unity ugui
----
 
 
 我想大家在用uGUI做界面时，可能经常会碰到一种需求，就是在图片上“挖洞”。

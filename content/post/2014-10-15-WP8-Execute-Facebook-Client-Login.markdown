@@ -1,10 +1,3 @@
----
-layout: post
-title:  "WP8应用调用Facebook客户端登陆"
-date:   2014-10-15
-categories: WindowsPhone
-tags: AppCommunication
----
 
 ###背景：
 

@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：2，编辑器相关"
-date:   2015-03-08
-categories: Unity
-tags: Unity StudyLine
----
 
 ###编辑器相关
 
@@ -40,7 +33,7 @@ Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的
 2，调用EditorWindow.GetWindow显示窗口；<br>
 3，在OnGUI方法中实现显示窗口的代码；<br>
 仍然用一个简单的例子说明。新建一个脚本文件，命名为MyWindow.cs，放在Editor文件夹下。内容如下：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
   public class MyWindow : EditorWindow {
   
   	[MenuItem ("Extension/Open MyWindow")]  //在编辑器菜单添加条目并映射处理方法
@@ -55,7 +48,7 @@ Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的
   		GUILayout.EndVertical();
   	}
   }
-{% endhighlight %}
+{{< / highlight >}}
 然后切回Unity编辑器，会发现顶部菜单多了Extension项，点击里面的MyWindow条目，自定义的窗口就出现了，如图：<br>
 
 {% include img.html param="unity_skill_line_1.png" %}
@@ -65,7 +58,7 @@ Unity对扩展代码的识别机制也很简单，只要把代码丢进特定的
 一些情况下，我们可能更希望能够改变Unity编辑器内置窗口的显示，比如对Inspector中我们脚本属性的友好显示，或者在Scene窗口中显示一些对象的辅助内容，这些都是实际项目中经常碰到的需求。通过PropertyDrawer和Editor可以轻松实现这些。<br>
 <br>
 PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如，考虑我们的脚本中有个int类型的公共变量，默认情况下，它在Inspector中显示为一个文本框，可以输入一个数字来改变它的值；现在我们想要用一个滑块来改变它的值，来看看怎么做吧~<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
   [CustomPropertyDrawer(typeof(int))]
   public class PropertyDrawe : PropertyDrawer  {
 
@@ -88,14 +81,14 @@ PropertyDrawer用来自定义某个属性在Inspector中的显示方式。比如
   		EditorGUI.EndProperty ();
   	}
   }
-{% endhighlight %}
+{{< / highlight >}}
   将上面的代码放入一个脚本文件，然后放在Editor文件夹下。切到Unity，选中某个物体，如果它挂载了某个脚本，且那个脚本有个Int类型的公共变量，那么Inspector窗口看起来应该类似这样：<br>
   
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_2.png)
 <br>
 Editor则提供了更多的灵活性。通过继承并重写它的方法，可以完全定制Inspector窗口或者在Scene窗口中展示自定义的内容。我通过一个简单的例子来说明它的用法：<br>
 考虑这样一个需求。我们的游戏中有许多角色，每个角色都有不同的视野范围（包括视距和视角）。我们定义一个脚本来实现这个，如下：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 public class FarSeer : MonoBehaviour
 {
 	public float viewDistance = 5f;
@@ -106,10 +99,10 @@ public class FarSeer : MonoBehaviour
 		transform.Rotate(0, 1, 0);
 	}
 }
-{% endhighlight %}
+{{< / highlight >}}
 然后给每个角色挂上这个脚本。接下来，通过扩展编辑器，我们将直观的看到每个角色的视野。<br>
 新建一个脚本，命名随意，放在Editor文件夹下。内容如下：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 [CustomEditor(typeof(FarSeer))] //标记这个类是FarSeer类型的自定义编辑器扩展。当场景中某个挂载有FarSeer组件的物体被选中时，会执行这里的代码。
 public class CustomEditorDemo : Editor
 {
@@ -135,7 +128,7 @@ public class CustomEditorDemo : Editor
 		Handles.DrawSolidArc(trans.position, trans.up, from, current.viewAngle, current.viewDistance);
 	}
 }
-{% endhighlight %}
+{{< / highlight >}}
 切回Unity，选中某个角色，你应该会看到类似下面的画面：<br>
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_3.png)
 试着在Inspector窗口改变viewDstance和viewAngle的值，观察Scene中的扇形会不会同步更新。<br>
@@ -148,7 +141,7 @@ public class CustomEditorDemo : Editor
 	public static int viewAngleMin = 5;
 
 然后在上面的CustomEditorDemo类中添加如下代码：<br>
-{% highlight csharp %}
+{{< highlight csharp >}}
 //在这里实现扩展Inspector窗口的逻辑。
 public override void OnInspectorGUI()
 {
@@ -164,7 +157,7 @@ public override void OnInspectorGUI()
 	
 	EditorUtility.SetDirty(target);
 }
-{% endhighlight %}
+{{< / highlight >}}
 EditorGUILayout用来在Editor中绘制GUI内容，用法跟GUILayout一样，这里不详述。<br>
 然后切回Unity，可以看到FarSeer在Inspector中变成了这样：<br>
 ![image](https://raw.githubusercontent.com/rugbbyli/rugbbyli.github.io/master/imgs/unity_skill_line_4.png)

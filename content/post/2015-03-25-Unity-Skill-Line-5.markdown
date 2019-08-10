@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Unity3D学习笔记：5，动画"
-date:   2015-03-25
-categories: Unity
-tags: Unity StudyLine
----
 
 ###动画
 从4.0开始，Unity推出了新的动画系统（称作MecAnim），功能更加强大，用起来也更加简单和便利。由于新版动画系统兼容旧版，在它的基础上进行了扩充，因此本文首先介绍新版动画系统，最后指出旧版的工作流程。<br>

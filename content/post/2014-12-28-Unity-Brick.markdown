@@ -1,13 +1,3 @@
----
-layout: post
-title:  "Unity3D Demo：“彩色砖块”"
-date:   2014-12-28
-categories: Unity
-tags: Unity Demo
-unityfile: "/files/Brick.unity3d"
-unitywidth: 320
-unityheight: 568
----
 
 ###背景：
 

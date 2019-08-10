@@ -1,13 +1,3 @@
----
-layout: post
-title:  "Unity3D Demo：石头剪刀布"
-date:   2015-10-17
-categories: Unity
-tags: Unity Demo
-unityfile: "/files/FingerGuess.unity3d"
-unitywidth: 640
-unityheight: 360
----
 
 ###背景：
 
