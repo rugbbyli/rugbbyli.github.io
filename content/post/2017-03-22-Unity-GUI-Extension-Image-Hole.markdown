@@ -9,13 +9,13 @@ tags: [Unity ugui]
 
 我想大家在用uGUI做界面时，可能经常会碰到一种需求，就是在图片上“挖洞”。
 
-![image](/static/imgs/ugui_ext_hole/1.png)
+![image](/imgs/ugui_ext_hole/1.png)
 
-![image](/static/imgs/ugui_ext_hole/2.png)
+![image](/imgs/ugui_ext_hole/2.png)
 
 说起来我们可以有几种实现方案，比如最简单的方式，直接导入带有“洞”的图片。这种方式简单，但不适合需要动态变化的场合。考虑有这种需求：当我们上线一个新功能时，可能希望在玩家第一次打开游戏时，将界面其它地方变暗，突出新增的功能，即所谓的“新手引导”功能。
 
-![image](/static/imgs/ugui_ext_hole/3.png)
+![image](/imgs/ugui_ext_hole/3.png)
 
 如果用黑色含透明区域图片来展示这种效果，也不是不可以，但是会有几个问题。首先需要处理UI遮挡问题，因为Image的透明区域依然会阻挡下层的点击事件；其次如果新手引导分若干步，每步要展示的区域大小和形状都不同，那可能需要针对每步都做图，这个过程会变得非常复杂。
 
@@ -145,6 +145,6 @@ public class Hole : Mask
 
 ###完整代码下载（Unity5.5测试通过）
 
-[Hole.cs](/static/files/Hole/Hole.cs "Hole.cs")
+[Hole.cs](/files/Hole/Hole.cs "Hole.cs")
 
-[HoleImage.cs](/static/files/Hole/HoleImage.cs "HoleImage.cs")
+[HoleImage.cs](/files/Hole/HoleImage.cs "HoleImage.cs")
