@@ -7,7 +7,7 @@ tags: [Unity ugui stencil]
 ---
 
 
-之前我曾经简单介绍过Mask的实现原理（见这里：[UnityGUI扩展实例：图片挖洞效果]({{ site.url }}/unity/2017-03/Unity-GUI-Extension-Image-Hole.html))，不过当时侧重点在其它地方，并没有完整探究Mask底层的处理过程。这几天项目中遇到一个小小需求，需要有一个“超级挖洞能手”，能够挖掉不属于自己子级的UI结点，由于之前的Hole是完全模拟Mask组件实现的，只能处理自己的子级，无法满足需求，于是趁此机会梳理了一下Mask的原理，整理在此与大家探讨。
+之前我曾经简单介绍过Mask的实现原理（见这里：[UnityGUI扩展实例：图片挖洞效果](/post/2017-03/Unity-GUI-Extension-Image-Hole.html))，不过当时侧重点在其它地方，并没有完整探究Mask底层的处理过程。这几天项目中遇到一个小小需求，需要有一个“超级挖洞能手”，能够挖掉不属于自己子级的UI结点，由于之前的Hole是完全模拟Mask组件实现的，只能处理自己的子级，无法满足需求，于是趁此机会梳理了一下Mask的原理，整理在此与大家探讨。
 
 上篇博客已经简单提到过：
 
@@ -164,4 +164,4 @@ public static Material Add(Material baseMat, int stencilID, StencilOp operation,
 
 ### 示例场景下载（使用Unity 2017.1.0f3 创建）
 
-[UIStencil.unitypackage]({{ site.url }}/files/UIStencil.unitypackage "UIStencil.unitypackage")
+[UIStencil.unitypackage](/static/files/UIStencil.unitypackage "UIStencil.unitypackage")

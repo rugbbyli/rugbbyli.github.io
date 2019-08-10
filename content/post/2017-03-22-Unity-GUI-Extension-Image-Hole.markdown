@@ -145,6 +145,6 @@ public class Hole : Mask
 
 ###完整代码下载（Unity5.5测试通过）
 
-[Hole.cs]({{ site.url }}/files/Hole/Hole.cs "Hole.cs")
+[Hole.cs](/static/files/Hole/Hole.cs "Hole.cs")
 
-[HoleImage.cs]({{ site.url }}/files/Hole/HoleImage.cs "HoleImage.cs")
+[HoleImage.cs](/static/files/Hole/HoleImage.cs "HoleImage.cs")
