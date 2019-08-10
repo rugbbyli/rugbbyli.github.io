@@ -65,10 +65,10 @@ pygmentCodeFences = true
     url = "page/about/"
     weight = 3
 
-[[menu.main]]
-    identifier = "samples"
-    name = "Samples"
-    weight = 2
+# [[menu.main]]
+#     identifier = "samples"
+#     name = "Samples"
+#     weight = 2
 
 # [[menu.main]]
 #     parent = "samples"
