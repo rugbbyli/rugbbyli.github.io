@@ -15,8 +15,8 @@ pygmentCodeFences = true
 
 [Params]
   subtitle = "人生不易，且行且珍惜"
-  logo = "img/avatar-icon.png"
-  favicon = "img/favicon.ico"
+  logo = "logo.png"
+  favicon = "logo.png"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
