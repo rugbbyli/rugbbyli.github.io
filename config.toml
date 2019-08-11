@@ -17,7 +17,7 @@ pygmentCodeFences = true
   subtitle = "人生不易，且行且珍惜"
   logo = "logo.png"
   favicon = "logo.png"
-  dateFormat = "January 2, 2006"
+  dateFormat = "2006年1月2日"
   commit = false
   rss = true
   comments = true
@@ -64,7 +64,7 @@ pygmentCodeFences = true
 [[menu.main]]
     name = "关于"
     url = "page/about/"
-    weight = 3
+    weight = 2
 
 # [[menu.main]]
 #     identifier = "samples"
