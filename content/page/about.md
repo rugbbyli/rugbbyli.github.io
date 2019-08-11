@@ -2,17 +2,21 @@
 title: "About"
 ---
 
-<span class="tag">爱好广泛</span>
-<span class="tag">坐标深圳</span>
-<span class="tag">手游前端开发工程师</span>
-<span class="tag">强迫症</span>
-<span class="tag">精力旺盛</span>
-<span class="tag">Unity 3D</span>
-<span class="tag">精神分裂</span>
-<span class="tag">技术宅</span>
-<span class="tag">无党派人士</span>
+代码只是解决问题的手段之一。
 
-### Links
+但多数情况下，它可能是一种很好的手段。
 
-<a href="http://leitai.wang" class="tag">Qeye.W</a>
-<a href="http://lunarrest.github.io" class="tag">LunArrest</a>
+### 我的标签
+- 爱好广泛
+- 坐标深圳
+- 全栈开发（伪）
+- 强迫症
+- Unity3D
+- 无党派人士
+- 甜豆腐脑
+- 半程马拉松潜（垫）力（底）选手
+
+### 友情链接
+
+[Qeye.W](http://leitai.wang)
+LunArrest(http://lunarrest.github.io)
