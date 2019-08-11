@@ -10,9 +10,9 @@
 - id: readMore
   translation: "阅读全文"
 - id: olderPosts
-  translation: "Older Posts"
+  translation: "下一页"
 - id: newerPosts
-  translation: "Newer Posts"
+  translation: "上一页"
 - id: previousPost
   translation: "上一篇"
 - id: nextPost
