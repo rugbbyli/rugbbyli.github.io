@@ -1,5 +1,0 @@
-
-canvas { margin: 0; padding: 0; }
-
-.template-wrap canvas { margin: 0; position: relative; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.2); -moz-box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-.fullscreen { float: right; position: relative; z-index: 10; }
