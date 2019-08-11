@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/assets/UnityNew/style.css">
+<script src="/assets/UnityNew/UnityProgress.js"></script>
+<script src="/assets/UnityNew/UnityLoader.js"></script>
+
+<script type='text/javascript'>
+  var cfg_path = {{(printf "%s/Web.json" $.Page.Params.unity.file)}};
+  var gameInstance = UnityLoader.instantiate("gameContainer", {{(printf "%s/Web.json" $.Page.Params.unity.file)}}, {onProgress: UnityProgress});
+</script>
+
+<style>
+    
+    div#gameContainer {
+      width: {{ $.Page.Params.unity.width }}px;
+      height: {{ $.Page.Params.unity.height }}px;
+    }
+  
+</style>
+
+<div >
+    <div id="gameContainer"></div>
+</div>

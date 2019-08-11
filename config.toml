@@ -64,9 +64,14 @@ summaryLength = 2
     weight = 1
 
 [[menu.main]]
+    name = "Demo"
+    url = "demo/"
+    weight = 2
+
+[[menu.main]]
     name = "关于"
     url = "page/about/"
-    weight = 2
+    weight = 8
 
 # [[menu.main]]
 #     identifier = "samples"
@@ -94,4 +99,4 @@ summaryLength = 2
 [[menu.main]]
     name = "标签"
     url = "tags"
-    weight = 3
+    weight = 9

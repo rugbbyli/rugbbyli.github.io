@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/assets/Unity/style.css" />
+<script src="/assets/Unity/UnityProgress.js"></script>
+
+<style>
+	<!--
+	div#unityPlayer {
+		cursor: default;
+		width: {{ $.Page.Params.unity.width }}px;
+		height: {{ .Page.Params.unity.height }}px;
+		margin: auto;
+	}
+	-->
+</style>
+
+<div id="unityPlayer">
+	<div class="template-wrap clear">
+	  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="{{ $.Page.Param.unity.width }}px" width="{{ $.Page.Param.unity.height }}px"></canvas>
+	  <br>
+	  <div class="logo"></div>
+	</div>
+</div>
+
+<script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "{{ $.Page.Param.unity.file }}/WebGL.data",
+    codeUrl: "{{ $.Page.Param.unity.file }}/WebGL.js",
+    memUrl: "{{ $.Page.Param.unity.file }}/WebGL.mem",
+  };
+</script>
+
+<script src="/assets/Unity/UnityLoader.js"></script>
