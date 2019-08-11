@@ -13,6 +13,8 @@ pygmentCodeFences = true
 #disqusShortname = "XXX"
 #googleAnalytics = "XXX"
 
+summaryLength = 2
+
 [Params]
   subtitle = "人生不易，且行且珍惜"
   logo = "logo.png"
@@ -21,7 +23,6 @@ pygmentCodeFences = true
   commit = false
   rss = true
   comments = true
-  summaryLength = 20
   hasCJKLanguage = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
