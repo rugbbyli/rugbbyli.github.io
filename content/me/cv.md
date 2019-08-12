@@ -7,7 +7,7 @@ title: "个人简历"
 - 生日：1989.11
 - 邮箱：rugbbyli@foxmail.com
 - 电话：15507593070
-- 主页：https://rugbbyli.gitlab.io
+- 主页：https://rugbbyli.gitlab.io/blog
 
 ### 教育背景
 2009 – 2013    本科 – 网络工程专业 – 湖北工业大学
